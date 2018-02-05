@@ -16,6 +16,14 @@ class ApiController extends Controller {
      */
     public function createOrder(){
         $orderModel = D("Order");
+        $name = $_POST['name'];//收货人姓名
+        $phone = $_POST['phone'];//收货人姓名
+        $address = $_POST['address'];//收货人姓名
+        $name = $_POST['name'];//收货人姓名
+        $user_id = $_POST['user_id'];
+        $pay_type = 1;
+        $pay_account = $_POST['pay_account'];
+        $goodsList = $_POST['goods_list'];
         $res = $orderModel->createNewOrder($_POST);
         if($res){
             $data = array("code"=>"200","msg"=>"下单成功",'data'=>$res);
@@ -82,25 +90,7 @@ class ApiController extends Controller {
     }
 
     
-    /**
-     * 发送短信验证码   
-     */
-    public function sendMs(){
-        Vendor('SendMs.ChuanglanSmsApi');
-        $clapi  = new \Vendor\SendMs\ChuanglanSmsApi();
-        $code = mt_rand(100000,999999);
-        $result = $clapi->sendInternational('8618701881920', '【253云通讯】this is test,Your validation code is '.$code);
-        if(!is_null(json_decode($result))){
-            $output=json_decode($result,true);
-            if(isset($output['code'])  && $output['code']=='0'){
-                echo '短信发送成功！' ;
-            }else{
-                echo $output['error'];
-            }
-        }else{
-            echo $result;
-        }
-    }
+
     
     
     static function preLogin() {
