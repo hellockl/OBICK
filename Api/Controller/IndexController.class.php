@@ -75,11 +75,12 @@ class IndexController extends Controller {
         $clapi  = new \Vendor\SendMs\ChuanglanSmsApi();
         $code = mt_rand(100000,999999);
         $phone = $_POST['phone'];
-        if(empty($phone)){
-            $data = array("code"=>"201","msg"=>"手机号不能为空");
+        $zone = $_POST['zone'];
+        if(empty($phone)||empty($zone)){
+            $data = array("code"=>"201","msg"=>"手机号或区号不能为空");
             $this->ajaxReturn($data);
         }
-        $result = $clapi->sendInternational('86'.$phone, '【253云通讯】this is test,Your validation code is '.$code);
+        $result = $clapi->sendInternational($zone.$phone, '【253云通讯】this is test,Your validation code is '.$code);
         if(!is_null(json_decode($result))){
             $output=json_decode($result,true);
             if(isset($output['code'])  && $output['code']=='0'){
