@@ -15,7 +15,7 @@ class ApiController extends Controller {
      * 生成订单     
      */
     public function createOrder(){
-        
+        $orderModel = D("Order");
         $res = $orderModel->createNewOrder($_POST);
         if($res){
             $data = array("code"=>"200","msg"=>"下单成功",'data'=>$res);

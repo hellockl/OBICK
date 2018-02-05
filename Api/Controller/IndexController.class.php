@@ -2,11 +2,11 @@
 namespace Api\Controller;
 use Think\Controller;
 class IndexController extends Controller {
+    const TOKENSTR = 'abc123xyz';
     /**
      * 登录     
      */
     public function login(){
-        
         $user_name = "test";
         $password = "123456";
         $usersModel = D('Users');
