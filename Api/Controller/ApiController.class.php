@@ -75,6 +75,20 @@ class ApiController extends Controller {
         $this->ajaxReturn($data);
     }
 
+    /**
+     * 我的订单列表
+     *
+     */
+    public function myOrderList(){
+        $user_id = $_POST['user_id'];
+        $order_list = D("Order")->getOrderListByUserId($user_id);
+        if($order_list){
+            $data = array("code"=>"200","msg"=>"成功","data"=>$order_list);
+        }else{
+            $data = array("code"=>"201","msg"=>"失败");
+        }
+        $this->ajaxReturn($data);
+    }
     
 
     /**
