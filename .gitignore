@@ -1,4 +1,6 @@
 .idea
 Runtime
 Runtime/*
+Api/config/config.php
+Application/Admin/config/config.php
 
