@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : localhost
-Source Server Version : 50505
+Source Server Version : 50621
 Source Host           : localhost:3306
 Source Database       : newapp
 
 Target Server Type    : MYSQL
-Target Server Version : 50505
+Target Server Version : 50621
 File Encoding         : 65001
 
-Date: 2018-02-04 22:20:02
+Date: 2018-02-05 17:22:12
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -169,13 +169,32 @@ CREATE TABLE `n_goods` (
   `goods_name` varchar(255) NOT NULL COMMENT '商品名称',
   `details` text NOT NULL COMMENT '详情',
   `create_time` varchar(11) NOT NULL COMMENT '不加时间',
+  `image` varchar(255) NOT NULL COMMENT '商口图片',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of n_goods
 -- ----------------------------
-INSERT INTO `n_goods` VALUES ('1', 'test', 'adsfas', '');
+INSERT INTO `n_goods` VALUES ('1', 'test', 'adsfas', '', '');
+
+-- ----------------------------
+-- Table structure for n_mscode
+-- ----------------------------
+DROP TABLE IF EXISTS `n_mscode`;
+CREATE TABLE `n_mscode` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `phone` varchar(11) NOT NULL,
+  `code` varchar(6) NOT NULL,
+  `create_time` varchar(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='短信验证码表';
+
+-- ----------------------------
+-- Records of n_mscode
+-- ----------------------------
+INSERT INTO `n_mscode` VALUES ('1', '18701881920', '506243', '1517808703');
+INSERT INTO `n_mscode` VALUES ('2', '18701881921', '123456', '1517808712');
 
 -- ----------------------------
 -- Table structure for n_order
@@ -202,6 +221,23 @@ CREATE TABLE `n_order` (
 -- Records of n_order
 -- ----------------------------
 INSERT INTO `n_order` VALUES ('1', '201802031234', '1', '12345678', '16.00', '4.00', '4', '1', '20', '', '', '', '');
+
+-- ----------------------------
+-- Table structure for n_order_goods
+-- ----------------------------
+DROP TABLE IF EXISTS `n_order_goods`;
+CREATE TABLE `n_order_goods` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `order_id` int(11) NOT NULL,
+  `goods_id` int(11) NOT NULL,
+  `pack_id` int(11) NOT NULL,
+  `create_time` varchar(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='订单商品列表';
+
+-- ----------------------------
+-- Records of n_order_goods
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for n_package
@@ -232,53 +268,20 @@ CREATE TABLE `n_users` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_name` varchar(50) NOT NULL COMMENT '用户名',
   `name` varchar(255) DEFAULT NULL COMMENT '用户真实姓名',
-  `idcard` varchar(18) DEFAULT NULL COMMENT '身份证号',
-  `idcard_imga` varchar(255) DEFAULT NULL COMMENT '身份证正面照',
-  `idcard_imgb` varchar(255) DEFAULT NULL COMMENT '身份证正面照',
   `status` tinyint(3) DEFAULT '0' COMMENT '状态（0：待激活；1：已激活,未审核;2：已激活,已审核；3：已禁用）',
   `phone` varchar(13) DEFAULT NULL COMMENT '手机号',
-  `father_id` int(11) DEFAULT '0' COMMENT '上一级ID',
-  `grand_id` int(11) DEFAULT '0' COMMENT '上上一级ID',
   `password` varchar(32) NOT NULL COMMENT '账户密码',
-  `amount_password` varchar(32) NOT NULL COMMENT '资金密码',
   `create_time` varchar(11) NOT NULL COMMENT '注册时间',
-  `alipay` varchar(255) NOT NULL COMMENT '支付宝账号',
-  `wechat` varchar(255) NOT NULL COMMENT '微信号',
-  `bank_card` varchar(255) NOT NULL COMMENT '银行卡号',
-  `bank` varchar(255) NOT NULL COMMENT '银行',
-  `is_forbid` tinyint(3) NOT NULL DEFAULT '0' COMMENT '是否禁用（0：否；1是）',
-  `account` decimal(10,2) NOT NULL COMMENT '账户资金',
-  `lead_account` decimal(10,2) NOT NULL COMMENT '领导奖',
   `token` varchar(64) NOT NULL COMMENT 'token',
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COMMENT='users';
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COMMENT='users';
 
 -- ----------------------------
 -- Records of n_users
 -- ----------------------------
-INSERT INTO `n_users` VALUES ('1', 'test', '曹操', '3604281878113132', '/Public/upload/2017-02-21/58abf8330e982.png', '/Public/upload/2017-02-27/58b39e7335048.jpg', '2', '18888888888', '4', '0', 'e10adc3949ba59abbe56e057f20f883e', 'e10adc3949ba59abbe56e057f20f883e', '1488508274', '18888888888', 'ckl', '6222879845671234', '招商银行', '1', '0.00', '0.00', 'b91c4da92987767a8a300499db6d92c1');
-INSERT INTO `n_users` VALUES ('2', 'ssssssss', 'ddd', null, null, null, '1', '18688888888', '1', '4', '96e79218965eb72c92a549dd5a330112', '96e79218965eb72c92a549dd5a330112', '1488508274', '', '', '', '', '0', '0.00', '0.00', '');
-INSERT INTO `n_users` VALUES ('3', '工要', '苛', null, null, null, '2', '18866666666', '1', '4', 'e10adc3949ba59abbe56e057f20f883e', 'e10adc3949ba59abbe56e057f20f883e', '1488508274', '', '', '', '', '0', '0.00', '0.00', '');
-INSERT INTO `n_users` VALUES ('4', 'adfasd', '2131', null, null, null, '0', '18700001256', '0', '0', 'e10adc3949ba59abbe56e057f20f883e', 'e10adc3949ba59abbe56e057f20f883e', '1488508274', '', '', '', '', '0', '0.00', '0.00', '');
-INSERT INTO `n_users` VALUES ('5', '11111', '系统管理员', null, null, null, '0', '18701881920', '0', '0', 'e10adc3949ba59abbe56e057f20f883e', 'c33367701511b4f6020ec61ded352059', '1488508274', '', '', '', '', '0', '0.00', '0.00', '');
-INSERT INTO `n_users` VALUES ('6', '22222', '系统管理员', null, null, null, '1', '18701881921', '0', '0', 'e10adc3949ba59abbe56e057f20f883e', 'c33367701511b4f6020ec61ded352059', '1488508274', '', '', '', '', '0', '0.00', '0.00', '');
-INSERT INTO `n_users` VALUES ('7', '33333', '系统管理员', null, null, null, '0', '18701881920', '0', '0', 'e10adc3949ba59abbe56e057f20f883e', 'c33367701511b4f6020ec61ded352059', '1488508274', '', '', '', '', '0', '0.00', '0.00', '');
-INSERT INTO `n_users` VALUES ('8', '44444', '系统管理员', null, null, null, '0', '13333333333', '0', '0', 'e10adc3949ba59abbe56e057f20f883e', 'c33367701511b4f6020ec61ded352059', '1488508274', '', '', '', '', '0', '0.00', '0.00', '');
-INSERT INTO `n_users` VALUES ('9', 'asdfasdf', '系统管理员', null, null, null, '0', '13333333333', '0', '0', 'e10adc3949ba59abbe56e057f20f883e', 'c33367701511b4f6020ec61ded352059', '1488508274', '', '', '', '', '0', '0.00', '0.00', '');
-INSERT INTO `n_users` VALUES ('10', 'ckl', '系统管理员', null, null, null, '2', '18701881920', '0', '0', 'e10adc3949ba59abbe56e057f20f883e', 'c33367701511b4f6020ec61ded352059', '1488528808', '12345', 'ddddd', '6222878978974785', '中国银行', '0', '0.00', '0.00', '');
-INSERT INTO `n_users` VALUES ('11', 'abce', 'adfa', '360428', null, null, '2', '18745678978', '0', '0', 'e10adc3949ba59abbe56e057f20f883e', 'c33367701511b4f6020ec61ded352059', '1488529172', 'adsfasd', 'adsf', '666666', 'asdfas', '0', '0.00', '0.00', '');
-INSERT INTO `n_users` VALUES ('12', 'asdfa', 'adfa', '', null, null, '2', 'adfasd', '0', '0', 'e10adc3949ba59abbe56e057f20f883e', 'c33367701511b4f6020ec61ded352059', '1488529229', '', '', '', '', '0', '0.00', '0.00', '');
-INSERT INTO `n_users` VALUES ('13', 'asdfa111', 'adfa', '', null, null, '2', 'adfasd', '0', '0', 'e10adc3949ba59abbe56e057f20f883e', 'c33367701511b4f6020ec61ded352059', '1488529249', '', '', '', '', '0', '0.00', '0.00', '');
-INSERT INTO `n_users` VALUES ('14', 'asdfa222', 'adfa', '', null, null, '2', 'adfasd', '0', '0', 'e10adc3949ba59abbe56e057f20f883e', 'c33367701511b4f6020ec61ded352059', '1488529371', '', '', '', '', '0', '0.00', '0.00', '');
-INSERT INTO `n_users` VALUES ('15', 'asdfasd33', 'adsfa', 'asdfa', null, null, '2', 'asdf', '0', '0', 'e10adc3949ba59abbe56e057f20f883e', 'c33367701511b4f6020ec61ded352059', '1488529577', '', '', '', '', '0', '0.00', '0.00', '');
-INSERT INTO `n_users` VALUES ('16', 'asdfas111', '1111', '111', null, null, '2', '1111', '0', '0', 'e10adc3949ba59abbe56e057f20f883e', 'c33367701511b4f6020ec61ded352059', '1488529704', '11', '111', '', '', '0', '0.00', '0.00', '');
-INSERT INTO `n_users` VALUES ('17', 'adsfads', 'adsfas', 'adfad', null, null, '2', 'asdfas', '0', '0', 'e10adc3949ba59abbe56e057f20f883e', 'c33367701511b4f6020ec61ded352059', '1488529889', '', 'adfa', '', '', '0', '0.00', '0.00', '');
-INSERT INTO `n_users` VALUES ('18', 'ckl12345', null, null, null, null, '0', '18702154784', '1', '4', '26cc651ec9f15708ca628bc518e28cd4', '', '2017-03-08 ', '', '', '', '', '0', '0.00', '0.00', '');
-INSERT INTO `n_users` VALUES ('19', 'ckliang01', '曹操', null, null, null, '0', '18788888888', '0', '0', '9de49983b6a48545478ff3fe4e4c207c', 'e10adc3949ba59abbe56e057f20f883e', '1490173897', '', '', '', '', '0', '0.00', '0.00', '');
-INSERT INTO `n_users` VALUES ('20', 'yangyang3632', 'fsa', null, null, null, '1', '13761761611', '0', '0', '39d49cd1ba775b75bed6e933b152b87f', 'aa5c3ea295d349fc4a7ce9dd4da17f37', '1490452096', '', '', '', '', '0', '0.00', '0.00', '');
-INSERT INTO `n_users` VALUES ('21', '11223344', '123', null, null, null, '0', '15432343212', '0', '0', '4297f44b13955235245b2497399d7a93', '4297f44b13955235245b2497399d7a93', '1490452165', '', '', '', '', '0', '0.00', '0.00', '');
-INSERT INTO `n_users` VALUES ('22', 'yangyang', '123', null, null, null, '1', '15324567890', '0', '0', '38ca692a3523e708bd93890330ff904d', '4297f44b13955235245b2497399d7a93', '1490452367', '', '', '', '', '0', '0.00', '0.00', '');
-INSERT INTO `n_users` VALUES ('23', 'yangbaoqiang', 'yangbaoqiang', '310228189156156', '/Public/upload/2017-03-27/58d8f19473628.png', '/Public/upload/2017-03-27/58d8f19994636.png', '2', '13761761111', null, '0', '0fb95cefc680a795c1665ce41e4ac2d1', '12a6bf96792b7f10b3e4aabb4724b0f1', '1490611806', '13761761611', '13761761611', '6222021', '中国工商银行', '0', '0.00', '0.00', '');
-INSERT INTO `n_users` VALUES ('24', 'test001', 'test001', null, null, null, '0', '18701881922', null, '0', 'e10adc3949ba59abbe56e057f20f883e', 'e10adc3949ba59abbe56e057f20f883e', '1490756217', '', '', '', '', '0', '0.00', '0.00', '');
-INSERT INTO `n_users` VALUES ('25', 'test003', '123456', null, null, null, '0', '18701881924', null, '0', 'e10adc3949ba59abbe56e057f20f883e', 'e10adc3949ba59abbe56e057f20f883e', '1490757843', '', '', '', '', '0', '0.00', '0.00', '');
-INSERT INTO `n_users` VALUES ('26', 'test006', '曹操', '3604281989110731', null, null, '0', '18701881900', '1', '4', '9cbf8a4dcb8e30682b927f352d6559a0', '', '2017-04-03 ', 'nb', 'qqq', '67777777777777', 'ada', '0', '0.00', '0.00', '');
+INSERT INTO `n_users` VALUES ('1', 'test', '曹操', '2', '18888888888', 'e10adc3949ba59abbe56e057f20f883e', '1488508274', 'f07b571ba2a7b94212e9c821cc14c8b4');
+INSERT INTO `n_users` VALUES ('2', 'ssssssss', 'ddd', '1', '18688888888', '96e79218965eb72c92a549dd5a330112', '1488508274', '');
+INSERT INTO `n_users` VALUES ('3', '工要', '苛', '2', '18866666666', 'e10adc3949ba59abbe56e057f20f883e', '1488508274', '');
+INSERT INTO `n_users` VALUES ('4', 'adfasd', '2131', '0', '18700001256', 'e10adc3949ba59abbe56e057f20f883e', '1488508274', '');
+INSERT INTO `n_users` VALUES ('5', '11111', '系统管理员', '0', '18701881920', 'e10adc3949ba59abbe56e057f20f883e', '1488508274', '');
+INSERT INTO `n_users` VALUES ('30', 'ckl', null, '0', '18701881921', 'e10adc3949ba59abbe56e057f20f883e', '1517810008', '');

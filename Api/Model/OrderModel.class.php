@@ -19,6 +19,13 @@ class OrderModel extends BaseModel
         );
         return $this->where($where)->find();
     }
+
+    public function getOrderListByUserId($user_id){
+        $where = array(
+            'user_id'     => $user_id,
+        );
+        return $this->where($where)->select();
+    }
     
     
 }

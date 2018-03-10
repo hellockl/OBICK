@@ -2,11 +2,14 @@
 namespace Api\Controller;
 use Think\Controller;
 class IndexController extends Controller {
+    const TOKENSTR = 'abc123xyz';
+    public function test(){
+        echo 'aaa';
+    }
     /**
      * 登录     
      */
     public function login(){
-        
         $user_name = "test";
         $password = "123456";
         $usersModel = D('Users');
@@ -36,24 +39,59 @@ class IndexController extends Controller {
         $user_name = $_POST['user_name'];
         $password = $_POST['password'];
         $phone = $_POST['phone'];
+        $code = $_POST['code'];
         $usersModel = D('Users');
+        if($code!==M('Mscode')->where("phone=".$phone)->order("create_time desc")->getField('code')){
+            $data = array("code"=>"201","msg"=>"验证码错误");
+            $this->ajaxReturn($data);
+        }
         $result = $usersModel->findUserByPhone($phone);
         if($result){
             $data = array("code"=>"201","msg"=>"该手机号已注册过");
             $this->ajaxReturn($data);
         }
+
         $data_info = array(
             "user_name" => $user_name,
-            "phone" => $password,
+            "phone" => $phone,
             "password" => md5($password),
             "create_time" => time()
         );
-        $res = $usersModel->addUser($data_info);
+        $res = $usersModel->addUsers($data_info);
         if($res){
             $data = array("code"=>"200","msg"=>"注册成功");
             
         }else{
             $data = array("code"=>"201","msg"=>"注册失败");
+        }
+        $this->ajaxReturn($data);
+    }
+
+    /**
+     * 发送短信验证码
+     */
+    public function sendMs(){
+        Vendor('SendMs.ChuanglanSmsApi');
+        $clapi  = new \Vendor\SendMs\ChuanglanSmsApi();
+        $code = mt_rand(100000,999999);
+        $phone = $_POST['phone'];
+        $zone = $_POST['zone'];
+        if(empty($phone)||empty($zone)){
+            $data = array("code"=>"201","msg"=>"手机号或区号不能为空");
+            $this->ajaxReturn($data);
+        }
+        $result = $clapi->sendInternational($zone.$phone, '【253云通讯】this is test,Your validation code is '.$code);
+        if(!is_null(json_decode($result))){
+            $output=json_decode($result,true);
+            if(isset($output['code'])  && $output['code']=='0'){
+                $data = array("phone"=>$phone,"code"=>$code,"create_time"=>time());
+                M("Mscode")->add($data);
+                $data = array("code"=>"200","msg"=>"注册成功");
+            }else{
+                $data = array("code"=>"201","msg"=>$output['error']);
+            }
+        }else{
+            $data = array("code"=>"201","msg"=> $result);;
         }
         $this->ajaxReturn($data);
     }
@@ -68,7 +106,7 @@ class IndexController extends Controller {
         if($goodsList){
             $packageModel = M('Package');
             foreach ($goodsList as $key=>$v){
-                $goodsList[$key]['priceList'] = $packageModel->where("goods_id=".$v['goods_id'])->select(); 
+                $goodsList[$key]['priceList'] = $packageModel->where("goods_id=".$v['id'])->select();
             }
             $data  = array("code"=>"200","msg"=>"成功","data"=>$goodsList);
         }else{

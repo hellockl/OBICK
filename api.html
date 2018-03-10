@@ -1,0 +1,428 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+	#customers
+	  {
+	  font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	  width:100%;
+	  border-collapse:collapse;
+	  }
+
+	#customers td, #customers th 
+	  {
+	  font-size:1em;
+	  border:1px solid #98bf21;
+	  padding:3px 7px 2px 7px;
+	  }
+
+	#customers th 
+	  {
+	  font-size:1.1em;
+	  text-align:left;
+	  padding-top:5px;
+	  padding-bottom:4px;
+	  background-color:#A7C942;
+	  color:#ffffff;
+	  }
+
+	#customers tr.alt td 
+	  {
+	  color:#000000;
+	  background-color:#EAF2D3;
+	  }
+</style>
+</head>
+
+<body>
+	<table id="customers">
+		<tr>
+			<th width="10%">功能</th>
+			<th>详情</th>
+			
+		</tr>
+		<tr>
+			<td>接口名称</td>
+			<td>短信验证码</td>
+		</tr>
+		<tr>
+			<td>接口地址</td>
+			<td>http://obike.fishingboats.cn/api.php/Index/sendMs</td>
+		</tr>
+		<tr>
+			<td>请求方式</td>
+			<td>POST</td>
+		</tr>
+		<tr>
+			<td>接口入参</td>
+			<td>zone:"区号"</br>
+				phone:手机号</td>
+		</tr>
+		<tr>
+			<td>接口出参</td>
+			<td>
+			
+			成功：<pre>
+				{
+					"code": "200",
+					"msg": "成功",
+				}
+				</pre>
+			失败：<pre>
+				{
+					"code": "201",
+					"msg": "发送失败",
+				}
+				</pre>
+			</td>
+		</tr>
+	</table>
+	<div style="height:20px;"></div>
+	<table id="customers">
+		<tr>
+			<th width="10%">功能</th>
+			<th>详情</th>
+			
+		</tr>
+		<tr>
+			<td>接口名称</td>
+			<td>注册</td>
+		</tr>
+		<tr>
+			<td>接口地址</td>
+			<td>http://obike.fishingboats.cn/api.php/Index/register</td>
+		</tr>
+		<tr>
+			<td>请求方式</td>
+			<td>POST</td>
+		</tr>
+		<tr>
+			<td>接口入参</td>
+			<td>
+				phone:手机号</br>
+				code:短信验证码</br>
+				user_name:用户名</br>
+				password:密码</br>
+			</td>
+		</tr>
+		<tr>
+			<td>接口出参</td>
+			<td>
+			
+			成功：<pre>
+				{
+					"code": "200",
+					"msg": "成功",
+				}
+				</pre>
+			失败：<pre>
+				{
+					"code": "201",
+					"msg": "失败信息",
+				}
+				</pre>
+			</td>
+		</tr>
+	</table>
+	<div style="height:20px;"></div>
+	<table id="customers">
+		<tr>
+			<th width="10%">功能</th>
+			<th>详情</th>
+			
+		</tr>
+		<tr>
+			<td>接口名称</td>
+			<td>登录</td>
+		</tr>
+		<tr>
+			<td>接口地址</td>
+			<td>http://obike.fishingboats.cn/api.php/Index/login</td>
+		</tr>
+		<tr>
+			<td>请求方式</td>
+			<td>POST</td>
+		</tr>
+		<tr>
+			<td>接口入参</td>
+			<td>
+				phone:手机号</br>
+				password:密码</br>
+			</td>
+		</tr>
+		<tr>
+			<td>接口出参</td>
+			<td>
+			
+			成功：<pre>
+				{
+					"code": "200",
+					"msg": "成功",
+					"data":"f07b571ba2a7b94212e9c821cc14c8b4"
+				}
+				</pre>
+			失败：<pre>
+				{
+					"code": "201",
+					"msg": "失败信息",
+				}
+				</pre>
+			</td>
+		</tr>
+	</table>
+	<div style="height:20px;"></div>
+	<table id="customers">
+		<tr>
+			<th width="10%">功能</th>
+			<th>详情</th>			
+		</tr>
+		<tr>
+			<td>接口名称</td>
+			<td>商品列表</td>
+		</tr>
+		<tr>
+			<td>接口地址</td>
+			<td>http://obike.fishingboats.cn/api.php/Index/getGoodsList</td>
+		</tr>
+		<tr>
+			<td>请求方式</td>
+			<td>POST</td>
+		</tr>
+		<tr>
+			<td>接口入参</td>
+			<td>待定</td>
+		</tr>
+		<tr>
+			<td>接口出参</td>
+			<td>
+			
+			成功：<pre>
+				{
+					"code": "200",
+					"msg": "成功",
+					"data": [
+						{
+							"id": "1",
+							"goods_name": "test",
+							"details": "adsfas",
+							"create_time": "",
+							"image": "",
+							"priceList": [
+								{
+									"id": "1",
+									"goods_id": "1",
+									"title": "test1",
+									"bird_price": "10.00",
+									"retail_price": "20.00",
+									"discount_rate": "50.00",
+									"details": "test",
+									"create_time": ""
+								}
+							]
+						}
+					]
+				}
+				</pre>
+			失败：<pre>
+				{
+					"code": "201",
+					"msg": "失败信息",
+				}
+				</pre>
+			</td>
+		</tr>
+	</table>
+	
+	<div style="height:20px;"></div>
+	<table id="customers">
+		<tr>
+			<th width="10%">功能</th>
+			<th>详情</th>			
+		</tr>
+		<tr>
+			<td>接口名称</td>
+			<td>创建订单</td>
+		</tr>
+		<tr>
+			<td>接口地址</td>
+			<td>http://obike.fishingboats.cn/api.php/Api/createOrder</td>
+		</tr>
+		<tr>
+			<td>请求方式</td>
+			<td>POST</td>
+		</tr>
+		<tr>
+			<td>接口入参</td>
+			<td>
+				user_id:用户ID</br>
+				name:收件人名</br>
+				phone:收件人手机号</br>
+				address:收件人地址</br>
+				pay_account:收件人地址</br>
+				goods_list:[{goods_id:1,pack_id:1},{goods_id:2,pack_id:1}]</br>
+				total:订单总额</br>
+				first_pay:第一次支付金额</br>
+				second_pay:第二次支付金额</br>
+				type:支付类型（1：信用卡，2虚拟币）</br>
+				time_stamp:当前时间戳</br>
+				token:MD5(user_id:1+time_stamp:1517810008+token:f07b571ba2a7b94212e9c821cc14c8b4)
+			</td>
+		</tr>
+		<tr>
+			<td>接口出参</td>
+			<td>
+			
+			成功：<pre>
+				{
+					"code": "200",
+					"msg": "成功",
+					
+				}
+				</pre>
+			失败：<pre>
+				{
+					"code": "201",
+					"msg": "失败信息",
+				}
+				</pre>
+			</td>
+		</tr>
+	</table>
+	
+	<div style="height:20px;"></div>
+	<table id="customers">
+		<tr>
+			<th width="10%">功能</th>
+			<th>详情</th>			
+		</tr>
+		<tr>
+			<td>接口名称</td>
+			<td>订单列表</td>
+		</tr>
+		<tr>
+			<td>接口地址</td>
+			<td>http://obike.fishingboats.cn/api.php/Api/myOrderList</td>
+		</tr>
+		<tr>
+			<td>请求方式</td>
+			<td>POST</td>
+		</tr>
+		<tr>
+			<td>接口入参</td>
+			<td>
+				user_id:用户ID</br>
+				time_stamp:当前时间戳
+				token:MD5(user_id:1+time_stamp:1517810008+token:f07b571ba2a7b94212e9c821cc14c8b4)
+			</td>
+		</tr>
+		<tr>
+			<td>接口出参</td>
+			<td>
+			
+			成功：<pre>
+				{
+					"code": "200",
+					"msg": "成功",
+					"data":[
+						{
+							"id": "1",
+							"user_id":"1",
+							"order_sn": "201802031234",
+							"total":19,
+							"first_pay":"10",
+							"send_pay":"9",
+							"status": 1,
+							"create_time": "1517810008",
+							"goods_list": [
+								{
+									"id": "1",
+									"goods_name":"test",
+									"image":""
+									"pack_id": "1",
+								}
+							]
+						},
+						{
+							"id": "2",
+							"user_id":"1",
+							"order_sn": "201802031234",
+							"total":19,
+							"first_pay":"10",
+							"send_pay":"9",							
+							"status": 1,
+							"create_time": "1517810008",
+							"goods_list": [
+								{
+									"id": "1",
+									"goods_name":"test",
+									"image":""
+									"pack_id": "1",
+								}
+							]
+						}
+					]
+					
+				}
+				</pre>
+			失败：<pre>
+				{
+					"code": "201",
+					"msg": "失败信息",
+				}
+				</pre>
+			</td>
+		</tr>
+	</table>
+	
+	<div style="height:20px;"></div>
+	<table id="customers">
+		<tr>
+			<th width="10%">功能</th>
+			<th>详情</th>			
+		</tr>
+		<tr>
+			<td>接口名称</td>
+			<td>修改收货人信息</td>
+		</tr>
+		<tr>
+			<td>接口地址</td>
+			<td>http://obike.fishingboats.cn/api.php/Api/editAddress</td>
+		</tr>
+		<tr>
+			<td>请求方式</td>
+			<td>POST</td>
+		</tr>
+		<tr>
+			<td>接口入参</td>
+			<td>
+				user_id:用户ID</br>
+				name:收件人名</br>
+				phone:收件人手机号</br>
+				address:收件人地址</br>
+				time_stamp:当前时间戳
+				token:MD5(user_id:1+time_stamp:1517810008+token:f07b571ba2a7b94212e9c821cc14c8b4)
+			</td>
+		</tr>
+		<tr>
+			<td>接口出参</td>
+			<td>
+			
+			成功：<pre>
+				{
+					"code": "200",
+					"msg": "成功",
+					
+				}
+				</pre>
+			失败：<pre>
+				{
+					"code": "201",
+					"msg": "失败信息",
+				}
+				</pre>
+			</td>
+		</tr>
+	</table>
+	
+</body>
+</html>
