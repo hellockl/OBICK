@@ -1,0 +1,290 @@
+body {
+  height: 100%;
+  background: url("../images/bg.png");
+  background-size: cover;
+}
+main nav {
+  width: 1366px;
+  margin: 0 auto;
+  margin-top: 38px;
+}
+main nav > ul {
+  width: 746px;
+  padding-left: 34px;
+  height: 39px;
+  border-left: 3px solid #363636;
+  border-right: 3px solid #363636;
+}
+main nav > ul > .nav-box {
+  float: left;
+  padding-right: 48px;
+  line-height: 30px;
+  font-size: 26px;
+  font-family: Adobe Heiti Std R;
+  position: relative;
+}
+main nav > ul > .nav-box .nav-title {
+  display: inline-block;
+  width: 100%;
+  padding-bottom: 5px;
+  color: #b3b3b3;
+}
+main nav > ul > .nav-box .nav-title i {
+  font-size: 16px;
+}
+main nav > ul > .nav-box .nav-title.cur {
+  border-bottom: 4px solid #9030FD;
+}
+main nav > ul > .nav-box .sub-nav {
+  display: none;
+  background: url("../images/sub_nav_bj.png") no-repeat;
+  background-size: cover;
+  width: 196px;
+  padding: 30px 12px;
+  position: absolute;
+  left: 30%;
+  bottom: -8px;
+  -webkit-transform: translate(-50%, 100%);
+  -moz-transform: translate(-50%, 100%);
+  -ms-transform: translate(-50%, 100%);
+  -o-transform: translate(-50%, 100%);
+  transform: translate(-50%, 100%);
+}
+main nav > ul > .nav-box .sub-nav li {
+  float: none;
+}
+main nav > ul > .nav-box .sub-nav li > a {
+  display: block;
+  width: 194px;
+  text-align: center;
+  font-size: 22px;
+  line-height: 44px;
+  font-family: "STXihei";
+  color: #fff;
+}
+main nav > ul > .nav-box .sub-nav li > a.active {
+  background: url("../images/nav_active.png") no-repeat;
+  background-size: contain;
+}
+main .exhibition-box {
+  background: url("../images/guest_bg.png") no-repeat;
+}
+main .exhibition-box .title {
+  width: 265px;
+  margin: 0 auto;
+  margin-top: 180px;
+}
+main .exhibition-box .exhibition-cont {
+  width: 1366px;
+  margin: 0 auto;
+  margin-top: 220px;
+}
+main .exhibition-box .left-menu li {
+  width: 270px;
+  box-shadow: 0px 20px 20px #000000;
+  margin: 0 30px 30px 0;
+}
+main .exhibition-box .left-menu li a {
+  display: block;
+  width: 100%;
+  line-height: 70px;
+  background: #ffffff;
+  font-size: 25px;
+  font-family: STXihei;
+  color: #000000;
+  text-align: center;
+}
+main .exhibition-box .left-menu li a.active {
+  background: #9030fd;
+  color: #fff;
+}
+main .exhibition-box .right-cont {
+  width: 1048px;
+  background-color: #fff;
+}
+main .exhibition-box .cont-detail {
+  width: 100%;
+  display: none;
+  position: relative;
+}
+main .exhibition-box .cont-detail .cont-title {
+  width: 100%;
+  border-bottom: 1px solid #E5E5E5;
+}
+main .exhibition-box .cont-detail .cont-title h1 {
+  padding: 0 40px;
+  line-height: 80px;
+  font-size: 24px;
+  color: #000;
+  font-weight: 600;
+  font-family: Adobe Heiti Std R;
+}
+main .exhibition-box .cont-detail.cur {
+  display: block;
+}
+main .exhibition-box .limit {
+  padding: 50px 0 0 50px;
+  margin-bottom: 100px;
+}
+main .exhibition-box .limit li {
+  float: left;
+  width: 462px;
+  margin-right: 30px;
+  margin-bottom: 30px;
+}
+main .exhibition-box .limit .limit-box {
+  box-sizing: border-box;
+  border: 2px solid #e5e5e5;
+}
+main .exhibition-box .limit p {
+  text-align: center;
+  font-size: 24px;
+  line-height: 30px;
+  margin: 10px 0;
+  font-family: STXihei;
+  color: #000;
+}
+main .exhibition-box .limit-num {
+  position: absolute;
+  right: 30px;
+  bottom: -70px;
+}
+main .exhibition-box .limit-num li {
+  float: left;
+  width: 30px;
+  background-color: #E6E6E6;
+  height: 30px;
+  cursor: pointer;
+  line-height: 30px;
+  font-size: 18px;
+  color: #000;
+  text-align: center;
+  margin-right: 16px;
+}
+main .exhibition-box .limit-num li.cur {
+  background-color: #9030FD;
+  color: #fff;
+}
+main .exhibition-box .browse {
+  padding: 50px 0 0 50px;
+  margin-bottom: 100px;
+}
+main .exhibition-box .browse li {
+  float: left;
+  width: 298px;
+  margin-right: 30px;
+  margin-bottom: 30px;
+}
+main .exhibition-box .browse .browse-box {
+  box-sizing: border-box;
+  border: 2px solid #e5e5e5;
+}
+main .exhibition-box .browse p {
+  text-align: center;
+  font-size: 24px;
+  line-height: 30px;
+  margin: 10px 0;
+  font-family: STXihei;
+  color: #000;
+}
+main .exhibition-box .browse .search {
+  margin-bottom: 40px;
+}
+main .exhibition-box .browse .search select {
+  width: 152px;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  /*在选择框的最右侧中间显示小箭头图片*/
+  background: url("../images/arrow.png") no-repeat scroll right center transparent;
+  /*为下拉小箭头留出一点位置，避免被文字覆盖*/
+  padding-left: 20px;
+  height: 42px;
+  line-height: 36px;
+  margin-right: 30px;
+  border: 2px solid #e5e5e5;
+  font-size: 20px;
+  font-family: STXihei;
+  color: #ccc;
+}
+main .exhibition-box .browse .search select option:checked {
+  color: #9030FD;
+  background-color: #fff;
+}
+main .exhibition-box .browse-num {
+  position: absolute;
+  right: 30px;
+  bottom: -70px;
+}
+main .exhibition-box .browse-num li {
+  float: left;
+  width: 30px;
+  background-color: #E6E6E6;
+  height: 30px;
+  cursor: pointer;
+  line-height: 30px;
+  font-size: 18px;
+  color: #000;
+  text-align: center;
+  margin-right: 16px;
+}
+main .exhibition-box .browse-num li.cur {
+  background-color: #9030FD;
+  color: #fff;
+}
+footer {
+  margin-top: 180px;
+}
+footer .foot {
+  width: 100%;
+  height: 346px;
+  background: #d6d6d6;
+  position: relative;
+}
+footer .foot .foot-cont {
+  width: 1200px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+footer .foot .foot-cont .cut {
+  width: 2px;
+  height: 174px;
+  background: #000000;
+  opacity: 0.1;
+  margin-left: 63px;
+  margin-top: 2px;
+}
+footer .foot .foot-cont .foot-menu {
+  margin-left: 110px;
+  margin-top: 26px;
+}
+footer .foot .foot-cont .foot-menu li {
+  float: left;
+  margin-right: 36px;
+}
+footer .foot .foot-cont .foot-menu li a {
+  font-size: 32px;
+  font-family: Adobe Heiti Std R;
+  color: #000000;
+}
+footer .foot .foot-cont .foot-icon {
+  margin-top: 45px;
+}
+footer .foot .foot-cont .foot-icon li {
+  float: left;
+  margin-right: 36px;
+}
+footer .copyright {
+  margin: 85px auto;
+  font-size: 24px;
+  font-family: STXihei;
+  color: #666666;
+  line-height: 36px;
+  text-align: center;
+}
