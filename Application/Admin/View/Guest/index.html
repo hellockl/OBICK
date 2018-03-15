@@ -14,7 +14,7 @@
 
 			<blockquote class="layui-elem-quote">
 				<button  class="layui-btn layui-btn-small add">
-					<i class="layui-icon">&#xe608;</i> 新增公告
+					<i class="layui-icon">&#xe608;</i> 添加嘉宾
 				</button>
 			</blockquote>
 
@@ -23,16 +23,11 @@
 				<div class="layui-field-box">
 					<form class="layui-form" method="post" action="{:U('News/index')}">
 						<div class="layui-form-item">
+                                                    
                                                     <div class="layui-inline">
-                                                      <label class="layui-form-label">验证手机</label>
+                                                      <label class="layui-form-label">嘉宾名称</label>
                                                       <div class="layui-input-inline">
-                                                        <input type="tel" name="phone" lay-verify="required|phone" autocomplete="off" class="layui-input">
-                                                      </div>
-                                                    </div>
-                                                    <div class="layui-inline">
-                                                      <label class="layui-form-label">验证邮箱</label>
-                                                      <div class="layui-input-inline">
-                                                        <input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input">
+                                                        <input type="text" name="name" autocomplete="off" class="layui-input">
                                                       </div>
                                                     </div>
                                                     <div class="layui-inline"><button class="layui-btn layui-btn-warm" lay-submit="" lay-filter="search">搜索</button></div>
@@ -58,12 +53,12 @@
 					    </tr>
 					  </thead>
 					  <tbody>
-					  <foreach name="news_list" key="k" item="vo">
+					  <foreach name="guest_list" key="k" item="vo">
 					    <tr>
 					      <td>{$vo.id}</td>
 					      <td>
 							  <img src="{$vo.smeta}" width="50" height="50" /></td>
-					      <td>{$vo.title}</td>
+					      <td>{$vo.name}</td>
 					      <td>{$vo.content}</td>
 					      <td>{$vo.create_time|date="Y-m-d H:i:s",###}</td>
 					      <td>{$vo.update_time|date="Y-m-d H:i:s",###}</td>

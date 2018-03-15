@@ -1,16 +1,16 @@
 <?php
 namespace Admin\Model;
 
-class GoodsModel extends BaseModel
+class GuestModel extends BaseModel
 {
-    protected $tableName = 'goods';
+    protected $tableName = 'guest';
     /**
      * @description:每页显示数目
      * @author wuyanwen(2016年12月1日)
      * @param unknown $num 分页数
      * @return multitype:unknown string
      */
-    public function selectAllGoods($num=10,$search=array())
+    public function selectAllGuest($num=10,$search=array())
     {
         $where = array(
             'status' => parent::NORMAL_STATUS,
@@ -47,19 +47,19 @@ class GoodsModel extends BaseModel
      * @param unknown $data
      * @return boolean
      */
-    public function addGoods($data)
+    public function addGuest($data)
     {
         return $this->add($data) ? true : false;
     }
 
     /**
      * @description:根据id查询资讯
-     * @param unknown $goods_id
+     * @param unknown $guest_id
      */
-    public function findGoodsById($goods_id)
+    public function findGuestById($guest_id)
     {
         $where = array(
-            'id'     => $goods_id,
+            'id'     => $guest_id,
             'status' => parent::NORMAL_STATUS,
         );
 
@@ -70,7 +70,7 @@ class GoodsModel extends BaseModel
      * @description:更新资讯信息
      * @param unknown $data
      */
-    public function editGoods($data)
+    public function editGuest($data)
     {
         $where = array(
             'id'    => $data['id'],
@@ -83,13 +83,13 @@ class GoodsModel extends BaseModel
 
     /**
      * @description:删除资讯
-     * @param unknown $goods_id
+     * @param unknown $guest_id
      * @return Ambigous <boolean, unknown>
      */
-    public function deleteGoods($goods_id)
+    public function deleteGuest($guest_id)
     {
         $where = array(
-            'id' => $goods_id,
+            'id' => $guest_id,
         );
 
         $data = array(

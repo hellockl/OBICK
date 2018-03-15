@@ -1,19 +1,19 @@
 <?php
 namespace Admin\Controller;
 
-class GoodsController extends CommonController
+class GuestController extends CommonController
 {
-    protected   $goods_model;
+    protected   $guest_model;
     protected   $user_info;
     
     public function __construct()
     {
         parent::__construct();
         /* @var $admin_user_model \Admin\Model\AdminUserModel */
-        $goods_model = D('Goods');
+        $guest_model = D('Guest');
 
         $this->user_info = session('user_info');
-        $this->goods_model = $goods_model;
+        $this->guest_model = $guest_model;
     }
     
     /**
@@ -26,10 +26,10 @@ class GoodsController extends CommonController
         $search['start_time'] = I('start_time');
         $search['end_time']   = I('end_time');
 
-        $goods_list = $this->goods_model->selectAllGoods(5,$search);
+        $guest_list = $this->guest_model->selectAllGuest(5,$search);
         
-        $this->assign('goods_list',$goods_list['list']);
-        $this->assign('page',$goods_list['page']);
+        $this->assign('guest_list',$guest_list['list']);
+        $this->assign('page',$guest_list['page']);
         $this->assign('search',$search);
 
         $this->display();
@@ -39,7 +39,7 @@ class GoodsController extends CommonController
         //处理file上传 这里是调用thinkphp封装好\Think\Upload这个上传类 可以学习写thinkphp官方这个类是怎么写的
         $config = array(
             'rootPath' => './Public/',
-            'savePath' => 'upload/goods/',
+            'savePath' => 'upload/guest/',
             'maxSize' => 11048576,
             'saveName' => array('uniqid', ''),
             'exts' => array('jpg', 'gif', 'png', 'jpeg'),
@@ -54,7 +54,7 @@ class GoodsController extends CommonController
             if (!empty($first['url'])) {
                 $url = $first['url'];
             } else {
-                $url = C('HTTP_UPLOAD').'goods/'.$first['savename'];
+                $url = C('HTTP_UPLOAD').'guest/'.$first['savename'];
             }
             $arr['code'] = 0;
             $arr['msg'] = '';
@@ -72,21 +72,25 @@ class GoodsController extends CommonController
     /*
      * @description: 新增资讯
      */
-    public function addGoods()
+    public function addGuest()
     {
         if(IS_POST) {
 
-            $goods_info = array(
+            $guest_info = array(
                 'title'         => I('post.title', '', 'trim'),
                 'content'       => I('post.content'),
                 'smeta'         => I('post.smeta'),
-                
+                'author'        => $this->user_info['user_name'],
                 'create_time'   => time(),
                 'hits'          => 0,
                 'status'        => 1,
             );
 
-            if ($this->goods_model->addGoods($goods_info)) {
+//            if ($this->admin_user_model->findAdminUserByName($user_info['user_name'])) {
+//                $this->ajaxSuccess('该用户已经被占用');
+//            }
+
+            if ($this->guest_model->addGuest($guest_info)) {
                 $this->ajaxSuccess('添加成功');
             } else {
                 $this->ajaxError('添加失败');
@@ -99,10 +103,10 @@ class GoodsController extends CommonController
     /**
      * @description:编辑资讯
      */
-    public function editGoods()
+    public function editGuest()
     {
         if(IS_POST){
-            $goods_info = array(
+            $guest_info = array(
                 'id'            => I('post.id'),
                 'title'         => I('post.title', '', 'trim'),
                 'content'       => I('post.content'),
@@ -112,15 +116,15 @@ class GoodsController extends CommonController
                 'status'        => 1,
             );
 
-            if($this->goods_model->editGoods($goods_info) !== false){
+            if($this->guest_model->editGuest($guest_info) !== false){
                 $this->ajaxSuccess('更新成功');
             }else{
                 $this->ajaxError('更新失败');
             }
         }else{
-            $goods_id = I('get.goods_id','','intval');
-            $goods_info = $this->goods_model->findGoodsById($goods_id);
-            $this->assign('goods_info',$goods_info);
+            $guest_id = I('get.guest_id','','intval');
+            $guest_info = $this->guest_model->findGuestById($guest_id);
+            $this->assign('guest_info',$guest_info);
             $this->display();
         }
     }
@@ -128,11 +132,11 @@ class GoodsController extends CommonController
      * @description:删除资讯
      * @author wuyanwen(2016年12月1日)
      */
-    public function deleteGoods()
+    public function deleteGuest()
     {
-        $goods_id = I('post.goods_id','','intval');
+        $guest_id = I('post.guest_id','','intval');
 
-        $result = $this->goods_model->deleteGoods($goods_id);
+        $result = $this->guest_model->deleteGuest($guest_id);
 
         if($result){
             $this->ajaxSuccess("删除成功");
