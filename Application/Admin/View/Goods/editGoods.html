@@ -11,7 +11,7 @@
   <div class="layui-form-item">
     <label class="layui-form-label">标题</label>
     <div class="layui-input-inline">
-      <input type="text" name="name" lay-verify="required" value="{$news_info.name}" autocomplete="off"  id="name" class="layui-input">
+      <input type="text" name="title" lay-verify="required" value="{$news_info.title}" autocomplete="off"  id="name" class="layui-input">
     </div>
   </div>
   <input type="hidden" value="{$news_info.id}" name="id">
@@ -25,10 +25,22 @@
   </div>
 
   <div class="layui-form-item">
-    <label class="layui-form-label">简介</label>
+    <label class="layui-form-label">内容</label>
     <div class="layui-input-inline">
-
-      <textarea class="layui-textarea " name="content" >{$news_info.content}</textarea>
+      <textarea id="content" name="content" style="display: none;">{$news_info.content}</textarea>
+      <script>
+          layui.use('layedit', function(){
+              var layedit = layui.layedit;
+              //设置内容里面的上传接口
+              layedit.set({
+                  uploadImage: {
+                      url: "{:U('Goods/uploadImgForContent')}" //接口url
+                      ,type: 'post' //默认post
+                  }
+              });
+              layedit.build('content'); //建立编辑器
+          });
+      </script>
     </div>
   </div>
 
@@ -45,11 +57,10 @@ layui.use('form', function(){
    		 $ = layui.jquery
 	  //监听提交
 	  form.on('submit(news)', function(data){
-
+		  
 	    var newsinfo = data.field;
-        //newsinfo.content = layui.layedit.getContent(1);
-
-		var url = "{:U('Guest/editGuest')}";
+        newsinfo.content = layui.layedit.getContent(1);
+		var url = "{:U('Goods/editGoods')}";
 		$.post(url,newsinfo,function(data){
 			if(data.status == 'error'){
 				  layer.msg(data.msg,{icon: 5});//失败的表情
@@ -71,7 +82,7 @@ layui.use('form', function(){
 layui.use('upload', function(){
     $ = layui.jquery
     layui.upload({
-        url: "{:U('Guest/uploadImgForContent')}"
+        url: "{:U('Goods/uploadImgForContent')}"
         ,title: '重新上传图片'
         ,elem: '#upload_img' //指定原始元素，默认直接查找class="layui-upload-file"
         ,ext: 'jpg|png|gif|jpeg'

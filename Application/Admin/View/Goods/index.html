@@ -14,27 +14,22 @@
 
 			<blockquote class="layui-elem-quote">
 				<button  class="layui-btn layui-btn-small add">
-					<i class="layui-icon">&#xe608;</i> 新增公告
+					<i class="layui-icon">&#xe608;</i> 添加商品
 				</button>
 			</blockquote>
 
 			<fieldset class="layui-elem-field">
 				<legend>字段集</legend>
 				<div class="layui-field-box">
-					<form class="layui-form" method="post" action="{:U('News/index')}">
+					<form class="layui-form" method="post" action="{:U('/index')}">
 						<div class="layui-form-item">
                                                     <div class="layui-inline">
-                                                      <label class="layui-form-label">验证手机</label>
+                                                      <label class="layui-form-label">商品名</label>
                                                       <div class="layui-input-inline">
-                                                        <input type="tel" name="phone" lay-verify="required|phone" autocomplete="off" class="layui-input">
+                                                        <input type="tel" name="name" autocomplete="off" class="layui-input">
                                                       </div>
                                                     </div>
-                                                    <div class="layui-inline">
-                                                      <label class="layui-form-label">验证邮箱</label>
-                                                      <div class="layui-input-inline">
-                                                        <input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input">
-                                                      </div>
-                                                    </div>
+
                                                     <div class="layui-inline"><button class="layui-btn layui-btn-warm" lay-submit="" lay-filter="search">搜索</button></div>
                                                 </div>
 						
@@ -44,21 +39,21 @@
 
 
 			<fieldset class="layui-elem-field">
-				<legend>资讯列表</legend>
+				<legend>商品列表</legend>
 				<div class="layui-field-box">
 				<table class="layui-table">
 					  <thead>
 					    <tr>
-					      <th>ID</th>
+					      <th width="5%">ID</th>
 					      <th>缩略图</th>
-					      <th>标题</th>
-					      <th>内容</th>
-					      <th>创建时间</th>
-					      <th>更新时间</th><th>操作</th>
+					      <th>商品名</th>
+					      <th>商品描述</th>
+					      <th width="10%">创建时间</th>
+					      <th width="10%">操作</th>
 					    </tr>
 					  </thead>
 					  <tbody>
-					  <foreach name="news_list" key="k" item="vo">
+					  <foreach name="goods_list" key="k" item="vo">
 					    <tr>
 					      <td>{$vo.id}</td>
 					      <td>
@@ -66,7 +61,7 @@
 					      <td>{$vo.title}</td>
 					      <td>{$vo.content}</td>
 					      <td>{$vo.create_time|date="Y-m-d H:i:s",###}</td>
-					      <td>{$vo.update_time|date="Y-m-d H:i:s",###}</td>
+
 					      <td>
 							<a data="{$vo.id}" class="layui-btn layui-btn-mini layui-btn-normal edit"><i class="layui-icon">&#xe642;</i>编辑</a>
 							<a  data="{$vo.id}" class="layui-btn layui-btn-danger layui-btn-mini del"><i class="layui-icon">&#xe640;</i>删除</a>
@@ -91,17 +86,17 @@
 					$ = layui.jquery
 
 				 $('.add').click(function(){
-					var url = "{:U('News/addNews')}";
+					var url = "{:U('Goods/addGoods')}";
 					$.get(url,function(data){
 						if(data.status == 'error'){
 							layer.msg(data.msg,{icon: 5});
 							return;
 						}
 						layer.open({
-							  title:'新增公告',
+							  title:'添加商品',
 							  type: 1,
 							  skin: 'layui-layer-rim', //加上边框
-							  area: ['90%','80%'], //宽高
+							  area: ['50%','80%'], //宽高
 							  content: data,
 						});
 					})
@@ -109,17 +104,17 @@
 				//编辑用户
 				$('.edit').click(function(){
 					var news_id = $(this).attr('data');
-					var url = "{:U('News/editNews')}";
-					$.get(url,{news_id:news_id},function(data){
+					var url = "{:U('Goods/editGoods')}";
+					$.get(url,{goods_id:goods_id},function(data){
 						if(data.status == 'error'){
 							layer.msg(data.msg,{icon: 5});
 							return;
 						}
 						layer.open({
-							  title:'编辑用户',
+							  title:'编辑商品',
 							  type: 1,
 							  skin: 'layui-layer-rim', //加上边框
-							  area: ['90%','80%'], //宽高
+							  area: ['50%','80%'], //宽高
 							  content: data,
 						});
 					})
@@ -147,14 +142,14 @@
 				
 				//删除
 				$('.del').click(function(){
-					var news_id = $(this).attr('data');
-					var url = "{:U('News/deleteNews')}";
+					var goods_id = $(this).attr('data');
+					var url = "{:U('Goods/deleteGoods')}";
 					layer.confirm('确定删除吗?', {
 						  icon: 3,
 						  skin: 'layer-ext-moon',
 						  btn: ['确认','取消'] //按钮
 						}, function(){
-							$.post(url,{news_id:news_id},function(data){
+							$.post(url,{goods_id:goods_id},function(data){
 								if(data.status == 'error'){
 									  layer.msg(data.msg,{icon: 5});//失败的表情
 									  return;
@@ -197,15 +192,6 @@
                         start.max = datas; //结束日选好后，重置开始日的最大日期
                     }
                 };
-
-                document.getElementById('LAY_demorange_s').onclick = function(){
-                    start.elem = this;
-                    laydate(start);
-                }
-                document.getElementById('LAY_demorange_e').onclick = function(){
-                    end.elem = this
-                    laydate(end);
-                }
                 form.on('submit(search)', function(data){
                     layer.alert(JSON.stringify(data.field), {
                         title: '最终的提交信息'

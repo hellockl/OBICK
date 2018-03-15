@@ -60,9 +60,7 @@ class GuestModel extends BaseModel
     {
         $where = array(
             'id'     => $guest_id,
-            'status' => parent::NORMAL_STATUS,
         );
-
         return $this->where($where)->find();
     }
 
@@ -92,10 +90,6 @@ class GuestModel extends BaseModel
             'id' => $guest_id,
         );
 
-        $data = array(
-            'status' => parent::DEL_STATUS,
-        );
-
-        return $this->where($where)->save($data);
+        return $this->where($where)->delete();
     }
 }

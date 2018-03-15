@@ -14,22 +14,22 @@
 
 			<blockquote class="layui-elem-quote">
 				<button  class="layui-btn layui-btn-small add">
-					<i class="layui-icon">&#xe608;</i> 添加嘉宾
+					<i class="layui-icon">&#xe608;</i> 添加矩阵
 				</button>
 			</blockquote>
 
 			<fieldset class="layui-elem-field">
 				<legend>字段集</legend>
 				<div class="layui-field-box">
-					<form class="layui-form" method="post" action="{:U('News/index')}">
+					<form class="layui-form" method="post" action="{:U('Matrix/index')}">
 						<div class="layui-form-item">
-                                                    
                                                     <div class="layui-inline">
-                                                      <label class="layui-form-label">嘉宾名称</label>
+                                                      <label class="layui-form-label">标题</label>
                                                       <div class="layui-input-inline">
-                                                        <input type="text" name="name" autocomplete="off" class="layui-input">
+                                                        <input type="text" name="title"  class="layui-input">
                                                       </div>
                                                     </div>
+
                                                     <div class="layui-inline"><button class="layui-btn layui-btn-warm" lay-submit="" lay-filter="search">搜索</button></div>
                                                 </div>
 						
@@ -39,27 +39,27 @@
 
 
 			<fieldset class="layui-elem-field">
-				<legend>嘉宾列表</legend>
+				<legend>矩阵列表</legend>
 				<div class="layui-field-box">
 				<table class="layui-table">
 					  <thead>
 					    <tr>
 					      <th>ID</th>
 					      <th>缩略图</th>
-					      <th>姓名</th>
-
+					      <th>标题</th>
+					      <th>内容</th>
 					      <th>创建时间</th>
-					      <th>操作</th>
+					     <th>操作</th>
 					    </tr>
 					  </thead>
 					  <tbody>
-					  <foreach name="guest_list" key="k" item="vo">
+					  <foreach name="matrix_list" key="k" item="vo">
 					    <tr>
 					      <td>{$vo.id}</td>
 					      <td>
 							  <img src="{$vo.smeta}" width="50" height="50" /></td>
-					      <td>{$vo.name}</td>
-
+					      <td>{$vo.title}</td>
+					      <td>{$vo.content}</td>
 					      <td>{$vo.create_time|date="Y-m-d H:i:s",###}</td>
 
 					      <td>
@@ -86,35 +86,35 @@
 					$ = layui.jquery
 
 				 $('.add').click(function(){
-					var url = "{:U('Guest/addGuest')}";
+					var url = "{:U('Matrix/addMatrix')}";
 					$.get(url,function(data){
 						if(data.status == 'error'){
 							layer.msg(data.msg,{icon: 5});
 							return;
 						}
 						layer.open({
-							  title:'添加嘉宾',
+							  title:'添加矩阵',
 							  type: 1,
 							  skin: 'layui-layer-rim', //加上边框
-							  area: ['50%','80%'], //宽高
+							  area: ['60%','80%'], //宽高
 							  content: data,
 						});
 					})
 				 });
 				//编辑用户
 				$('.edit').click(function(){
-					var guest_id = $(this).attr('data');
-					var url = "{:U('Guest/editGuest')}";
-					$.get(url,{guest_id:guest_id},function(data){
+					var matrix_id = $(this).attr('data');
+					var url = "{:U('Matrix/editMatrix')}";
+					$.get(url,{matrix_id:matrix_id},function(data){
 						if(data.status == 'error'){
 							layer.msg(data.msg,{icon: 5});
 							return;
 						}
 						layer.open({
-							  title:'编辑嘉宾',
+							  title:'编辑矩阵',
 							  type: 1,
 							  skin: 'layui-layer-rim', //加上边框
-							  area: ['50%','80%'], //宽高
+							  area: ['60%','80%'], //宽高
 							  content: data,
 						});
 					})
@@ -142,14 +142,14 @@
 				
 				//删除
 				$('.del').click(function(){
-					var guest_id = $(this).attr('data');
-					var url = "{:U('Guest/deleteGuest')}";
+					var matrix_id = $(this).attr('data');
+					var url = "{:U('Matrix/deleteMatrix')}";
 					layer.confirm('确定删除吗?', {
 						  icon: 3,
 						  skin: 'layer-ext-moon',
 						  btn: ['确认','取消'] //按钮
 						}, function(){
-							$.post(url,{guest_id:guest_id},function(data){
+							$.post(url,{matrix_id:matrix_id},function(data){
 								if(data.status == 'error'){
 									  layer.msg(data.msg,{icon: 5});//失败的表情
 									  return;

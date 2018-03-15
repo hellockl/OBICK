@@ -7,10 +7,11 @@
   }
 </style>
 <form class="layui-form">
+  <div style="height: 20px"></div>
   <div class="layui-form-item">
-    <label class="layui-form-label">标题</label>
+    <label class="layui-form-label">商品名称</label>
     <div class="layui-input-inline">
-      <input type="text" name="title" lay-verify="required" placeholder="请输入标题" autocomplete="off"  id="title" class="layui-input">
+      <input type="text" name="title" lay-verify="required" placeholder="请输入商品名称" autocomplete="off"  id="title" class="layui-input">
     </div>
   </div>
 
@@ -23,7 +24,7 @@
   </div>
 
   <div class="layui-form-item">
-    <label class="layui-form-label">内容</label>
+    <label class="layui-form-label">描述</label>
     <div class="layui-input-inline">
       <textarea id="content" name="content" style="display: none;"></textarea>
       <script>
@@ -32,7 +33,7 @@
               //设置内容里面的上传接口
               layedit.set({
                   uploadImage: {
-                      url: "{:U('News/uploadImgForContent')}" //接口url
+                      url: "{:U('/uploadImgForContent')}" //接口url
                       ,type: 'post' //默认post
                   }
               });
@@ -58,7 +59,7 @@ layui.use('form', function(){
 		  
 	    var newsinfo = data.field;
         newsinfo.content = layui.layedit.getContent(1);
-		var url = "{:U('News/addNews')}";
+		var url = "{:U('Goods/addGoods')}";
 		$.post(url,newsinfo,function(data){
 			if(data.status == 'error'){
 				  layer.msg(data.msg,{icon: 5});//失败的表情
@@ -80,7 +81,7 @@ layui.use('form', function(){
 layui.use('upload', function(){
     $ = layui.jquery
     layui.upload({
-        url: "{:U('News/uploadImgForContent')}"
+        url: "{:U('Goods/uploadImgForContent')}"
         ,title: '上传图片'
         ,elem: '#upload_img' //指定原始元素，默认直接查找class="layui-upload-file"
         ,ext: 'jpg|png|gif|jpeg'

@@ -11,30 +11,36 @@
   <div class="layui-form-item">
     <label class="layui-form-label">标题</label>
     <div class="layui-input-inline">
-      <input type="text" name="name" lay-verify="required" value="{$news_info.name}" autocomplete="off"  id="name" class="layui-input">
+      <input type="text" name="title" lay-verify="required" placeholder="请输入标题" autocomplete="off"  id="title" class="layui-input">
     </div>
   </div>
-  <input type="hidden" value="{$news_info.id}" name="id">
+  <div class="layui-form-item">
+    <label class="layui-form-label">单选框</label>
+    <div class="layui-input-block">
+      <div style="float: left;width: 40%"><input type="radio" name="type" checked value="1" style="display: block" >品牌</div>
+      <div  style="float: left;width: 40%"><input type="radio" name="type" value="2" style="display: block" >传播</div>
+
+    </div>
+  </div>
+
   <div class="layui-form-item">
     <label class="layui-form-label">缩略图</label>
     <div class="layui-input-inline">
       <input type="file" id='upload_img' name="file" class="layui-upload-file">
-      <img src="{$news_info.smeta}" width="50" height="50" />
-      <input type="hidden" name="smeta" id="smeta" readonly value="{$news_info.smeta}" class="layui-input">
+      <input type="text" name="smeta" readonly id="smeta" value="" class="layui-input">
     </div>
   </div>
 
   <div class="layui-form-item">
-    <label class="layui-form-label">简介</label>
+    <label class="layui-form-label">内容</label>
     <div class="layui-input-inline">
-
-      <textarea class="layui-textarea " name="content" >{$news_info.content}</textarea>
+      <textarea class="layui-textarea " id="content" name="content"></textarea>
     </div>
   </div>
 
   <div class="layui-form-item">
     <div class="layui-input-block">
-      <button class="layui-btn" lay-submit lay-filter="news">立即提交</button>
+      <button class="layui-btn" lay-submit lay-filter="matrix">立即提交</button>
       <button type="reset" class="layui-btn layui-btn-primary">重置</button>
     </div>
   </div>
@@ -44,13 +50,12 @@ layui.use('form', function(){
 	var form = layui.form(),
    		 $ = layui.jquery
 	  //监听提交
-	  form.on('submit(news)', function(data){
-
-	    var newsinfo = data.field;
-        //newsinfo.content = layui.layedit.getContent(1);
-
-		var url = "{:U('Guest/editGuest')}";
-		$.post(url,newsinfo,function(data){
+	  form.on('submit(matrix)', function(data){
+		  
+	    var matrixinfo = data.field;
+        //matrixinfo.content = layui.layedit.getContent(1);
+		var url = "{:U('Matrix/addMatrix')}";
+		$.post(url,matrixinfo,function(data){
 			if(data.status == 'error'){
 				  layer.msg(data.msg,{icon: 5});//失败的表情
 				  return;
@@ -71,8 +76,8 @@ layui.use('form', function(){
 layui.use('upload', function(){
     $ = layui.jquery
     layui.upload({
-        url: "{:U('Guest/uploadImgForContent')}"
-        ,title: '重新上传图片'
+        url: "{:U('Matrix/uploadImgForContent')}"
+        ,title: '上传图片'
         ,elem: '#upload_img' //指定原始元素，默认直接查找class="layui-upload-file"
         ,ext: 'jpg|png|gif|jpeg'
         ,method: 'post' //上传接口的http类型

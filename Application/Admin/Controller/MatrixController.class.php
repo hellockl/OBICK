@@ -1,19 +1,19 @@
 <?php
 namespace Admin\Controller;
 
-class GuestController extends CommonController
+class MatrixController extends CommonController
 {
-    protected   $guest_model;
+    protected   $matrix_model;
     protected   $user_info;
     
     public function __construct()
     {
         parent::__construct();
         /* @var $admin_user_model \Admin\Model\AdminUserModel */
-        $guest_model = D('Guest');
+        $matrix_model = D('Matrix');
 
         $this->user_info = session('user_info');
-        $this->guest_model = $guest_model;
+        $this->matrix_model = $matrix_model;
     }
     
     /**
@@ -26,10 +26,10 @@ class GuestController extends CommonController
         $search['start_time'] = I('start_time');
         $search['end_time']   = I('end_time');
 
-        $guest_list = $this->guest_model->selectAllGuest(5,$search);
+        $matrix_list = $this->matrix_model->selectAllMatrix(5,$search);
         
-        $this->assign('guest_list',$guest_list['list']);
-        $this->assign('page',$guest_list['page']);
+        $this->assign('matrix_list',$matrix_list['list']);
+        $this->assign('page',$matrix_list['page']);
         $this->assign('search',$search);
 
         $this->display();
@@ -39,7 +39,7 @@ class GuestController extends CommonController
         //处理file上传 这里是调用thinkphp封装好\Think\Upload这个上传类 可以学习写thinkphp官方这个类是怎么写的
         $config = array(
             'rootPath' => './Public/',
-            'savePath' => 'upload/guest/',
+            'savePath' => 'upload/matrix/',
             'maxSize' => 11048576,
             'saveName' => array('uniqid', ''),
             'exts' => array('jpg', 'gif', 'png', 'jpeg'),
@@ -54,7 +54,7 @@ class GuestController extends CommonController
             if (!empty($first['url'])) {
                 $url = $first['url'];
             } else {
-                $url = C('HTTP_UPLOAD').'guest/'.$first['savename'];
+                $url = C('HTTP_UPLOAD').'matrix/'.$first['savename'];
             }
             $arr['code'] = 0;
             $arr['msg'] = '';
@@ -72,24 +72,21 @@ class GuestController extends CommonController
     /*
      * @description: 新增资讯
      */
-    public function addGuest()
+    public function addMatrix()
     {
         if(IS_POST) {
 
-            $guest_info = array(
-                'name'         => I('post.name', '', 'trim'),
+            $matrix_info = array(
+                'title'         => I('post.title', '', 'trim'),
                 'content'       => I('post.content'),
                 'smeta'         => I('post.smeta'),
+                'type'        => I('post.type'),
                 'create_time'   => time(),
-                'hits'          => 0,
-                'status'        => 1,
+
             );
 
-//            if ($this->admin_user_model->findAdminUserByName($user_info['user_name'])) {
-//                $this->ajaxSuccess('该用户已经被占用');
-//            }
 
-            if ($this->guest_model->addGuest($guest_info)) {
+            if ($this->matrix_model->addMatrix($matrix_info)) {
                 $this->ajaxSuccess('添加成功');
             } else {
                 $this->ajaxError('添加失败');
@@ -102,30 +99,28 @@ class GuestController extends CommonController
     /**
      * @description:编辑资讯
      */
-    public function editGuest()
+    public function editMatrix()
     {
         if(IS_POST){
-            $guest_info = array(
+            $matrix_info = array(
                 'id'            => I('post.id'),
-                'name'         => I('post.name', '', 'trim'),
+                'title'         => I('post.title', '', 'trim'),
                 'content'       => I('post.content'),
                 'smeta'         => I('post.smeta'),
-
+                'type'          => I('post.type'),
                 'update_time'   => time(),
-                'status'        => 1,
+
             );
 
-            if($this->guest_model->editGuest($guest_info) !== false){
+            if($this->matrix_model->editMatrix($matrix_info) !== false){
                 $this->ajaxSuccess('更新成功');
             }else{
                 $this->ajaxError('更新失败');
             }
         }else{
-            $guest_id = I('get.guest_id','','intval');
-
-            $guest_info = $this->guest_model->findGuestById($guest_id);
-
-            $this->assign('news_info',$guest_info);
+            $matrix_id = I('get.matrix_id','','intval');
+            $matrix_info = $this->matrix_model->findMatrixById($matrix_id);
+            $this->assign('matrix_info',$matrix_info);
             $this->display();
         }
     }
@@ -133,11 +128,11 @@ class GuestController extends CommonController
      * @description:删除资讯
      * @author wuyanwen(2016年12月1日)
      */
-    public function deleteGuest()
+    public function deleteMatrix()
     {
-        $guest_id = I('post.guest_id','','intval');
+        $matrix_id = I('post.matrix_id','','intval');
 
-        $result = $this->guest_model->deleteGuest($guest_id);
+        $result = $this->matrix_model->deleteMatrix($matrix_id);
 
         if($result){
             $this->ajaxSuccess("删除成功");

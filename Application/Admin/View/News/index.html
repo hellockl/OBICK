@@ -14,7 +14,7 @@
 
 			<blockquote class="layui-elem-quote">
 				<button  class="layui-btn layui-btn-small add">
-					<i class="layui-icon">&#xe608;</i> 新增公告
+					<i class="layui-icon">&#xe608;</i> 添加资讯
 				</button>
 			</blockquote>
 
@@ -24,17 +24,12 @@
 					<form class="layui-form" method="post" action="{:U('News/index')}">
 						<div class="layui-form-item">
                                                     <div class="layui-inline">
-                                                      <label class="layui-form-label">验证手机</label>
+                                                      <label class="layui-form-label">标题</label>
                                                       <div class="layui-input-inline">
-                                                        <input type="tel" name="phone" lay-verify="required|phone" autocomplete="off" class="layui-input">
+                                                        <input type="text" name="title"  class="layui-input">
                                                       </div>
                                                     </div>
-                                                    <div class="layui-inline">
-                                                      <label class="layui-form-label">验证邮箱</label>
-                                                      <div class="layui-input-inline">
-                                                        <input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input">
-                                                      </div>
-                                                    </div>
+
                                                     <div class="layui-inline"><button class="layui-btn layui-btn-warm" lay-submit="" lay-filter="search">搜索</button></div>
                                                 </div>
 						
@@ -98,7 +93,7 @@
 							return;
 						}
 						layer.open({
-							  title:'新增公告',
+							  title:'添加资讯',
 							  type: 1,
 							  skin: 'layui-layer-rim', //加上边框
 							  area: ['90%','80%'], //宽高
@@ -116,7 +111,7 @@
 							return;
 						}
 						layer.open({
-							  title:'编辑用户',
+							  title:'编辑资讯',
 							  type: 1,
 							  skin: 'layui-layer-rim', //加上边框
 							  area: ['90%','80%'], //宽高
@@ -198,14 +193,14 @@
                     }
                 };
 
-                document.getElementById('LAY_demorange_s').onclick = function(){
-                    start.elem = this;
-                    laydate(start);
-                }
-                document.getElementById('LAY_demorange_e').onclick = function(){
-                    end.elem = this
-                    laydate(end);
-                }
+//                document.getElementById('LAY_demorange_s').onclick = function(){
+//                    start.elem = this;
+//                    laydate(start);
+//                }
+//                document.getElementById('LAY_demorange_e').onclick = function(){
+//                    end.elem = this
+//                    laydate(end);
+//                }
                 form.on('submit(search)', function(data){
                     layer.alert(JSON.stringify(data.field), {
                         title: '最终的提交信息'

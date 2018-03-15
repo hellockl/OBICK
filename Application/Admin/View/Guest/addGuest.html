@@ -7,15 +7,16 @@
   }
 </style>
 <form class="layui-form">
+  <div style="height: 20px;"></div>
   <div class="layui-form-item">
-    <label class="layui-form-label">标题</label>
+    <label class="layui-form-label">嘉宾姓名</label>
     <div class="layui-input-inline">
-      <input type="text" name="title" lay-verify="required" placeholder="请输入标题" autocomplete="off"  id="title" class="layui-input">
+      <input type="text" name="name" lay-verify="required" placeholder="请输入姓名" autocomplete="off"  id="title" class="layui-input">
     </div>
   </div>
 
   <div class="layui-form-item">
-    <label class="layui-form-label">缩略图</label>
+    <label class="layui-form-label">照片</label>
     <div class="layui-input-inline">
       <input type="file" id='upload_img' name="file" class="layui-upload-file">
       <input type="text" name="smeta" readonly id="smeta" value="" class="layui-input">
@@ -23,22 +24,10 @@
   </div>
 
   <div class="layui-form-item">
-    <label class="layui-form-label">内容</label>
+    <label class="layui-form-label">描述</label>
     <div class="layui-input-inline">
-      <textarea id="content" name="content" style="display: none;"></textarea>
-      <script>
-          layui.use('layedit', function(){
-              var layedit = layui.layedit;
-              //设置内容里面的上传接口
-              layedit.set({
-                  uploadImage: {
-                      url: "{:U('News/uploadImgForContent')}" //接口url
-                      ,type: 'post' //默认post
-                  }
-              });
-              layedit.build('content'); //建立编辑器
-          });
-      </script>
+      <textarea class="layui-textarea " id="content" name="content"></textarea>
+
     </div>
   </div>
 
@@ -58,7 +47,9 @@ layui.use('form', function(){
 		  
 	    var newsinfo = data.field;
         newsinfo.content = layui.layedit.getContent(1);
-		var url = "{:U('News/addNews')}";
+
+
+		var url = "{:U('Guest/addGuest')}";
 		$.post(url,newsinfo,function(data){
 			if(data.status == 'error'){
 				  layer.msg(data.msg,{icon: 5});//失败的表情
@@ -80,7 +71,7 @@ layui.use('form', function(){
 layui.use('upload', function(){
     $ = layui.jquery
     layui.upload({
-        url: "{:U('News/uploadImgForContent')}"
+        url: "{:U('Guest/uploadImgForContent')}"
         ,title: '上传图片'
         ,elem: '#upload_img' //指定原始元素，默认直接查找class="layui-upload-file"
         ,ext: 'jpg|png|gif|jpeg'
