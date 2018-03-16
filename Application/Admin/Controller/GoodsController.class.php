@@ -26,7 +26,7 @@ class GoodsController extends CommonController
         $search['start_time'] = I('start_time');
         $search['end_time']   = I('end_time');
 
-        $goods_list = $this->goods_model->selectAllGoods(5,$search);
+        $goods_list = $this->goods_model->selectAllGoods(10,$search);
         
         $this->assign('goods_list',$goods_list['list']);
         $this->assign('page',$goods_list['page']);

@@ -26,7 +26,7 @@ class MatrixController extends CommonController
         $search['start_time'] = I('start_time');
         $search['end_time']   = I('end_time');
 
-        $matrix_list = $this->matrix_model->selectAllMatrix(5,$search);
+        $matrix_list = $this->matrix_model->selectAllMatrix(10,$search);
         
         $this->assign('matrix_list',$matrix_list['list']);
         $this->assign('page',$matrix_list['page']);

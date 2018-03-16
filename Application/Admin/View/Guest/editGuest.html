@@ -9,18 +9,26 @@
 <form class="layui-form">
   <div style="height: 20px"></div>
   <div class="layui-form-item">
-    <label class="layui-form-label">标题</label>
+    <label class="layui-form-label">嘉宾姓名</label>
     <div class="layui-input-inline">
       <input type="text" name="name" lay-verify="required" value="{$news_info.name}" autocomplete="off"  id="name" class="layui-input">
     </div>
   </div>
   <input type="hidden" value="{$news_info.id}" name="id">
   <div class="layui-form-item">
-    <label class="layui-form-label">缩略图</label>
+    <label class="layui-form-label">头像（小图）</label>
     <div class="layui-input-inline">
       <input type="file" id='upload_img' name="file" class="layui-upload-file">
       <img src="{$news_info.smeta}" width="50" height="50" />
       <input type="hidden" name="smeta" id="smeta" readonly value="{$news_info.smeta}" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">头像（大图）</label>
+    <div class="layui-input-inline">
+      <input type="file" id='upload_img2' name="file" class="layui-upload-file">
+      <img src="{$news_info.image}" width="50" height="50" />
+      <input type="hidden" name="image" id="image" readonly value="{$news_info.image}" class="layui-input">
     </div>
   </div>
 
@@ -81,6 +89,20 @@ layui.use('upload', function(){
                 layer.msg(res.msg);
             }else{
                 $("#smeta").val(res.data.src);
+            }
+        }
+    });
+    layui.upload({
+        url: "{:U('Guest/uploadImgForContent')}"
+        ,title: '上传图片'
+        ,elem: '#upload_img2' //指定原始元素，默认直接查找class="layui-upload-file"
+        ,ext: 'jpg|png|gif|jpeg'
+        ,method: 'post' //上传接口的http类型
+        ,success: function(res){
+            if(res.code == 300){
+                layer.msg(res.msg);
+            }else{
+                $("#image").val(res.data.src);
             }
         }
     });

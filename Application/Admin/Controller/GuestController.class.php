@@ -26,7 +26,7 @@ class GuestController extends CommonController
         $search['start_time'] = I('start_time');
         $search['end_time']   = I('end_time');
 
-        $guest_list = $this->guest_model->selectAllGuest(5,$search);
+        $guest_list = $this->guest_model->selectAllGuest(10,$search);
         
         $this->assign('guest_list',$guest_list['list']);
         $this->assign('page',$guest_list['page']);
@@ -80,6 +80,7 @@ class GuestController extends CommonController
                 'name'         => I('post.name', '', 'trim'),
                 'content'       => I('post.content'),
                 'smeta'         => I('post.smeta'),
+                'image'         => I('post.image'),
                 'create_time'   => time(),
                 'hits'          => 0,
                 'status'        => 1,
@@ -110,7 +111,7 @@ class GuestController extends CommonController
                 'name'         => I('post.name', '', 'trim'),
                 'content'       => I('post.content'),
                 'smeta'         => I('post.smeta'),
-
+                'image'         => I('post.image'),
                 'update_time'   => time(),
                 'status'        => 1,
             );

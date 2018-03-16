@@ -35,39 +35,47 @@
 					<div id="limit" class="cont-detail cur">
 						<div class="limit">
 							<ul class="clearfix">
-								<li>
-									<div class="limit-box">
-										<img src="__PUBLIC__/web/images/limit_01.png" alt="">
-									</div>
-									<p>MC手办</p>
-								</li>
-								<li>
-									<div class="limit-box">
-										<img src="__PUBLIC__/web/images/limit_02.png" alt="">
-									</div>
-									<p>潮流个性包包</p>
-								</li>
-								<li>
-									<div class="limit-box">
-										<img src="__PUBLIC__/web/images/limit_03.png" alt="">
-									</div>
-									<p>潮流个性T恤</p>
-								</li>
-								<li>
-									<div class="limit-box">
-										<img src="__PUBLIC__/web/images/limit_04.png" alt="">
-									</div>
-									<p>红黑米奇玩偶</p>
-								</li>
+								<volist name="goods_list" id="vo">
+									<li>
+										<div class="limit-box">
+											<img src="{$vo.smeta}" alt="">
+										</div>
+										<p>{$vo.title}</p>
+									</li>
+								</volist>
+								<!--<li>-->
+									<!--<div class="limit-box">-->
+										<!--<img src="__PUBLIC__/web/images/limit_01.png" alt="">-->
+									<!--</div>-->
+									<!--<p>MC手办</p>-->
+								<!--</li>-->
+								<!--<li>-->
+									<!--<div class="limit-box">-->
+										<!--<img src="__PUBLIC__/web/images/limit_02.png" alt="">-->
+									<!--</div>-->
+									<!--<p>潮流个性包包</p>-->
+								<!--</li>-->
+								<!--<li>-->
+									<!--<div class="limit-box">-->
+										<!--<img src="__PUBLIC__/web/images/limit_03.png" alt="">-->
+									<!--</div>-->
+									<!--<p>潮流个性T恤</p>-->
+								<!--</li>-->
+								<!--<li>-->
+									<!--<div class="limit-box">-->
+										<!--<img src="__PUBLIC__/web/images/limit_04.png" alt="">-->
+									<!--</div>-->
+									<!--<p>红黑米奇玩偶</p>-->
+								<!--</li>-->
 							</ul>
 						</div>
 						<div class="limit-num">
-							<ul class="clearfix">
-								<li class="cur">1</li>
-								<li>2</li>
-								<li>3</li>
-								<li>4</li>
-							</ul>
+							<!--<ul class="clearfix">-->
+								<!--<li class="cur">1</li>-->
+								<!--<li>2</li>-->
+								<!--<li>3</li>-->
+								<!--<li>4</li>-->
+							<!--</ul>-->
 						</div>
 					</div>
 					<div id="browse" class="cont-detail">
@@ -89,51 +97,59 @@
 								</select>
 							</div>
 							<ul class="clearfix">
-								<li>
-									<div class="browse-box">
-										<img src="__PUBLIC__/web/images/goods_05.png" alt="">
-									</div>
-									<p>MC手办</p>
-								</li>
-								<li>
-									<div class="browse-box">
-										<img src="__PUBLIC__/web/images/goods_06.png" alt="">
-									</div>
-									<p>潮流包包</p>
-								</li>
-								<li>
-									<div class="browse-box">
-										<img src="__PUBLIC__/web/images/goods_07.png" alt="">
-									</div>
-									<p>限量手办</p>
-								</li>
-								<li>
-									<div class="browse-box">
-										<img src="__PUBLIC__/web/images/goods_05.png" alt="">
-									</div>
-									<p>MC手办</p>
-								</li>
-								<li>
-									<div class="browse-box">
-										<img src="__PUBLIC__/web/images/goods_06.png" alt="">
-									</div>
-									<p>潮流包包</p>
-								</li>
-								<li>
-									<div class="browse-box">
-										<img src="__PUBLIC__/web/images/goods_07.png" alt="">
-									</div>
-									<p>限量手办</p>
-								</li>
+								<volist name="goods_list" id="vo">
+									<li>
+										<div class="limit-box">
+											<img src="{$vo.smeta}" alt="">
+										</div>
+										<p>{$vo.title}</p>
+									</li>
+								</volist>
+								<!--<li>-->
+									<!--<div class="browse-box">-->
+										<!--<img src="__PUBLIC__/web/images/goods_05.png" alt="">-->
+									<!--</div>-->
+									<!--<p>MC手办</p>-->
+								<!--</li>-->
+								<!--<li>-->
+									<!--<div class="browse-box">-->
+										<!--<img src="__PUBLIC__/web/images/goods_06.png" alt="">-->
+									<!--</div>-->
+									<!--<p>潮流包包</p>-->
+								<!--</li>-->
+								<!--<li>-->
+									<!--<div class="browse-box">-->
+										<!--<img src="__PUBLIC__/web/images/goods_07.png" alt="">-->
+									<!--</div>-->
+									<!--<p>限量手办</p>-->
+								<!--</li>-->
+								<!--<li>-->
+									<!--<div class="browse-box">-->
+										<!--<img src="__PUBLIC__/web/images/goods_05.png" alt="">-->
+									<!--</div>-->
+									<!--<p>MC手办</p>-->
+								<!--</li>-->
+								<!--<li>-->
+									<!--<div class="browse-box">-->
+										<!--<img src="__PUBLIC__/web/images/goods_06.png" alt="">-->
+									<!--</div>-->
+									<!--<p>潮流包包</p>-->
+								<!--</li>-->
+								<!--<li>-->
+									<!--<div class="browse-box">-->
+										<!--<img src="__PUBLIC__/web/images/goods_07.png" alt="">-->
+									<!--</div>-->
+									<!--<p>限量手办</p>-->
+								<!--</li>-->
 							</ul>
 						</div>
 						<div class="browse-num">
-							<ul class="clearfix">
-								<li class="cur">1</li>
-								<li>2</li>
-								<li>3</li>
-								<li>4</li>
-							</ul>
+							<!--<ul class="clearfix">-->
+								<!--<li class="cur">1</li>-->
+								<!--<li>2</li>-->
+								<!--<li>3</li>-->
+								<!--<li>4</li>-->
+							<!--</ul>-->
 						</div>
 					</div>
 				</div> 

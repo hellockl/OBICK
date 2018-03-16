@@ -26,20 +26,8 @@
   <div class="layui-form-item">
     <label class="layui-form-label">描述</label>
     <div class="layui-input-inline">
-      <textarea id="content" name="content" style="display: none;"></textarea>
-      <script>
-          layui.use('layedit', function(){
-              var layedit = layui.layedit;
-              //设置内容里面的上传接口
-              layedit.set({
-                  uploadImage: {
-                      url: "{:U('/uploadImgForContent')}" //接口url
-                      ,type: 'post' //默认post
-                  }
-              });
-              layedit.build('content'); //建立编辑器
-          });
-      </script>
+
+      <textarea class="layui-textarea " id="content" name="content"></textarea>
     </div>
   </div>
 
@@ -58,7 +46,7 @@ layui.use('form', function(){
 	  form.on('submit(news)', function(data){
 		  
 	    var newsinfo = data.field;
-        newsinfo.content = layui.layedit.getContent(1);
+        //newsinfo.content = layui.layedit.getContent(1);
 		var url = "{:U('Goods/addGoods')}";
 		$.post(url,newsinfo,function(data){
 			if(data.status == 'error'){

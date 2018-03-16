@@ -26,7 +26,7 @@ class NewsController extends CommonController
         $search['start_time'] = I('start_time');
         $search['end_time']   = I('end_time');
 
-        $news_list = $this->news_model->selectAllNews(5,$search);
+        $news_list = $this->news_model->selectAllNews(10,$search);
         
         $this->assign('news_list',$news_list['list']);
         $this->assign('page',$news_list['page']);

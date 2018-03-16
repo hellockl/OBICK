@@ -89,30 +89,38 @@
 					<div id="activity" class="cont-detail">
 						<div class="activity">
 							<ul class="clearfix">
-								<li>
-									<div class="activity-box">
-										<img src="__PUBLIC__/web/images/activity_01.png" alt="">
-									</div>
-									<p>欢乐享大轰趴</p>
-								</li>
-								<li>
-									<div class="activity-box">
-										<img src="__PUBLIC__/web/images/activity_02.png" alt="">
-									</div>
-									<p>潮流明星互动</p>
-								</li>
-								<li>
-									<div class="activity-box">
-										<img src="__PUBLIC__/web/images/activity_03.png" alt="">
-									</div>
-									<p>限定奖品乐派</p>
-								</li>
-								<li>
-									<div class="activity-box">
-										<img src="__PUBLIC__/web/images/activity_04.png" alt="">
-									</div>
-									
-								</li>
+								<volist name="activity_list" id="vo">
+									<li>
+										<div class="activity-box">
+											<img src="{$vo.smeta}" alt="">
+										</div>
+										<p>{$vo.title}</p>
+									</li>
+								</volist>
+								<!--<li>-->
+									<!--<div class="activity-box">-->
+										<!--<img src="__PUBLIC__/web/images/activity_01.png" alt="">-->
+									<!--</div>-->
+									<!--<p>欢乐享大轰趴</p>-->
+								<!--</li>-->
+								<!--<li>-->
+									<!--<div class="activity-box">-->
+										<!--<img src="__PUBLIC__/web/images/activity_02.png" alt="">-->
+									<!--</div>-->
+									<!--<p>潮流明星互动</p>-->
+								<!--</li>-->
+								<!--<li>-->
+									<!--<div class="activity-box">-->
+										<!--<img src="__PUBLIC__/web/images/activity_03.png" alt="">-->
+									<!--</div>-->
+									<!--<p>限定奖品乐派</p>-->
+								<!--</li>-->
+								<!--<li>-->
+									<!--<div class="activity-box">-->
+										<!--<img src="__PUBLIC__/web/images/activity_04.png" alt="">-->
+									<!--</div>-->
+									<!---->
+								<!--</li>-->
 							</ul>
 						</div>
 					</div>

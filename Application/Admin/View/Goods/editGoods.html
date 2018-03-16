@@ -11,42 +11,30 @@
   <div class="layui-form-item">
     <label class="layui-form-label">标题</label>
     <div class="layui-input-inline">
-      <input type="text" name="title" lay-verify="required" value="{$news_info.title}" autocomplete="off"  id="name" class="layui-input">
+      <input type="text" name="title" lay-verify="required" value="{$goods_info.title}" autocomplete="off"  id="name" class="layui-input">
     </div>
   </div>
-  <input type="hidden" value="{$news_info.id}" name="id">
+  <input type="hidden" value="{$goods_info.id}" name="id">
   <div class="layui-form-item">
     <label class="layui-form-label">缩略图</label>
     <div class="layui-input-inline">
       <input type="file" id='upload_img' name="file" class="layui-upload-file">
-      <img src="{$news_info.smeta}" width="50" height="50" />
-      <input type="hidden" name="smeta" id="smeta" readonly value="{$news_info.smeta}" class="layui-input">
+      <img src="{$goods_info.smeta}" width="50" height="50" />
+      <input type="hidden" name="smeta" id="smeta" readonly value="{$goods_info.smeta}" class="layui-input">
     </div>
   </div>
 
   <div class="layui-form-item">
     <label class="layui-form-label">内容</label>
     <div class="layui-input-inline">
-      <textarea id="content" name="content" style="display: none;">{$news_info.content}</textarea>
-      <script>
-          layui.use('layedit', function(){
-              var layedit = layui.layedit;
-              //设置内容里面的上传接口
-              layedit.set({
-                  uploadImage: {
-                      url: "{:U('Goods/uploadImgForContent')}" //接口url
-                      ,type: 'post' //默认post
-                  }
-              });
-              layedit.build('content'); //建立编辑器
-          });
-      </script>
+      <textarea class="layui-textarea " name="content" >{$goods_info.content}</textarea>
+
     </div>
   </div>
 
   <div class="layui-form-item">
     <div class="layui-input-block">
-      <button class="layui-btn" lay-submit lay-filter="news">立即提交</button>
+      <button class="layui-btn" lay-submit lay-filter="goods">立即提交</button>
       <button type="reset" class="layui-btn layui-btn-primary">重置</button>
     </div>
   </div>
@@ -56,12 +44,12 @@ layui.use('form', function(){
 	var form = layui.form(),
    		 $ = layui.jquery
 	  //监听提交
-	  form.on('submit(news)', function(data){
+	  form.on('submit(goods)', function(data){
 		  
-	    var newsinfo = data.field;
-        newsinfo.content = layui.layedit.getContent(1);
+	    var goodsinfo = data.field;
+        //goodsinfo.content = layui.layedit.getContent(1);
 		var url = "{:U('Goods/editGoods')}";
-		$.post(url,newsinfo,function(data){
+		$.post(url,goodsinfo,function(data){
 			if(data.status == 'error'){
 				  layer.msg(data.msg,{icon: 5});//失败的表情
 				  return;
