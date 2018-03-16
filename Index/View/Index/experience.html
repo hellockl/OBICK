@@ -3,14 +3,21 @@
 <head>
 	<meta charset="UTF-8">
 	<title>体验</title>
-	<link rel="stylesheet" href="__PUBLIC__/web/css/swiper.min.css">
 	<link rel="stylesheet" href="__PUBLIC__/web/css/base.css">
+	<link rel="stylesheet" href="__PUBLIC__/web/css/common.css">
 	<link rel="stylesheet" href="__PUBLIC__/web/css/experience.css">
 	<link rel="stylesheet" href="__PUBLIC__/web/css/style.css">
+	<script>
+		(function(desW){
+	        var winW=document.documentElement.clientWidth || document.body.clientWidth;
+	        console.log(winW);
+	        document.documentElement.style.fontSize=winW / desW*100+"px";
+	    })(1920);//设计稿宽度
+	</script>
 </head>
 <body>
 	<header>
-		<img src="__PUBLIC__/web/images/exhibition_header.png" alt="">
+
 	</header>
 	<main>
 		<include file="Public:header"/>

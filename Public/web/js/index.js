@@ -34,6 +34,11 @@ $(function () {
 		$(".left-menu li").eq(index).children("a").addClass("active").parent("li").siblings("li").children("a").removeClass("active");
 		$(".right-cont .cont-detail").eq(index).addClass("cur").siblings(".cont-detail").removeClass("cur");
 	})
+	$(".sub-nav li").mouseover(function () {
+		var index = $(this).index();
+		$(".sub-nav li").children("a").removeClass("active");
+		$(this).children("a").addClass("active").end().siblings("li").children("a").removeClass("active");
+	})
 	//除首页外的点击侧边栏效果
 	$(".left-menu li a").click(function () {
 		var index = $(this).parent("li").index();
@@ -58,6 +63,16 @@ $(function () {
 		$(this).stop().fadeOut();
 	})
 	
+	//嘉宾栏悬停效果
+	// $(".guest-cont li").mouseover(function () {
+	// 	$(this).children("img").eq(0).hide();
+	// 	$(this).children("img").eq(1).show();
+	// 	$(this).addClass("cur").siblings("li").removeClass("cur");
+	// })
+	// $(".guest-cont li").mouseout(function () {
+	// 	$(this).children("img").eq(1).hide();
+	// 	$(this).children("img").eq(0).show();
+	// })
 
 	
 	/*展会页面js*/
