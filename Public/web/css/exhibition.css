@@ -3,14 +3,11 @@ body {
   background: url("../images/bg.png");
   background-size: cover;
 }
-main .exhibition-box {
-  background: url("../images/guest_bg.png") no-repeat;
-  background-size: contain;
-}
 main .exhibition-box .title {
-  width: 2.65rem;
-  margin: 0 auto;
-  margin-top: 1rem;
+  width: 9.15rem;
+  padding-left: .4rem;
+  margin-bottom: 1rem;
+  margin-top: -1.5rem;
 }
 main .exhibition-box .title img {
   width: 100%;
@@ -18,7 +15,7 @@ main .exhibition-box .title img {
 main .exhibition-box .exhibition-cont {
   width: 13.66rem;
   margin: 0 auto;
-  margin-top: 2.2rem;
+  margin-top: 4.2rem;
 }
 main .exhibition-box .left-menu li {
   width: 2.7rem;
@@ -29,18 +26,18 @@ main .exhibition-box .left-menu li a {
   display: block;
   width: 100%;
   line-height: .7rem;
-  background: #ffffff;
+  background: url("../images/menu_bg.png") no-repeat;
+  background-size: contain;
   font-size: .25rem;
-  color: #000000;
   text-align: center;
+  color: #fff;
 }
 main .exhibition-box .left-menu li a.active {
-  background: #9030fd;
+  background: url("../images/menu_active.png") no-repeat;
   color: #fff;
 }
 main .exhibition-box .right-cont {
   width: 10.48rem;
-  background-color: #fff;
 }
 main .exhibition-box .cont-detail {
   width: 100%;
@@ -48,28 +45,26 @@ main .exhibition-box .cont-detail {
 }
 main .exhibition-box .cont-detail .cont-title {
   width: 100%;
-  border-bottom: 1px solid #E5E5E5;
 }
 main .exhibition-box .cont-detail .cont-title h1 {
   padding: 0 .4rem;
   line-height: .8rem;
-  font-size: .24rem;
-  color: #000;
-  font-weight: 600;
+  font-size: .28rem;
+  color: #8E56FC;
 }
 main .exhibition-box .cont-detail.cur {
   display: block;
 }
 main .exhibition-box .address .address-cont {
-  padding: .3rem .3rem 0 .3rem;
+  padding: .3rem .4rem 0 .4rem;
 }
 main .exhibition-box .address .address-cont div {
-  font-size: .2rem;
-  color: #000;
+  font-size: .24rem;
+  color: #fff;
   margin-bottom: .35rem;
 }
 main .exhibition-box .address .address-cont div p {
-  line-height: .24rem;
+  line-height: .36rem;
 }
 main .exhibition-box .address .address-cont div span {
   font-weight: 600;
@@ -77,79 +72,101 @@ main .exhibition-box .address .address-cont div span {
 main .exhibition-box .introduce .introduce-cont {
   padding: .3rem .4rem;
 }
-main .exhibition-box .introduce .introduce-cont .introduce-left {
-  margin-right: .3rem;
-  width: 2.4rem;
-  height: 2.4rem;
+main .exhibition-box .introduce .introduce-cont .introduce-top p {
+  font-size: .2rem;
+  color: #fff;
+  line-height: .32rem;
 }
-main .exhibition-box .introduce .introduce-cont .introduce-left img {
-  width: 100%;
+main .exhibition-box .introduce .introduce-cont .introduce-bottom {
+  margin-top: .3rem;
+  padding-left: .2rem;
 }
-main .exhibition-box .introduce .introduce-cont .introduce-right {
-  width: 6.77rem;
-}
-main .exhibition-box .introduce .introduce-cont .introduce-right img {
-  width: 100%;
+main .exhibition-box .introduce .introduce-cont .introduce-bottom li {
+  list-style: disc;
+  font-size: .2rem;
+  color: #fff;
+  line-height: .5rem;
 }
 main .exhibition-box .organization .organization-cont {
   padding: .3rem .4rem;
+  padding-top: 1rem;
 }
 main .exhibition-box .organization .organization-cont li {
+  margin-bottom: .5rem;
+}
+main .exhibition-box .organization .organization-cont li .organ-name {
+  font-size: .24rem;
+  border-bottom: 1px solid #fff;
+  color: #fff;
+  line-height: .32rem;
+  margin-right: .7rem;
+  margin-top: .25rem;
+}
+main .exhibition-box .organization .organization-cont li ul {
+  width: 80%;
+}
+main .exhibition-box .organization .organization-cont li ul li {
   float: left;
-  margin-right: .27rem;
+  width: 50%;
+  height: 1rem;
 }
-main .exhibition-box .organization .organization-cont li .img-box {
-  width: 2.94rem;
-  height: 2.94rem;
-  position: relative;
-  background-color: #000;
-}
-main .exhibition-box .organization .organization-cont li img {
-  width: 70%;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
-main .exhibition-box .organization .organization-cont li p {
-  text-align: center;
-  font-size: .2rem;
-  color: #000;
-  line-height: .5rem;
+main .exhibition-box .organization .organization-cont li ul li img {
+  width: 50%;
 }
 main .exhibition-box .activity {
+  position: relative;
   padding: .5rem 0 0 .5rem;
 }
 main .exhibition-box .activity li {
   float: left;
   width: 4.62rem;
   margin-right: .3rem;
-  margin-bottom: .3rem;
+  margin-bottom: 1.3rem;
 }
 main .exhibition-box .activity .activity-box {
   box-sizing: border-box;
-  border: 2px solid #e5e5e5;
 }
 main .exhibition-box .activity .activity-box img {
   width: 100%;
 }
+main .exhibition-box .activity h2 {
+  font-size: .28rem;
+  line-height: .6rem;
+  color: #fff;
+  margin-top: .1rem;
+}
 main .exhibition-box .activity p {
-  text-align: center;
-  font-size: .24rem;
+  font-size: .2rem;
   line-height: .3rem;
-  margin: .1rem 0;
+  color: #fff;
+}
+main .exhibition-box .activity .activity-num {
+  position: absolute;
+  right: .3rem;
+  bottom: -0.8rem;
+}
+main .exhibition-box .activity .activity-num li {
+  float: left;
+  width: .3rem;
+  background-color: #E6E6E6;
+  height: .3rem;
+  cursor: pointer;
+  line-height: .3rem;
+  font-size: .18rem;
   color: #000;
+  text-align: center;
+  margin-right: .16rem;
+}
+main .exhibition-box .activity .activity-num li.cur {
+  background-color: #9030FD;
+  color: #fff;
 }
 main .exhibition-box .plan {
   position: relative;
 }
 main .exhibition-box .plan .plan-box {
   width: 9.36rem;
-  height: 5.43rem;
+  height: 7.425rem;
   overflow: hidden;
   margin: .5rem;
   margin-bottom: 1rem;
@@ -157,21 +174,30 @@ main .exhibition-box .plan .plan-box {
 main .exhibition-box .plan .plan-box img {
   width: 100%;
 }
+main .exhibition-box .plan .plan-box li {
+  float: left;
+  display: none;
+}
+main .exhibition-box .plan .plan-box li.cur {
+  display: block;
+}
 main .exhibition-box .plan .download {
-  margin: 0 auto;
-  margin-bottom: .5rem;
-  width: 2.08rem;
+  float: right;
+  margin-right: .8rem;
+  margin-top: .3rem;
   height: .54rem;
-  color: #fff;
   line-height: .54rem;
-  background-color: #9030FD;
   text-align: center;
   font-size: .22rem;
+  border-bottom: 1px solid #9030FD;
+}
+main .exhibition-box .plan .download a {
+  color: #9030FD;
 }
 main .exhibition-box .plan .plan-num {
   position: absolute;
   right: .8rem;
-  bottom: .8rem;
+  bottom: -0.8rem;
 }
 main .exhibition-box .plan .plan-num li {
   float: left;
@@ -193,13 +219,22 @@ main .exhibition-box .support {
   padding: .5rem 0 0 .5rem;
 }
 main .exhibition-box .support .support-cont {
-  margin-bottom: 1.2rem;
+  margin-bottom: .8rem;
 }
 main .exhibition-box .support .support-cont p {
   font-size: .2rem;
   line-height: .26rem;
-  font-family: STHeiti;
-  color: #000;
+  color: #fff;
+}
+main .exhibition-box .support .support_address {
+  margin-bottom: .8rem;
+}
+main .exhibition-box .support .support_address li {
+  float: left;
+  width: 4.91rem;
+}
+main .exhibition-box .support .support_address li img {
+  width: 100%;
 }
 main .exhibition-box .support .support-way {
   margin-bottom: 3rem;
@@ -212,10 +247,13 @@ main .exhibition-box .support .support-way .way-box {
   width: 1.74rem;
   height: 1.74rem;
   border-radius: 50%;
-  background-color: #E5E5E5;
+  background: url("../images/download-bg.png") no-repeat;
+  background-size: cover;
   position: relative;
 }
 main .exhibition-box .support .support-way .way-box img {
+  width: 1.3rem;
+  border-radius: 50%;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -230,11 +268,10 @@ main .exhibition-box .support .support-way p {
   margin-top: .2rem;
   text-align: center;
   font-size: .18rem;
-  font-family: STHeiti;
   line-height: .3rem;
 }
 main .exhibition-box .support .support-way p a {
-  color: #000;
+  color: #fff;
 }
 main .exhibition-box .ticket-infor .infor-cont {
   padding: .3rem .4rem 0 .4rem;
@@ -244,21 +281,25 @@ main .exhibition-box .ticket-infor .infor-cont div {
 }
 main .exhibition-box .ticket-infor .infor-cont p {
   font-size: .18rem;
-  color: #000;
-  line-height: .24rem;
+  color: #fff;
+  line-height: .36rem;
+}
+main .exhibition-box .ticket-infor .infor-cont .infor-title p {
+  font-size: .2rem;
 }
 main .exhibition-box .ticket-link {
   margin-top: 1rem;
 }
 main .exhibition-box .ticket-link .link-cont {
-  background-color: #EEEEEE;
   padding-left: 1rem;
 }
 main .exhibition-box .ticket-link .link-cont li {
   float: left;
   margin: .45rem 1rem .45rem 0;
-  width: 1.35rem;
-  height: 1.35rem;
+  width: 1.3rem;
+  height: 1.3rem;
+  border-radius: 50%;
+  overflow: hidden;
 }
 main .exhibition-box .ticket-link .link-cont li img {
   width: 100%;
@@ -272,11 +313,12 @@ main .exhibition-box .ticket-link .link-title {
 main .exhibition-box .ticket-link .link-title li {
   float: left;
   margin: .2rem 1rem .2rem 0;
-  width: 1.35rem;
+  width: 1.3rem;
   text-align: center;
 }
 main .exhibition-box .ticket-link .link-title li a {
   font-size: .18rem;
-  color: #000;
+  border-bottom: 1px solid #fff;
+  color: #fff;
   line-height: .32rem;
 }

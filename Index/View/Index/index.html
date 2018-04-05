@@ -31,17 +31,20 @@
 				<ul class="clearfix">
 					<li class="cur">
 						<a href="javascript:;">
-							首页
+							<img src="__PUBLIC__/web/images/index.png" alt="">
+							<img src="__PUBLIC__/web/images/index-active.png" alt="">
 						</a>
 					</li>
 					<li>
 						<a href="javascript:;">
-							广州
+							<img src="__PUBLIC__/web/images/guangzhou.png" alt="">
+							<img src="__PUBLIC__/web/images/guangzhou-active.png" alt="">
 						</a>
 					</li>
 					<li>
 						<a href="javascript:;">
-							杭州
+							<img src="__PUBLIC__/web/images/hangzhou.png" alt="">
+							<img src="__PUBLIC__/web/images/hangzhou-active.png" alt="">
 						</a>
 					</li>
 				</ul>
@@ -60,7 +63,8 @@
 						<img src="{$vo.smeta}" alt="">
 						<img src="{$vo.image}" alt="">
 						<div class="guest-name">
-							<img src="__PUBLIC__/web/images/guest_name.png" alt="">
+							<img src="__PUBLIC__/web/images/guest_name_bj.png" alt="">
+							<p>{$vo.name}</p>
 						</div>
 					</li>
 					</volist>
@@ -117,6 +121,7 @@
 						<div>
 							<img src="__PUBLIC__/web/images/goods_active.png" alt="">
 						</div>
+						<p>{$vo.title}</p>
 					</li>
 					</volist>
 					<!--<li>-->
@@ -161,7 +166,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="banner">
+<!-- 		<div class="banner">
 			<div class="swiper-container">
 			    <div class="swiper-wrapper">
 			        <div class="swiper-slide">
@@ -174,10 +179,10 @@
 			        	<img src="__PUBLIC__/web/images/banner.png" alt="">
 			        </div>
 			    </div>
-			    <!-- 如果需要分页器 -->
+
 			    <div class="swiper-pagination"></div>
 			</div>
-		</div>
+		</div> -->
 		<div class="trend">
 			<div class="title">
 				<img src="__PUBLIC__/web/images/trend_title.png" alt="">
@@ -190,9 +195,9 @@
 							<div class="cont-title">
 								<p>{$vo.title}</p>
 							</div>
-							<div class="trend-time">
+							<!-- <div class="trend-time">
 								<p>{$vo.create_time|date="Y年m月d日",###}</p>
-							</div>
+							</div> -->
 						</li>
 					</volist>
 					<!--<li>-->
@@ -263,32 +268,32 @@
 				</ul>
 			</div>
 		</div>
-		<div class="partner">
+<!-- 		<div class="partner">
 			<div class="title">
 				<img src="__PUBLIC__/web/images/partner_title.png" alt="">
 			</div>
 			<div class="partner-cont">
 				<div class="cont-detail">
-					<ul class="clearfix">
-						<volist name="partner_list" id="vo">
+					<ul class="clearfix"> -->
+<!-- 						<volist name="partner_list" id="vo">
 							<li><img src="{$vo.smeta}" alt=""></li>
-						</volist>
+						</volist> -->
 						<!--<li><img src="__PUBLIC__/web/images/partner_index_01.png" alt=""></li>-->
 						<!--<li><img src="__PUBLIC__/web/images/partner_index_02.png" alt=""></li>-->
 						<!--<li><img src="__PUBLIC__/web/images/partner_index_03.png" alt=""></li>-->
 						<!--<li><img src="__PUBLIC__/web/images/partner_index_04.png" alt=""></li>-->
 						<!--<li><img src="__PUBLIC__/web/images/partner_index_05.png" alt=""></li>-->
 						<!--<li><img src="__PUBLIC__/web/images/partner_index_06.png" alt=""></li>-->
-					</ul>
+<!-- 					</ul>
 				</div>
 			</div>
-		</div>
+		</div> -->
 		<div class="brand">
 			<div class="title">
 				<img src="__PUBLIC__/web/images/brand_title.png" alt="">
 			</div>
 			<div class="brand-cont">
-				<img src="__PUBLIC__/web/images/brand_new.png" alt="">
+				<img src="__PUBLIC__/web/images/brand.png" alt="">
 			</div>
 		</div>
 		<div class="spread">
@@ -296,7 +301,7 @@
 				<img src="__PUBLIC__/web/images/spread_title.png" alt="">
 			</div>
 			<div class="spread-cont">
-				<img src="__PUBLIC__/web/images/brand_new.png" alt="">
+				<img src="__PUBLIC__/web/images/spread.png" alt="">
 			</div>
 		</div>
 	</main>

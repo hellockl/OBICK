@@ -3,14 +3,11 @@ body {
   background: url("../images/bg.png");
   background-size: cover;
 }
-main .exhibition-box {
-  background: url("../images/guest_bg.png") no-repeat;
-  background-size: contain;
-}
 main .exhibition-box .title {
-  width: 2.65rem;
-  margin: 0 auto;
-  margin-top: 1rem;
+  width: 9.15rem;
+  padding-left: .5rem;
+  margin-bottom: 1rem;
+  margin-top: -1.5rem;
 }
 main .exhibition-box .title img {
   width: 100%;
@@ -18,7 +15,7 @@ main .exhibition-box .title img {
 main .exhibition-box .exhibition-cont {
   width: 13.66rem;
   margin: 0 auto;
-  margin-top: 2.2rem;
+  margin-top: 4.2rem;
 }
 main .exhibition-box .left-menu li {
   width: 2.7rem;
@@ -29,18 +26,18 @@ main .exhibition-box .left-menu li a {
   display: block;
   width: 100%;
   line-height: .7rem;
-  background: #ffffff;
+  background: url("../images/menu_bg.png") no-repeat;
+  background-size: contain;
   font-size: .25rem;
-  color: #000000;
   text-align: center;
+  color: #fff;
 }
 main .exhibition-box .left-menu li a.active {
-  background: #9030fd;
+  background: url("../images/menu_active.png") no-repeat;
   color: #fff;
 }
 main .exhibition-box .right-cont {
   width: 10.48rem;
-  background-color: #fff;
 }
 main .exhibition-box .cont-detail {
   width: 100%;
@@ -62,14 +59,14 @@ main .exhibition-box .cont-detail.cur {
   display: block;
 }
 main .exhibition-box .limit {
-  padding: .5rem 0 0 .5rem;
+  padding: 0 0 0 .4rem;
   margin-bottom: 100px;
 }
 main .exhibition-box .limit li {
   float: left;
   width: 4.62rem;
   margin-right: .3rem;
-  margin-bottom: .3rem;
+  margin-bottom: 1.3rem;
 }
 main .exhibition-box .limit img {
   width: 100%;
@@ -78,12 +75,16 @@ main .exhibition-box .limit .limit-box {
   box-sizing: border-box;
   border: 2px solid #e5e5e5;
 }
+main .exhibition-box .limit h2 {
+  font-size: .28rem;
+  line-height: .6rem;
+  color: #fff;
+  margin-top: .1rem;
+}
 main .exhibition-box .limit p {
-  text-align: center;
-  font-size: .24rem;
+  font-size: .2rem;
   line-height: .3rem;
-  margin: .1rem 0;
-  color: #000;
+  color: #fff;
 }
 main .exhibition-box .limit-num {
   position: absolute;
@@ -125,7 +126,7 @@ main .exhibition-box .browse p {
   font-size: .24rem;
   line-height: .3rem;
   margin: .1rem 0;
-  color: #000;
+  color: #fff;
 }
 main .exhibition-box .browse img {
   width: 100%;
@@ -145,7 +146,7 @@ main .exhibition-box .browse .search select {
   height: .42rem;
   line-height: .36rem;
   margin-right: .3rem;
-  border: 2px solid #e5e5e5;
+  border: none;
   font-size: .2rem;
   color: #ccc;
 }

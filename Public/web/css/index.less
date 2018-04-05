@@ -8,12 +8,12 @@ body{
 }
 
 header{
-	height: 10.8rem;
-	background: url('../images/bj-big.png') no-repeat;
+	height: 8.8rem;
+	background: url('../images/bj_big.jpg') no-repeat;
 	background-size: cover;
 	position: relative;
     background-position:50% 50%;
-    padding-top: 3.37rem;
+    padding-top: 1.37rem;
 	.head-box{
 		width: 13.66rem;
 		position: relative;
@@ -22,9 +22,10 @@ header{
 		// padding-bottom: 150px;
 		.header-logo{
 			float: left;
-			width: 7.07rem;
+			width: 6.66rem;
 			margin-top: 0.75rem;
 			margin-left: 0.55rem;
+			// margin-bottom: 2rem;
 		}
 		.header-address{
 			float: right;
@@ -39,25 +40,31 @@ header{
 	.address-btn{
 			width: 13.23rem;
 			margin: 0 auto;
-			margin-top: 1.3rem;
+			margin-top: 1.4rem;
+			ul{
+				float: right;
+				
+			}
 			li{
 				float: left;
 				margin-right: 0.28rem;
 				a{
-					background: url("../images/address_btn.png") no-repeat;
-					background-size: 100% 100%;
-					display: inline-block;
-					width: 4.12rem;
-					line-height: .54rem;
-					text-align: center;
-					font-size:.26rem;
-					color: #9030FD;
+					img{
+						width: 1.9rem;
+						display: none;
+						&:nth-child(1){
+							display: inline-block;
+						}
+					}
 				}
 				&.cur{
 					a{
-						background: url("../images/address_btn_active.png") no-repeat;
-						background-size: 100% 100%;
-						color:#FDFDFD;
+						img{
+							display: none;
+							&:nth-child(2){
+								display: inline-block;
+							}
+						}
 					}
 				}
 			}
@@ -68,10 +75,11 @@ header{
 main{
 	
 	.title{
-		width: 2.65rem;
+		width: 5rem;
 		margin: 0 auto;
+		text-align: center;
 		img{
-			width: 100%;
+			display: inline;
 		}
 	}
 	.guest{
@@ -118,6 +126,14 @@ main{
 						height: .78rem;
 						z-index: 100;
 						width: 100%;
+						p{
+							font-family: "Arial";
+							font-weight: 700;
+							color: #fff;
+							font-size: .32rem;
+							line-height: .78rem;
+							text-align: center;
+						}
 					}
 					&:hover{
 						>img{
@@ -161,11 +177,12 @@ main{
 					float: left;
 					margin-right: .36rem;
 					margin-bottom: .36rem;
-					box-shadow: 0 .1rem .05rem rgba(0,0,0,.5);
+					
 					position: relative;
 					width: 3.46rem;
 					img{
 						width: 100%;
+						box-shadow: 0 .1rem .05rem rgba(0,0,0,.5);
 					}
 					div{
 						width: 100%;
@@ -175,6 +192,14 @@ main{
 						top: 0;
 						z-index: 10;
 						display: none;
+					}
+					p{
+						font-size: 0.24rem;
+						font-family: "Arial";
+					    color: #fff;
+					    text-align: center;
+					    /* line-height: .24rem; */
+					    margin-top: .2rem;
 					}
 				}
 			}
@@ -210,15 +235,25 @@ main{
 				li{
 					float: left;
 					width: 6rem;
+					// height: 3.4rem;
 					margin-right: .54rem;
 					img{
 						width: 100%;
+						height: 3.4rem;
 					}
 					.cont-title{
 						font-size: .24rem;
-						line-height: .36rem;
-						margin-top: .56rem;
-						color:rgba(255,255,255,1);
+							line-height: .36rem;
+							margin-top: .56rem;
+							color:rgba(255,255,255,1);
+						a{
+							display: block;
+							font-size: .24rem;
+							line-height: .36rem;
+							margin-top: .56rem;
+							color:rgba(255,255,255,1);
+						}
+						
 					}
 					.trend-time{
 						margin-top: .6rem;
@@ -317,8 +352,9 @@ main{
 	.partner{
 		margin-top: 2rem;
 		.partner-cont{
+			margin: 0 auto;
 			margin-top: .9rem;
-			width: 100%;
+			width: 17.6rem;
 			height: 6rem; 
 			background:#353535;
 			position: relative;
@@ -338,9 +374,18 @@ main{
 					float: left;
 					width: 4rem;
 					height: 2.77rem;
+					position: relative;
+					
 					img{
-						width: 100%;
-						height: 100%;
+						width: 70%;
+						position: absolute;
+						left: 50%;
+						top: 50%;
+						-webkit-transform: translate(-50%, -50%);
+						   -moz-transform: translate(-50%, -50%);
+						    -ms-transform: translate(-50%, -50%);
+						     -o-transform: translate(-50%, -50%);
+						        transform: translate(-50%, -50%);
 					}
 				}
 			}
@@ -349,22 +394,37 @@ main{
 	.brand{
 		margin-top: 2rem;
 		.brand-cont{
-			width: 10.37rem;
+			width: 8.3rem;
+			height: 5.39rem;
 			margin: 0 auto;
 			margin-top: .9rem;
 			img{
-				width: 10.37rem;
+				position: absolute;
+				left: 50%;
+				-webkit-transform: translateX(-50%);
+				   -moz-transform: translateX(-50%);
+				    -ms-transform: translateX(-50%);
+				     -o-transform: translateX(-50%);
+				        transform: translateX(-50%);
+
 			}
 		}
 	}
 	.spread{
-		margin-top: 2rem;
+		margin-top: 4rem;
 		.spread-cont{
-			width: 10.37rem;
+			width: 8.44rem;
+			height: 4rem;
 			margin: 0 auto;
 			margin-top: .9rem;
 			img{
-				width: 10.37rem;
+				position: absolute;
+				left: 50%;
+				-webkit-transform: translateX(-50%);
+				   -moz-transform: translateX(-50%);
+				    -ms-transform: translateX(-50%);
+				     -o-transform: translateX(-50%);
+				        transform: translateX(-50%);
 			}
 		}
 	}

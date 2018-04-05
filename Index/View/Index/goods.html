@@ -21,75 +21,87 @@
 	<main>
 		<include file="Public:header"/>
 		<div class="exhibition-box">
-			<div class="title">
-				<img src="__PUBLIC__/web/images/goods_title.png" alt="">
-			</div>
+			
 			<div class="exhibition-cont clearfix">
 				<div class="left-menu fl">
 					<ul>
-						<li><a class="active" href="javascript:;">活动限定</a></li>
+						<li><a class="active" href="javascript:;" style="display:none;">活动限定</a></li>
 						<li><a href="javascript:;">商品浏览</a></li>
 					</ul>
 				</div>
 				<div data-pageid="2" class="right-cont fl clearfix">
+					<div class="title">
+						<img src="__PUBLIC__/web/images/goods_sec_title.png" alt="">
+					</div>
 					<div id="limit" class="cont-detail cur">
 						<div class="limit">
 							<ul class="clearfix">
-								<volist name="goods_list" id="vo">
-									<li>
-										<div class="limit-box">
-											<img src="{$vo.smeta}" alt="">
-										</div>
-										<p>{$vo.title}</p>
-									</li>
-								</volist>
-								<!--<li>-->
-									<!--<div class="limit-box">-->
-										<!--<img src="__PUBLIC__/web/images/limit_01.png" alt="">-->
-									<!--</div>-->
-									<!--<p>MC手办</p>-->
-								<!--</li>-->
-								<!--<li>-->
-									<!--<div class="limit-box">-->
-										<!--<img src="__PUBLIC__/web/images/limit_02.png" alt="">-->
-									<!--</div>-->
-									<!--<p>潮流个性包包</p>-->
-								<!--</li>-->
-								<!--<li>-->
-									<!--<div class="limit-box">-->
-										<!--<img src="__PUBLIC__/web/images/limit_03.png" alt="">-->
-									<!--</div>-->
-									<!--<p>潮流个性T恤</p>-->
-								<!--</li>-->
-								<!--<li>-->
-									<!--<div class="limit-box">-->
-										<!--<img src="__PUBLIC__/web/images/limit_04.png" alt="">-->
-									<!--</div>-->
-									<!--<p>红黑米奇玩偶</p>-->
-								<!--</li>-->
+								<li>
+									<div class="limit-box">
+										<img src="__PUBLIC__/web/images/limit_01.png" alt="">
+									</div>
+									<h2>MC手办</h2>
+									<p>炫酷的场景灯光，充满激情的现场，酒水畅饮，乐不停歇，让我们一起high起来！</p>
+
+								</li>
+								<li>
+									<div class="limit-box">
+										<img src="__PUBLIC__/web/images/limit_02.png" alt="">
+									</div>
+									<h2>潮流个性包包</h2>
+									<p>炫酷的场景灯光，充满激情的现场，酒水畅饮，乐不停歇，让我们一起high起来！</p>
+								</li>
+								<li>
+									<div class="limit-box">
+										<img src="__PUBLIC__/web/images/limit_03.png" alt="">
+									</div>
+									<h2>潮流个性T恤</h2>
+									<p>炫酷的场景灯光，充满激情的现场，酒水畅饮，乐不停歇，让我们一起high起来！</p>
+								</li>
+								<li>
+									<div class="limit-box">
+										<img src="__PUBLIC__/web/images/limit_04.png" alt="">
+									</div>
+									<h2>红黑米奇玩偶</h2>
+									<p>炫酷的场景灯光，充满激情的现场，酒水畅饮，乐不停歇，让我们一起high起来！</p>
+								</li>
+								<li>
+									<div class="limit-box">
+										<img src="__PUBLIC__/web/images/limit_03.png" alt="">
+									</div>
+									<h2>潮流个性T恤</h2>
+									<p>炫酷的场景灯光，充满激情的现场，酒水畅饮，乐不停歇，让我们一起high起来！</p>
+								</li>
+								<li>
+									<div class="limit-box">
+										<img src="__PUBLIC__/web/images/limit_04.png" alt="">
+									</div>
+									<h2>红黑米奇玩偶</h2>
+									<p>炫酷的场景灯光，充满激情的现场，酒水畅饮，乐不停歇，让我们一起high起来！</p>
+								</li>
 							</ul>
 						</div>
 						<div class="limit-num">
-							<!--<ul class="clearfix">-->
-								<!--<li class="cur">1</li>-->
-								<!--<li>2</li>-->
-								<!--<li>3</li>-->
-								<!--<li>4</li>-->
-							<!--</ul>-->
+							<ul class="clearfix">
+								<li class="cur">1</li>
+								<li>2</li>
+								<li>3</li>
+								<li>4</li>
+							</ul>
 						</div>
 					</div>
 					<div id="browse" class="cont-detail">
 						<div class="browse">
 							<div class="search">
 								<select class="brand" name="" id="">
-									<option value="" selected="selected">商品品牌</option>
+									<!-- <option value="" selected="selected">商品品牌</option> -->
 									<option value="">Mindstyle</option>
 									<option value="">Funko</option>
 									<option value="">NBA Style</option>
 									<option value="">Converse</option>
 								</select>
 								<select class="type" name="" id="">
-									<option value="" selected="selected">商品类别</option>
+									<!-- <option value="" selected="selected">商品类别</option> -->
 									<option value="">玩具</option>
 									<option value="">手办</option>
 									<option value="">球鞋</option>
@@ -98,58 +110,20 @@
 							</div>
 							<ul class="clearfix">
 								<volist name="goods_list" id="vo">
-									<li>
-										<div class="limit-box">
-											<img src="{$vo.smeta}" alt="">
-										</div>
-										<p>{$vo.title}</p>
-									</li>
-								</volist>
-								<!--<li>-->
-									<!--<div class="browse-box">-->
-										<!--<img src="__PUBLIC__/web/images/goods_05.png" alt="">-->
-									<!--</div>-->
-									<!--<p>MC手办</p>-->
-								<!--</li>-->
-								<!--<li>-->
-									<!--<div class="browse-box">-->
-										<!--<img src="__PUBLIC__/web/images/goods_06.png" alt="">-->
-									<!--</div>-->
-									<!--<p>潮流包包</p>-->
-								<!--</li>-->
-								<!--<li>-->
-									<!--<div class="browse-box">-->
-										<!--<img src="__PUBLIC__/web/images/goods_07.png" alt="">-->
-									<!--</div>-->
-									<!--<p>限量手办</p>-->
-								<!--</li>-->
-								<!--<li>-->
-									<!--<div class="browse-box">-->
-										<!--<img src="__PUBLIC__/web/images/goods_05.png" alt="">-->
-									<!--</div>-->
-									<!--<p>MC手办</p>-->
-								<!--</li>-->
-								<!--<li>-->
-									<!--<div class="browse-box">-->
-										<!--<img src="__PUBLIC__/web/images/goods_06.png" alt="">-->
-									<!--</div>-->
-									<!--<p>潮流包包</p>-->
-								<!--</li>-->
-								<!--<li>-->
-									<!--<div class="browse-box">-->
-										<!--<img src="__PUBLIC__/web/images/goods_07.png" alt="">-->
-									<!--</div>-->
-									<!--<p>限量手办</p>-->
-								<!--</li>-->
+					<li>
+						<img src="{$vo.smeta}" alt="">
+						<p>{$vo.title}</p>
+					</li>
+					</volist>
 							</ul>
 						</div>
 						<div class="browse-num">
-							<!--<ul class="clearfix">-->
-								<!--<li class="cur">1</li>-->
-								<!--<li>2</li>-->
-								<!--<li>3</li>-->
-								<!--<li>4</li>-->
-							<!--</ul>-->
+							<ul class="clearfix">
+								<li class="cur">1</li>
+								<li>2</li>
+								<li>3</li>
+								<li>4</li>
+							</ul>
 						</div>
 					</div>
 				</div> 

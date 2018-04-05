@@ -5,16 +5,17 @@ $(function () {
 	
 	//点击进入页面指定位置
 	var hash = location.hash;
+	console.log(hash);
 	var index = $(hash).index();
 	var pageid = $(".right-cont").data("pageid");
 	var currentNav = $(".nav-box").eq(pageid).find("li");
 	var length = $(".right-cont").children(hash).length;
 	if (length > 0) {
-		$(".left-menu li").eq(index).children("a").addClass("active").parent("li").siblings("li").children("a").removeClass("active");
+		$(".left-menu li").eq(index - 1).children("a").addClass("active").parent("li").siblings("li").children("a").removeClass("active");
 		$(".sub-nav li").children("a").removeClass("active");
 		currentNav.eq(index).children("a").addClass("active").end().siblings("li").children("a").removeClass("active");
 		$(hash).addClass("cur").siblings(".cont-detail").removeClass("cur");
-	}
+	}       
 	//导航栏移入出现下拉框
 	$(".nav-title").mouseover(function () {
 		$(this).addClass("cur").siblings(".sub-nav").show();
@@ -63,17 +64,6 @@ $(function () {
 		$(this).stop().fadeOut();
 	})
 	
-	//嘉宾栏悬停效果
-	// $(".guest-cont li").mouseover(function () {
-	// 	$(this).children("img").eq(0).hide();
-	// 	$(this).children("img").eq(1).show();
-	// 	$(this).addClass("cur").siblings("li").removeClass("cur");
-	// })
-	// $(".guest-cont li").mouseout(function () {
-	// 	$(this).children("img").eq(1).hide();
-	// 	$(this).children("img").eq(0).show();
-	// })
-
 	
 	/*展会页面js*/
 
@@ -97,5 +87,12 @@ $(function () {
 		var index = $(this).index();
 		$(this).addClass("cur").siblings("li").removeClass("cur");
 		// $(".plan-box li").eq(index).addClass("cur").siblings("li").removeClass("cur");
+	})
+
+	//嘉宾页面Tab切换
+	$(".schedule-date li").click(function() {
+		var index= $(this).index();
+		$(this).children("a").addClass("cur").end().siblings("li").children("a").removeClass("cur");
+		$(".schedule-cont>ul>li").eq(index).addClass("active").siblings("li").removeClass("active");
 	})
 })

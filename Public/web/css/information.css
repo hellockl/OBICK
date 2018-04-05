@@ -3,14 +3,11 @@ body {
   background: url("../images/bg.png");
   background-size: cover;
 }
-main .exhibition-box {
-  background: url("../images/guest_bg.png") no-repeat;
-  background-size: contain;
-}
 main .exhibition-box .title {
-  width: 2.65rem;
-  margin: 0 auto;
-  margin-top: 1rem;
+  width: 9.15rem;
+  padding-left: .4rem;
+  margin-bottom: 1rem;
+  margin-top: -1.5rem;
 }
 main .exhibition-box .title img {
   width: 100%;
@@ -18,7 +15,7 @@ main .exhibition-box .title img {
 main .exhibition-box .exhibition-cont {
   width: 13.66rem;
   margin: 0 auto;
-  margin-top: 2.2rem;
+  margin-top: 4.2rem;
 }
 main .exhibition-box .left-menu li {
   width: 2.7rem;
@@ -29,18 +26,18 @@ main .exhibition-box .left-menu li a {
   display: block;
   width: 100%;
   line-height: .7rem;
-  background: #ffffff;
+  background: url("../images/menu_bg.png") no-repeat;
+  background-size: contain;
   font-size: .25rem;
-  color: #000000;
   text-align: center;
+  color: #fff;
 }
 main .exhibition-box .left-menu li a.active {
-  background: #9030fd;
+  background: url("../images/menu_active.png") no-repeat;
   color: #fff;
 }
 main .exhibition-box .right-cont {
   width: 10.48rem;
-  background-color: #fff;
 }
 main .exhibition-box .cont-detail {
   width: 100%;
@@ -49,14 +46,12 @@ main .exhibition-box .cont-detail {
 }
 main .exhibition-box .cont-detail .cont-title {
   width: 100%;
-  border-bottom: 1px solid #E5E5E5;
 }
 main .exhibition-box .cont-detail .cont-title h1 {
   padding: 0 .4rem;
   line-height: .8rem;
   font-size: .24rem;
-  color: #000;
-  font-weight: 600;
+  color: #8E56FC;
 }
 main .exhibition-box .cont-detail.cur {
   display: block;
@@ -64,8 +59,20 @@ main .exhibition-box .cont-detail.cur {
 main .exhibition-box .about-activity .activity-cont {
   padding: 0 .4rem .4rem .4rem;
 }
-main .exhibition-box .about-activity .activity-cont img {
-  width: 100%;
+main .exhibition-box .about-activity .activity-cont .activity-top p {
+  font-size: .2rem;
+  color: #fff;
+  line-height: .32rem;
+}
+main .exhibition-box .about-activity .activity-cont .activity-bottom {
+  margin-top: .3rem;
+  padding-left: .2rem;
+}
+main .exhibition-box .about-activity .activity-cont .activity-bottom li {
+  list-style: disc;
+  font-size: .2rem;
+  color: #fff;
+  line-height: .5rem;
 }
 main .exhibition-box .about-poplife .poplife-cont {
   padding: .3rem .4rem;
@@ -75,43 +82,45 @@ main .exhibition-box .about-poplife .poplife-cont div {
 }
 main .exhibition-box .about-poplife .poplife-cont p {
   font-size: .18rem;
-  color: #000;
+  color: #fff;
   line-height: .24rem;
 }
 main .exhibition-box .question .question-cont {
   padding: .3rem .4rem;
   font-size: .18rem;
-  color: #000;
-  line-height: .26rem;
+  color: #fff;
+  line-height: .36rem;
 }
 main .exhibition-box .question .question-cont div {
   margin-bottom: .8rem;
 }
 main .exhibition-box .question .question-cont h2 {
   margin-bottom: .1rem;
-  font-weight: 700;
 }
 main .exhibition-box .address .address-cont {
   padding: .3rem .4rem;
 }
 main .exhibition-box .address .address-cont li {
-  float: left;
   margin-right: .3rem;
-  width: 2.98rem;
+  margin-bottom: 1rem;
 }
 main .exhibition-box .address .address-cont li .address-box {
-  border: 2px solid #e5e5e5;
-  border-radius: .08rem;
+  width: 5.29rem;
 }
 main .exhibition-box .address .address-cont li img {
   width: 100%;
 }
-main .exhibition-box .address .address-cont li p {
-  text-align: center;
+main .exhibition-box .address .address-cont li h2 {
   font-size: .24rem;
   line-height: .3rem;
   margin: .1rem 0;
-  color: #000;
+  color: #fff;
+}
+main .exhibition-box .address .address-cont li p {
+  font-size: .2rem;
+  line-height: .3rem;
+  margin: .1rem 0;
+  color: #fff;
 }
 main .exhibition-box .facilities .facilities-cont {
   padding: .3rem .4rem;
@@ -149,8 +158,10 @@ main .exhibition-box .platform .platform-cont li img {
 main .exhibition-box .platform .platform-cont li p {
   text-align: center;
   font-size: .2rem;
-  color: #000;
-  line-height: .5rem;
+}
+main .exhibition-box .platform .platform-cont li p span {
+  border-bottom: 1px solid #666;
+  line-height: .36rem;
 }
 main .exhibition-box .trend .trend-cont {
   padding: .2rem .4rem;
@@ -179,7 +190,9 @@ main .exhibition-box .trend .trend-cont li img {
 }
 main .exhibition-box .trend .trend-cont li p {
   text-align: center;
-  font-size: .2rem;
-  color: #000;
-  line-height: .5rem;
+  font-size: .24rem;
+}
+main .exhibition-box .trend .trend-cont li p span {
+  border-bottom: 1px solid #666;
+  line-height: .36rem;
 }

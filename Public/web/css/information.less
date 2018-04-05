@@ -6,12 +6,13 @@ body{
 main{
 	.exhibition-box{
 		// margin-top: 1.8rem;
-			background: url("../images/guest_bg.png") no-repeat;
-		background-size: contain;
+		// 	background: url("../images/guest_bg.png") no-repeat;
+		// background-size: contain;
 		.title{
-			width: 2.65rem;
-			margin: 0 auto;
-			margin-top: 1rem;
+			width: 9.15rem;
+			padding-left: .4rem;
+			margin-bottom: 1rem;
+			margin-top: -1.5rem;
 			img{
 				width: 100%;
 			}
@@ -20,7 +21,7 @@ main{
 			// height: 1400px;
 			width: 13.66rem;
 			margin: 0 auto;
-			margin-top: 2.2rem;
+			margin-top: 4.2rem;
 		}
 		.left-menu{
 				li{
@@ -31,13 +32,13 @@ main{
 						display: block;
 						width: 100%;
 						line-height: .7rem;
-						background:rgba(255,255,255,1);
+						background: url("../images/menu_bg.png") no-repeat;
+						background-size: contain;
 						font-size: .25rem;
-						
-						color:rgba(0,0,0,1);
 						text-align: center;
+						color: #fff;
 						&.active{
-							background:rgba(144,48,253,1);
+							background: url("../images/menu_active.png") no-repeat;
 							color: #fff;
 						}
 					}
@@ -45,9 +46,8 @@ main{
 		}
 		.right-cont{
 			width: 10.48rem;
-			
 			// height: 1200px;
-			background-color: #fff;
+			// background-color: #fff;
 		}
 		.cont-detail{
 			width: 100%;
@@ -56,14 +56,13 @@ main{
 			
 			.cont-title{
 				width: 100%;
-				border-bottom: 1px solid #E5E5E5;
+				// border-bottom: 1px solid #E5E5E5;
 				h1{
 					padding: 0 .4rem;
 					line-height: .8rem;
 					font-size: .24rem;
-					color: #000;
-					font-weight: 600;
-					
+					color: #8E56FC;
+					// font-weight: 600;
 				}
 			}
 			&.cur{
@@ -73,8 +72,22 @@ main{
 		.about-activity{
 			.activity-cont{
 				padding: 0 .4rem .4rem .4rem;
-				img{
-					width: 100%;
+				.activity-top{
+					p{
+						font-size: .2rem;
+						color: #fff;
+						line-height: .32rem;
+					}
+				}
+				.activity-bottom{
+					margin-top: .3rem;
+					padding-left: .2rem;
+					li{
+						list-style: disc;
+						font-size: .2rem;
+						color: #fff;
+						line-height: .5rem;
+					}
 				}
 			}
 		}
@@ -86,8 +99,7 @@ main{
 				}
 				p{
 					font-size:.18rem;
-					
-					color: #000;
+					color: #fff;
 					line-height: .24rem;
 				}
 			}
@@ -96,15 +108,14 @@ main{
 			.question-cont{
 				padding: .3rem .4rem;
 				font-size: .18rem;
-				
-				color: #000;
-				line-height: .26rem;
+				color: #fff;
+				line-height: .36rem;
 				div{
 					margin-bottom: .8rem;
 				}
 				h2{
 					margin-bottom: .1rem;
-					font-weight: 700;
+					
 				}
 			}
 		}
@@ -112,23 +123,25 @@ main{
 			.address-cont{
 				padding: .3rem .4rem;
 				li{
-					float: left;
 					margin-right: .3rem;
-					width: 2.98rem;
+					margin-bottom: 1rem;
 					.address-box{
-						border: 2px solid #e5e5e5;
-						border-radius: .08rem;
+						width: 5.29rem;
 					}
 					img{
 						width: 100%;
 					}
-					p{
-						text-align: center;
+					h2{
 						font-size:.24rem;
 						line-height: .3rem;
 						margin: .1rem 0;
-						
-						color: #000;
+						color: #fff;
+					}
+					p{
+						font-size:.2rem;
+						line-height: .3rem;
+						margin: .1rem 0;
+						color: #fff;
 					}
 				}
 			}
@@ -171,9 +184,11 @@ main{
 					p{
 						text-align: center;
 						font-size:.2rem;
-						color: #000;
-						line-height: .5rem;
 						
+						span{
+							border-bottom: 1px solid #666;
+							line-height: .36rem;
+						}
 					}
 				}
 			}
@@ -204,10 +219,11 @@ main{
 					}
 					p{
 						text-align: center;
-						font-size:.2rem;
-						color: #000;
-						line-height: .5rem;
-						
+						font-size:.24rem;
+						span{
+							border-bottom: 1px solid #666;
+							line-height: .36rem;
+						}
 					}
 				}
 			}

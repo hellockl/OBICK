@@ -1,0 +1,74 @@
+body {
+  height: 100%;
+  background: url("../images/bg.png");
+  background-size: cover;
+}
+main .detail-box {
+  background: url("../images/guest_bg.png") no-repeat;
+  background-size: 100% 100%;
+}
+main .detail-box .title {
+  width: 2.72rem;
+  margin: 0 auto;
+  margin-top: 2rem;
+}
+main .detail-box .title img {
+  width: 100%;
+}
+main .detail-box .detail-cont {
+  width: 13.66rem;
+  margin: 0 auto;
+  margin-top: 2.2rem;
+  background-color: #fff;
+}
+main .detail-box .head-title {
+  background-color: #f0f0f0;
+  height: 1.5rem;
+  padding-top: .5rem;
+  font-size: .46rem;
+  line-height: .5rem;
+  color: #000;
+  margin-bottom: .5rem;
+  padding-left: 1rem;
+}
+main .detail-box .head-title h1 {
+  font-weight: 600;
+  font-family: "Arial-Black";
+}
+main .detail-box .head-title p {
+  font-size: .28rem;
+}
+main .detail-box .detail-left {
+  width: 4rem;
+  margin-right: .4rem;
+  padding-left: 1rem;
+}
+main .detail-box .detail-left li {
+  width: 4rem;
+  margin-bottom: .4rem;
+}
+main .detail-box .detail-left li img {
+  width: 100%;
+}
+main .detail-box .detail-right {
+  width: 6rem;
+  padding: .4rem;
+}
+main .detail-box .detail-right .detail-title {
+  font-size: .46rem;
+  line-height: .5rem;
+  color: #000;
+  margin-bottom: .5rem;
+}
+main .detail-box .detail-right .detail-title h1 {
+  font-weight: 600;
+  font-family: "Arial-Black";
+}
+main .detail-box .detail-right .detail-title p {
+  font-size: .28rem;
+}
+main .detail-box .detail-right .intro-article {
+  font-size: .24rem;
+  line-height: .36rem;
+  color: #000;
+}

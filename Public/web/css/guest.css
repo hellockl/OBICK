@@ -3,14 +3,11 @@ body {
   background: url("../images/bg.png");
   background-size: cover;
 }
-main .exhibition-box {
-  background: url("../images/guest_bg.png") no-repeat;
-  background-size: contain;
-}
 main .exhibition-box .title {
-  width: 2.65rem;
-  margin: 0 auto;
-  margin-top: 1rem;
+  width: 9.15rem;
+  padding-left: .4rem;
+  margin-bottom: 1rem;
+  margin-top: -1.5rem;
 }
 main .exhibition-box .title img {
   width: 100%;
@@ -18,7 +15,7 @@ main .exhibition-box .title img {
 main .exhibition-box .exhibition-cont {
   width: 13.66rem;
   margin: 0 auto;
-  margin-top: 2.2rem;
+  margin-top: 4.2rem;
 }
 main .exhibition-box .left-menu li {
   width: 2.7rem;
@@ -29,18 +26,18 @@ main .exhibition-box .left-menu li a {
   display: block;
   width: 100%;
   line-height: .7rem;
-  background: #ffffff;
+  background: url("../images/menu_bg.png") no-repeat;
+  background-size: contain;
   font-size: .25rem;
-  color: #000000;
   text-align: center;
+  color: #fff;
 }
 main .exhibition-box .left-menu li a.active {
-  background: #9030fd;
+  background: url("../images/menu_active.png") no-repeat;
   color: #fff;
 }
 main .exhibition-box .right-cont {
   width: 10.48rem;
-  background-color: #fff;
 }
 main .exhibition-box .cont-detail {
   width: 100%;
@@ -49,46 +46,93 @@ main .exhibition-box .cont-detail {
 }
 main .exhibition-box .cont-detail .cont-title {
   width: 100%;
-  border-bottom: 1px solid #E5E5E5;
 }
 main .exhibition-box .cont-detail .cont-title h1 {
   padding: 0 .4rem;
   line-height: .8rem;
   font-size: .24rem;
-  color: #000;
-  font-weight: 600;
+  color: #8E56FC;
 }
 main .exhibition-box .cont-detail.cur {
   display: block;
 }
 main .exhibition-box .schedule {
-  padding: .5rem 0 0 .5rem;
+  padding: 0 0 0 .4rem;
   margin-bottom: 1rem;
 }
-main .exhibition-box .schedule li {
+main .exhibition-box .schedule .schedule-date li {
   float: left;
-  width: 4.62rem;
-  margin-right: .3rem;
-  margin-bottom: .3rem;
+  margin-right: 1rem;
+  padding: 0 .4rem;
 }
-main .exhibition-box .schedule img {
+main .exhibition-box .schedule .schedule-date li a {
+  color: #fff;
+  font-size: .28rem;
+  line-height: .36rem;
+}
+main .exhibition-box .schedule .schedule-date li a:hover {
+  border-bottom: 2px solid #8E56FC;
+  padding-bottom: .1rem;
+}
+main .exhibition-box .schedule .schedule-date li a.cur {
+  border-bottom: 2px solid #8E56FC;
+  padding-bottom: .1rem;
+}
+main .exhibition-box .schedule .schedule-cont > ul > li {
+  display: none;
+}
+main .exhibition-box .schedule .schedule-cont > ul > li p {
+  padding-left: .4rem;
+  font-size: .2rem;
+  color: #fff;
+  line-height: .32rem;
+}
+main .exhibition-box .schedule .schedule-cont > ul > li.active {
+  display: block;
+}
+main .exhibition-box .schedule .schedule-cont .guest-img {
+  margin-top: .8rem;
+}
+main .exhibition-box .schedule .schedule-cont .guest-img li {
+  padding-left: .4rem;
+  width: 2rem;
+  float: left;
+}
+main .exhibition-box .schedule .schedule-cont .guest-img li img {
   width: 100%;
 }
-main .exhibition-box .schedule .schedule-box {
-  box-sizing: border-box;
-  border: 2px solid #e5e5e5;
+main .exhibition-box .schedule .schedule-cont .guest-img li p {
+  font-size: .28rem;
+  line-height: .36rem;
+  color: #fff;
+  padding: 0;
+  margin-top: .2rem;
 }
-main .exhibition-box .schedule p {
-  text-align: center;
-  font-size: .24rem;
-  line-height: .3rem;
-  margin: .1rem 0;
-  color: #000;
+main .exhibition-box .schedule .schedule-cont .cont-top {
+  margin-top: 1rem;
+  position: relative;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+main .exhibition-box .schedule .schedule-cont .cont-bottom {
+  position: relative;
+  padding-bottom: 1rem;
+}
+main .exhibition-box .schedule .schedule-cont .dateDownload {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+main .exhibition-box .schedule .schedule-cont .dateDownload a {
+  font-size: .28rem;
+  padding-bottom: .1rem;
+  border-bottom: 2px solid #8E56FC;
+  color: #8E56FC;
 }
 main .exhibition-box .limit-num {
   position: absolute;
   right: .3rem;
-  bottom: -0.7rem;
+  bottom: -1rem;
 }
 main .exhibition-box .limit-num li {
   float: left;
@@ -119,6 +163,10 @@ main .exhibition-box .guest-infor li {
 main .exhibition-box .guest-infor img {
   width: 100%;
 }
-main .exhibition-box .guest-infor .guest-infor-box {
-  border: 2px solid #e5e5e5;
+main .exhibition-box .guest-infor p {
+  font-size: .28rem;
+  line-height: .36rem;
+  color: #fff;
+  padding: 0;
+  margin-top: .2rem;
 }
