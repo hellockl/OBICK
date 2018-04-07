@@ -10,36 +10,22 @@ class GoodsModel extends BaseModel
      * @param unknown $num 分页数
      * @return multitype:unknown string
      */
-    public function selectAllGoods($num=10,$search=array())
-    {
+    public function selectAllGoods($num=10,$search=array()){
         $where = array(
             'status' => parent::NORMAL_STATUS,
         );
-        if(is_array($search) && isset($search['title']) && !empty($search['title'])){
-            $where['title'] = array('like',"%{$search['title']}%");
+        
+        if(is_array($search) && isset($search['name']) && !empty($search['name'])){
+            $where['title'] = array('like',"%{$search['name']}%");
+            
         }
-        //只有开始时间
-        if(is_array($search) && isset($search['start_time']) && !empty($search['start_time']) && empty($search['end_time'])){
-            $search['start_time'] .= ' 00:00:00';
-            $where['create_time'] = array('egt',strtotime($search['start_time']));
-        }
-        //只有结束时间
-        if(is_array($search) && isset($search['end_time']) && !empty($search['end_time']) && empty($search['start_time'])){
-            $search['end_time'] .= ' 23:59:59';
-            $where['create_time'] = array('elt',strtotime($search['end_time']));
-        }
-        //区间时间
-        if(is_array($search) && isset($search['start_time']) && !empty($search['start_time']) && !empty($search['end_time'])){
-            $search['start_time']   .= ' 00:00:00';
-            $search['end_time']     .= ' 23:59:59';
-            $where['create_time'] = array(array('egt',strtotime($search['start_time'])),array('elt',strtotime($search['end_time'])));
-        }
+        
         $count      = $this->where($where)->count();
 		
         $page       = new \Think\Page($count,$num);
         $show       = $page->show();
         $list       = $this->where($where)->limit($page->firstRow.','.$page->listRows)->select();
-    
+        
         return array('page' => $show , 'list' => $list);
     }
     /**

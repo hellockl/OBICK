@@ -18,17 +18,35 @@
   <div class="layui-form-item">
     <label class="layui-form-label">头像（小图）</label>
     <div class="layui-input-inline">
-      <input type="file" id='upload_img' name="file" class="layui-upload-file">
-      <img src="{$news_info.smeta}" width="50" height="50" />
-      <input type="hidden" name="smeta" id="smeta" readonly value="{$news_info.smeta}" class="layui-input">
+        <div style="float:left;margin-right: 10px"><input type="file" id='upload_img' name="file" class="layui-upload-file"></div>
+        <div id="show1" style="float:left;"><img src="{$news_info.smeta}" width="100" height="50" /></div>
+        <input type="hidden" name="smeta" id="smeta"  value="{$news_info.smeta}" class="layui-input">
     </div>
   </div>
   <div class="layui-form-item">
     <label class="layui-form-label">头像（大图）</label>
-    <div class="layui-input-inline">
-      <input type="file" id='upload_img2' name="file" class="layui-upload-file">
-      <img src="{$news_info.image}" width="50" height="50" />
-      <input type="hidden" name="image" id="image" readonly value="{$news_info.image}" class="layui-input">
+    <div class="layui-input-inline">     
+        <div style="float:left;margin-right: 10px"><input type="file" id='upload_img2' name="file" class="layui-upload-file"></div>
+        <div id="show2" style="float:left;"><img src="{$news_info.image}" width="100" height="50" /></div>
+        <input type="hidden" name="image" id="image"  value="{$news_info.image}" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">所属展会</label>
+    <div class="layui-input-block">
+        <select name="type" style="display:block">
+            <option value="1" <eq name="news_info.type" value="1">selected="selected"</eq>>广州</option>
+            <option value="2" <eq name="news_info.type" value="2">selected="selected"</eq>>杭州</option>
+        </select>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">首页展示</label>
+    <div class="layui-input-block">
+        <select name="is_index" style="display:block">
+            <option value="0" <eq name="news_info.is_index" value="0">selected="selected"</eq>>否</option>
+            <option value="1" <eq name="news_info.is_index" value="1">selected="selected"</eq>>是</option>
+        </select>
     </div>
   </div>
 
@@ -80,7 +98,7 @@ layui.use('upload', function(){
     $ = layui.jquery
     layui.upload({
         url: "{:U('Guest/uploadImgForContent')}"
-        ,title: '重新上传图片'
+        ,title: '重新上传'
         ,elem: '#upload_img' //指定原始元素，默认直接查找class="layui-upload-file"
         ,ext: 'jpg|png|gif|jpeg'
         ,method: 'post' //上传接口的http类型
@@ -88,13 +106,15 @@ layui.use('upload', function(){
             if(res.code == 300){
                 layer.msg(res.msg);
             }else{
+                var str = "<image src='"+res.data.src+"' width='100' height='50'></image> ";
                 $("#smeta").val(res.data.src);
+                $("#show1").html(str);
             }
         }
     });
     layui.upload({
         url: "{:U('Guest/uploadImgForContent')}"
-        ,title: '上传图片'
+        ,title: '重新上传'
         ,elem: '#upload_img2' //指定原始元素，默认直接查找class="layui-upload-file"
         ,ext: 'jpg|png|gif|jpeg'
         ,method: 'post' //上传接口的http类型
@@ -102,7 +122,9 @@ layui.use('upload', function(){
             if(res.code == 300){
                 layer.msg(res.msg);
             }else{
+                var str = "<image src='"+res.data.src+"' width='100' height='50'></image> ";
                 $("#image").val(res.data.src);
+                $("#show2").html(str);
             }
         }
     });

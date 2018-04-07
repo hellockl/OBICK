@@ -27,7 +27,10 @@ class ActivityController extends CommonController
         $search['end_time']   = I('end_time');
 
         $activity_list = $this->activity_model->selectAllActivity(5,$search);
-        
+        $site_arry = array("广州站","杭州站");
+        foreach($activity_list['list'] as $key=>$val){
+            $activity_list['list'][$key]['site'] = $site_arry[$val['type']-1];
+        }
         $this->assign('activity_list',$activity_list['list']);
         $this->assign('page',$activity_list['page']);
         $this->assign('search',$search);
@@ -72,20 +75,16 @@ class ActivityController extends CommonController
     /*
      * @description: 新增资讯
      */
-    public function addActivity()
-    {
+    public function addActivity(){
         if(IS_POST) {
-
             $activity_info = array(
                 'title'         => I('post.title', '', 'trim'),
                 'content'       => I('post.content'),
                 'smeta'         => I('post.smeta'),
-
+                'is_index'      => I('post.is_index'),
+                'type'          => I('post.type'),
                 'create_time'   => time(),
-
             );
-
-
             if ($this->activity_model->addActivity($activity_info)) {
                 $this->ajaxSuccess('添加成功');
             } else {
@@ -99,19 +98,17 @@ class ActivityController extends CommonController
     /**
      * @description:编辑资讯
      */
-    public function editActivity()
-    {
+    public function editActivity(){
         if(IS_POST){
             $activity_info = array(
                 'id'            => I('post.id'),
                 'title'         => I('post.title', '', 'trim'),
                 'content'       => I('post.content'),
                 'smeta'         => I('post.smeta'),
-
+                'is_index'      => I('post.is_index'),
+                'type'          => I('post.type'),
                 'update_time'   => time(),
-
             );
-
             if($this->activity_model->editActivity($activity_info) !== false){
                 $this->ajaxSuccess('更新成功');
             }else{

@@ -1,45 +1,40 @@
 <?php
 namespace Admin\Controller;
 
-class NewsController extends CommonController
+class ExhibitionController extends CommonController
 {
-    protected   $news_model;
+    protected   $exhibition_model;
     protected   $user_info;
     
     public function __construct()
     {
         parent::__construct();
         /* @var $admin_user_model \Admin\Model\AdminUserModel */
-        $news_model = D('News');
-
+        $exhibition_model = D('Exhibition');
         $this->user_info = session('user_info');
-        $this->news_model = $news_model;
+        $this->exhibition_model = $exhibition_model;
     }
     
     /**
      * @description:用户列表
      * @author wuyanwen(2016年12月1日)
      */
-    public function index()
-    {
+    public function index(){
         $search['title']      = I('title');
         $search['start_time'] = I('start_time');
         $search['end_time']   = I('end_time');
-
-        $news_list = $this->news_model->selectAllNews(10,$search);
-        
-        $this->assign('news_list',$news_list['list']);
-        $this->assign('page',$news_list['page']);
+        $exhibition_list = $this->exhibition_model->selectAllExhibition(10,$search);        
+        $this->assign('exhibition_list',$exhibition_list['list']);
+        $this->assign('page',$exhibition_list['page']);
         $this->assign('search',$search);
 
         $this->display();
     }
-    public function uploadImgForContent()
-    {
+    public function uploadImgForContent(){
         //处理file上传 这里是调用thinkphp封装好\Think\Upload这个上传类 可以学习写thinkphp官方这个类是怎么写的
         $config = array(
             'rootPath' => './Public/',
-            'savePath' => 'upload/newscontent/',
+            'savePath' => 'upload/exhibition/',
             'maxSize' => 11048576,
             'saveName' => array('uniqid', ''),
             'exts' => array('jpg', 'gif', 'png', 'jpeg'),
@@ -54,7 +49,7 @@ class NewsController extends CommonController
             if (!empty($first['url'])) {
                 $url = $first['url'];
             } else {
-                $url = C('HTTP_UPLOAD').'newscontent/'.$first['savename'];
+                $url = C('HTTP_UPLOAD').'exhibition/'.$first['savename'];
             }
             $arr['code'] = 0;
             $arr['msg'] = '';
@@ -72,27 +67,21 @@ class NewsController extends CommonController
     /*
      * @description: 新增资讯
      */
-    public function addNews()
-    {
+    public function addExhibition(){
         if(IS_POST) {
-
-            $news_info = array(
-                'title'         => I('post.title', '', 'trim'),
-                'content'       => I('post.content'),
-                'smeta'         => I('post.smeta'),
-                'author'        => $this->user_info['user_name'],
-                 'is_index'      => I('post.is_index'),
-                'type'      => I('post.type'),
-                'create_time'   => time(),
-                'hits'          => 0,
-                'status'        => 1,
+            $exhibition_info = array(
+                'site'           => I('post.site', '', 'trim'),
+                'date_time'      => I('post.date_time'),
+                'address'        => I('post.address'),
+                'introduce'      => I('post.introduce'),
+                'sponsor'        => I('post.sponsor'),
+                'cooperation'    => I('post.cooperation'),
+                'zhanzhu'        => I('post.zhanzhu'),
+                'zhanzhu_logo1'  => I('post.zhanzhu_logo1'),
+                'zhanzhu_logo2'  => I('post.zhanzhu_logo2'),
+                'create_time'    => time(),             
             );
-
-//            if ($this->admin_user_model->findAdminUserByName($user_info['user_name'])) {
-//                $this->ajaxSuccess('该用户已经被占用');
-//            }
-
-            if ($this->news_model->addNews($news_info)) {
+            if ($this->exhibition_model->addExhibition($exhibition_info)) {
                 $this->ajaxSuccess('添加成功');
             } else {
                 $this->ajaxError('添加失败');
@@ -105,30 +94,29 @@ class NewsController extends CommonController
     /**
      * @description:编辑资讯
      */
-    public function editNews()
-    {
+    public function editExhibition(){
         if(IS_POST){
-            $news_info = array(
-                'id'            => I('post.id'),
-                'title'         => I('post.title', '', 'trim'),
-                'content'       => I('post.content'),
-                'smeta'         => I('post.smeta'),
-                'author'        => $this->user_info['user_name'],
-                 'is_index'      => I('post.is_index'),
-                'type'      => I('post.type'),
-                'update_time'   => time(),
-                'status'        => 1,
+            $exhibition_info = array(
+                'id'             => I('post.id'),
+                'site'           => I('post.site', '', 'trim'),
+                'date_time'      => I('post.date_time'),
+                'address'        => I('post.address'),
+                'introduce'      => I('post.introduce'),
+                'sponsor'        => I('post.sponsor'),
+                'cooperation'    => I('post.cooperation'),
+                'zhanzhu'        => I('post.zhanzhu'),
+                'zhanzhu_logo1'  => I('post.zhanzhu_logo1'),
+                'zhanzhu_logo2'  => I('post.zhanzhu_logo2'),               
             );
-
-            if($this->news_model->editNews($news_info) !== false){
+            if($this->exhibition_model->editExhibition($exhibition_info) !== false){
                 $this->ajaxSuccess('更新成功');
             }else{
                 $this->ajaxError('更新失败');
             }
         }else{
-            $news_id = I('get.news_id','','intval');
-            $news_info = $this->news_model->findNewsById($news_id);
-            $this->assign('news_info',$news_info);
+            $exhibition_id = I('get.exhibition_id','','intval');
+            $exhibition_info = $this->exhibition_model->findExhibitionById($exhibition_id);
+            $this->assign('news_info',$exhibition_info);
             $this->display();
         }
     }
@@ -136,12 +124,9 @@ class NewsController extends CommonController
      * @description:删除资讯
      * @author wuyanwen(2016年12月1日)
      */
-    public function deleteNews()
-    {
-        $news_id = I('post.news_id','','intval');
-
-        $result = $this->news_model->deleteNews($news_id);
-
+    public function deleteExhibition(){
+        $exhibition_id = I('post.exhibition_id','','intval');
+        $result = $this->exhibition_model->deleteExhibition($exhibition_id);
         if($result){
             $this->ajaxSuccess("删除成功");
         }else{

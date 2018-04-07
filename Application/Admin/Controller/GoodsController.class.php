@@ -20,22 +20,24 @@ class GoodsController extends CommonController
      * @description:用户列表
      * @author wuyanwen(2016年12月1日)
      */
-    public function index()
-    {
-        $search['title']      = I('title');
-        $search['start_time'] = I('start_time');
-        $search['end_time']   = I('end_time');
-
-        $goods_list = $this->goods_model->selectAllGoods(10,$search);
+    public function index(){
+        $search['name']      = I('name');
+        $goods_list = $this->goods_model->selectAllGoods(10,$search); 
+        $site_arry = array("广州站","杭州站");
+        foreach($goods_list['list'] as $key=>$val){
+            $goods_list['list'][$key]['site'] = $site_arry[$val['type']-1];
+        }
         
         $this->assign('goods_list',$goods_list['list']);
         $this->assign('page',$goods_list['page']);
         $this->assign('search',$search);
-
         $this->display();
     }
-    public function uploadImgForContent()
-    {
+    
+    
+    
+
+    public function uploadImgForContent(){
         //处理file上传 这里是调用thinkphp封装好\Think\Upload这个上传类 可以学习写thinkphp官方这个类是怎么写的
         $config = array(
             'rootPath' => './Public/',
@@ -70,7 +72,7 @@ class GoodsController extends CommonController
         }
     }
     /*
-     * @description: 新增资讯
+     * @description: 新增商品
      */
     public function addGoods()
     {
@@ -80,7 +82,9 @@ class GoodsController extends CommonController
                 'title'         => I('post.title', '', 'trim'),
                 'content'       => I('post.content'),
                 'smeta'         => I('post.smeta'),
-                
+                'is_index'      => I('post.is_index'),
+                'category'          => I('post.category'),
+                'type'      => I('post.type'),
                 'create_time'   => time(),
                 'hits'          => 0,
                 'status'        => 1,
@@ -92,12 +96,14 @@ class GoodsController extends CommonController
                 $this->ajaxError('添加失败');
             }
         }else{
+            $category_list = M("GoodsCategory")->where()->select();
+            $this->assign('category_list',$category_list);
             $this->display();
         }
     }
 
     /**
-     * @description:编辑资讯
+     * @description:编辑商品
      */
     public function editGoods()
     {
@@ -107,6 +113,9 @@ class GoodsController extends CommonController
                 'title'         => I('post.title', '', 'trim'),
                 'content'       => I('post.content'),
                 'smeta'         => I('post.smeta'),
+                'is_index'      => I('post.is_index'),
+                'type'          => I('post.type'),
+                'category'          => I('post.category'),
                 'author'        => $this->user_info['user_name'],
                 'update_time'   => time(),
                 'status'        => 1,
@@ -120,6 +129,8 @@ class GoodsController extends CommonController
         }else{
             $goods_id = I('get.goods_id','','intval');
             $goods_info = $this->goods_model->findGoodsById($goods_id);
+            $category_list = M("GoodsCategory")->where()->select();
+            $this->assign('category_list',$category_list);
             $this->assign('goods_info',$goods_info);
             $this->display();
         }
@@ -134,6 +145,66 @@ class GoodsController extends CommonController
 
         $result = $this->goods_model->deleteGoods($goods_id);
 
+        if($result){
+            $this->ajaxSuccess("删除成功");
+        }else{
+            $this->ajaxError("删除失败");
+        }
+    }
+    
+    public function category(){
+        $category_list = M("GoodsCategory")->where()->select();
+        $this->assign('category_list',$category_list);
+        $this->display();
+    }
+    
+    /*
+     * @description: 新增分类
+     */
+    public function addCategory(){
+        if(IS_POST) {
+            $data_info = array(
+                'name'         => I('post.name', '', 'trim'),
+                'create_time'  => time()
+            );
+            if (M("GoodsCategory")->add($data_info)) {
+                $this->ajaxSuccess('添加成功');
+            } else {
+                $this->ajaxError('添加失败');
+            }
+        }else{
+            $this->display();
+        }
+    }
+    
+    /**
+     * @description:编辑分类
+     */
+    public function editCategory(){
+        if(IS_POST){
+            $data = array(
+                'name'            => I('post.name'),              
+            );
+            $res = M("GoodsCategory")->where("id=".I("post.id"))->save($data);
+            if($res!==FALSE){
+                $this->ajaxSuccess('更新成功');
+            }else{
+                $this->ajaxError('更新失败');
+            }
+        }else{
+            $category_id = I('get.id','','intval');
+            $category_info = M("GoodsCategory")->where("id=".$category_id)->find();
+            $this->assign('category_info',$category_info);
+            $this->display();
+        }
+    }
+    /**
+     * @description:删除分类
+     * @author wuyanwen(2016年12月1日)
+     */
+    public function deleteCategory(){
+        $category_id = I('post.category_id','','intval');
+        $result = M("GoodsCategory")->where("id=".$category_id)->delete;
         if($result){
             $this->ajaxSuccess("删除成功");
         }else{

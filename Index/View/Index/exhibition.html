@@ -1,283 +1,292 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>展会</title>
-	<link rel="stylesheet" href="__PUBLIC__/web/css/base.css">
-	<link rel="stylesheet" href="__PUBLIC__/web/css/common.css">
-	<link rel="stylesheet" href="__PUBLIC__/web/css/exhibition.css">
-	<link rel="stylesheet" href="__PUBLIC__/web/css/style.css">
-	<script>
-		(function(desW){
-	        var winW=document.documentElement.clientWidth || document.body.clientWidth;
-	        console.log(winW);
-	        document.documentElement.style.fontSize=winW / desW*100+"px";
-	    })(1920);//设计稿宽度
-	</script>
-</head>
-<body>
-	<header>
-	</header>
-	<main>
-		<include file="Public:header"/>
-		<div class="exhibition-box">
-			
-			<div class="exhibition-cont clearfix">
-				
-				<div class="left-menu fl">
-					<ul>
-						<li><a class="active" href="javascript:;">展会信息</a></li>
-						<li><a href="javascript:;">现场活动</a></li>
-				  		<li><a href="javascript:;">平面图</a></li>
-						<li><a href="javascript:;">参展赞助</a></li>
-						<li><a href="javascript:;" style=" display:none;">购票</a></li>
-					</ul>
-				</div>
-				<div data-pageid="1" class="right-cont fl clearfix">
-					<div class="title">
-						<img src="__PUBLIC__/web/images/exhibition_title.png" alt="">
-					</div>
-					<div id="exhibition-infor" class="cont-detail cur">
-						<div class="address">
-							<div class="cont-title">
-								<h1>时间地点：</h1>
-							</div>
-							<div class="address-cont">
-								<div class="guangzhou">
-									<p><span>广州站：</span>2018年5月19-20日</p>
-									<p>广州市海珠区新港东路636号南丰国际会展中心1层</p>
-								</div>
-								<div class="hangzhou">
-									<p><span>杭州站：</span>2018年6月16-18日</p>
-									<p>杭州市滨江长江南路336号白马湖国际会展中心A馆1层</p>
-								</div>
-							</div>
-						</div>
-						<div class="introduce">
-							<div class="cont-title">
-								<h1>基本介绍：</h1>
-							</div>
-							<div class="introduce-cont">
-								<div class="introduce-top">
-									<p>FanXperience（FanX）将打造集合潮流玩具、音乐、游戏、街头、动漫、科幻、服饰等最新潮前沿文化的综合性体验活动，聚合各领域的顶级和最有态度的品牌，对文化进行跨界和组合，在现场提供看，玩买的全方位全新体验。同时活动将邀请众多各领域的国际一线重量级嘉宾到场。海量的潮流文化内容、最新和限量的潮流商品、不一样的视听和参与感、丰富的舞台活动、和文化符号人物的亲密接触互动。FanX活动现场提供的体验包括：</p>
-								</div>
-								<div class="introduce-bottom">
-									<ul>
-										<li>限定潮玩收藏、精品周边手办</li>
-										<li>丰富游戏体验和游戏文化</li>
-										<li>动漫、影视、电音、街头、科幻、潮服</li>
-										<li>世界顶级艺术家、制作人、明星现场亲密接触</li>
-										<li>最新的生活态度、最全的文化符号</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="organization">
-							<div class="cont-title">
-								<h1>组织机构：</h1>
-							</div>
-							<div class="organization-cont">
-								<ul>
-									<li class="clearfix">
-										<p class="organ-name fl">
-											主办方
-										</p>
-										<ul class="clearfix fl">
-											<li>
-												<img src="__PUBLIC__/web/images/organization_01.png" alt="">
-											</li>
-										</ul>
-									</li>
-									<li class="clearfix">
-										<p class="organ-name fl">
-											战略合作
-										</p>
-										<ul class="clearfix fl">
-											<li>
-												<img src="__PUBLIC__/web/images/organization_02.png" alt="">
-											</li>
-										</ul>
-									</li>
-									<li class="clearfix">
-										<p class="organ-name fl">
-											合作伙伴
-										</p>
-										<ul class="clearfix fl">
-											<li>
-												<img src="__PUBLIC__/web/images/organization_03.png" alt="">
-											</li>
-											<li>
-												<img src="__PUBLIC__/web/images/organization_04.png" alt="">
-											</li>
-											<li>
-												<img src="__PUBLIC__/web/images/organization_05.png" alt="">
-											</li>
-											<li>
-												<img src="__PUBLIC__/web/images/organization_06.png" alt="">
-											</li>
-											<li>
-												<img src="__PUBLIC__/web/images/organization_07.png" alt="">
-											</li>
-											<li>
-												<img src="__PUBLIC__/web/images/organization_08.png" alt="">
-											</li>
-										</ul>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div id="activity" class="cont-detail">
-						<div class="activity">
-							<ul class="clearfix">
-								<li>
-									<div class="activity-box">
-										<img src="__PUBLIC__/web/images/activity_01.png" alt="">
-									</div>
-									<h2>欢乐享大轰趴</h2>
-									<p style=" display:none;">炫酷的场景灯光，充满激情的现场，酒水畅饮，欢乐不停歇，让我们一起high起来！</p>
-								</li>
-								<li>
-									<div class="activity-box">
-										<img src="__PUBLIC__/web/images/activity_02.png" alt="">
-									</div>
-									<h2>潮流明星互动</h2>
-									<p style=" display:none;">炫酷的场景灯光，充满激情的现场，酒水畅饮，欢乐不停歇，让我们一起high起来！</p>
-								</li>
-								<li>
-									<div class="activity-box">
-										<img src="__PUBLIC__/web/images/activity_03.png" alt="">
-									</div>
-									<h2>限定奖品乐派</h2>
-									<p style=" display:none;">炫酷的场景灯光，充满激情的现场，酒水畅饮，欢乐不停歇，让我们一起high起来！</p>
-								</li>
-								<li>
-									<div class="activity-box">
-										<img src="__PUBLIC__/web/images/activity_05.png" alt="">
-									</div>
-									<h2>明星达人表演</h2>
-									<p style=" display:none;">炫酷的场景灯光，充满激情的现场，酒水畅饮，欢乐不停歇，让我们一起high起来！</p>
-								</li>
-							</ul>
-							<ul class="activity-num clearfix">
-								<li class="cur">1</li>
-								<li>2</li>
-							</ul>
-						</div>
-					</div>
-					<div id="plan" class="cont-detail">
-						<div class="plan">
-							<ul class="plan-box clearfix">
-								
-								<li class="cur">
-									<img src="__PUBLIC__/web/images/guangzhou_plan.png" alt="">
-								</li>
-								<li>
-									<img src="__PUBLIC__/web/images/hangzhou_plan.png" alt="">
-								</li>
-							</ul>
-							<ul class="plan-num clearfix">
-								<li class="cur">1</li>
-								<li>2</li>
-								
-							</ul>
-							<div class="download"><a href="__PUBLIC__/upload/平面图-0320.rar" download="平面图-0320.rar">点击下载</a></div>
-						</div>
-					</div>
-					<div id="support" class="cont-detail">
-						<div class="support">
-							<div class="support-cont">
-								<p>FanX希望找到同样最有态度的合作伙伴，一起打造下一时代的最IN的活动。</p>
-								<p>我们提供了包括标准展位、光地、赞助、特别合作等多种方式，希望和你们一起来提供更精致与独特的现场体验。详细请下载下面的招商方案。</p>
-							</div>
-							<div class="support_address">
-								<ul class="clearfix">
-									<li><img src="__PUBLIC__/web/images/support_gz.png" alt=""></li>
-									<li><img src="__PUBLIC__/web/images/support_hz.png" alt=""></li>
-								</ul>
-							</div>
-							<div class="support-way">
-								<ul class="clearfix">
-									<li>
-										<div class="way-box">
-											<a href="__PUBLIC__/upload/FANX招商手册0320.rar" download="FANX招商手册0320.rar"><img src="__PUBLIC__/web/images/download.png" alt=""></a>
-										</div>
-										<p><a href="__PUBLIC__/upload/FANX招商手册0320.rar" download="FANX招商手册0320.rar">招商文件下载</a></p>
-									</li>
-									<li>
-										<div class="way-box">
-											<img src="__PUBLIC__/web/images/attn.png" alt="">
-										</div>
-										<p><a href="javascript:;">Attn:Spencer Wang</a></p>
-									</li>
-									<li>
-										<div class="way-box">
-											<img src="__PUBLIC__/web/images/tel.png" alt="">
-										</div>
-										<p><a href="javascript:;">Tel:13601133100</a></p>
-									</li>
-									<li>
-										<div class="way-box">
-											<img src="__PUBLIC__/web/images/email.png" alt="">
-										</div>
-										<p><a href="javascript:;">Email:spencer.wang@pop-lifecom</a></p>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div id="ticket" class="cont-detail">
-						<div class="ticket-infor">
-							<div class="cont-title">
-								<h1>票务信息：</h1>
-							</div>
-							<div class="infor-cont">
-								<div class="infor-title">
-									<p>2018 Fanx潮玩风尚展参观证可在展馆现场购买或各大购票网站订购。</p>
-									<p>感兴趣的观众朋友，购买信息如下：</p>
-								</div>
-								<div class="gz-infor">
-									<p>1. 2018 Fanx潮玩风尚展广州站订票信息：</p>
-									<p> 4月24日 - 4月28日 9:00-16:00</p>
-									<p> VIP票：200元</p>
-									<p> 工作日票：100元</p>
-									<p> 周末票：150元</p>
-								</div>
-								<div class="hz-infor">
-									<p>2. 2018 Fanx潮玩风尚展杭州站订票信息：</p>
-									<p> 4月24日 - 4月28日 9:00-16:00</p>
-									<p> VIP票：200元</p>
-									<p> 工作日票：100元</p>
-									<p> 周末票：150元</p>
-								</div>
-							</div>
-						</div>
-						<div class="ticket-link">
-							<div class="cont-title">
-								<h1>购票链接：</h1>
-							</div>
-							<div class="link-cont">
-								<ul class="clearfix">
-									<li><img src="__PUBLIC__/web/images/ticket_01.png" alt=""></li>
-									<li><img src="__PUBLIC__/web/images/ticket_02.png" alt=""></li>
-									<li><img src="__PUBLIC__/web/images/ticket_03.png" alt=""></li>
-									<li><img src="__PUBLIC__/web/images/ticket_04.png" alt=""></li>
-								</ul>
-							</div>
-							<div class="link-title">
-								<ul class="clearfix">
-									<li><a href="javascript:;">淘宝购票</a></li>
-									<li><a href="javascript:;">大麦网购票</a></li>
-									<li><a href="javascript:;">淘票票购票</a></li>
-									<li><a href="javascript:;">微信公众号购票</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div> 
-			</div>
-		</div>
-	</main>
-	<include file="Public:footer"/>
+    <head>
+        <meta charset="UTF-8">
+        <title>展会</title>
+        <link rel="stylesheet" href="__PUBLIC__/web/css/base.css">
+        <link rel="stylesheet" href="__PUBLIC__/web/css/common.css">
+        <link rel="stylesheet" href="__PUBLIC__/web/css/exhibition.css">
+        <link rel="stylesheet" href="__PUBLIC__/web/css/style.css">
+        <script>
+            (function (desW) {
+                var winW = document.documentElement.clientWidth || document.body.clientWidth;
+                console.log(winW);
+                document.documentElement.style.fontSize = winW / desW * 100 + "px";
+            })(1920);//设计稿宽度
+        </script>
+    </head>
+    <body>
+        <header>
+        </header>
+        <main>
+            <include file="Public:header"/>
+            <div class="exhibition-box">
+
+                <div class="exhibition-cont clearfix">
+
+                    <div class="left-menu fl">
+                        <ul>
+                            <li><a class="active" href="javascript:;">展会信息</a></li>
+                            <li><a href="javascript:;">现场活动</a></li>
+                            <li><a href="javascript:;">平面图</a></li>
+                            <li><a href="javascript:;">参展赞助</a></li>
+                            <li><a href="javascript:;" style=" display:none;">购票</a></li>
+                        </ul>
+                    </div>
+                    <div data-pageid="1" class="right-cont fl clearfix">
+                        <div class="title">
+                            <img src="__PUBLIC__/web/images/exhibition_title.png" alt="">
+                        </div>
+                        <div id="exhibition-infor" class="cont-detail cur">
+                            <div class="address">
+                                <div class="cont-title">
+                                    <h1>时间地点：</h1>
+                                </div>
+                                <div class="address-cont">
+                                    <volist name="list" id="vo">
+                                    <div class="guangzhou">
+                                        <p><span>{$vo.site}：</span>{$vo.date_time}</p>
+                                        <p>{$vo.address}</p>
+                                    </div>
+                                    </volist>
+<!--                                    <div class="hangzhou">
+                                        <p><span>杭州站：</span>2018年6月16-18日</p>
+                                        <p>杭州市滨江长江南路336号白马湖国际会展中心A馆1层</p>
+                                    </div>-->
+                                </div>
+                            </div>
+                            <div class="introduce">
+                                <div class="cont-title">
+                                    <h1>基本介绍：</h1>
+                                </div>
+                                <div class="introduce-cont">
+                                    <div class="introduce-top">
+                                        <p>{$exhibition_info.introduce}</p>
+                                    </div>
+                                    <!--								<div class="introduce-bottom">
+                                                                                                            <ul>
+                                                                                                                    <li>限定潮玩收藏、精品周边手办</li>
+                                                                                                                    <li>丰富游戏体验和游戏文化</li>
+                                                                                                                    <li>动漫、影视、电音、街头、科幻、潮服</li>
+                                                                                                                    <li>世界顶级艺术家、制作人、明星现场亲密接触</li>
+                                                                                                                    <li>最新的生活态度、最全的文化符号</li>
+                                                                                                            </ul>
+                                                                                                    </div>-->
+                                </div>
+                            </div>
+                            <div class="organization">
+                                <div class="cont-title">
+                                    <h1>组织机构：</h1>
+                                </div>
+                                <div class="organization-cont">
+                                    <ul>
+                                        <li class="clearfix">
+                                            <p class="organ-name fl">
+                                                主办方
+                                            </p>
+                                            <ul class="clearfix fl">
+                                                <li>
+                                                    <img src="{$exhibition_info.sponsor}" alt="">
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="clearfix">
+                                            <p class="organ-name fl">
+                                                战略合作
+                                            </p>
+                                            <ul class="clearfix fl">
+                                                <li>
+                                                    <img src="{$exhibition_info.cooperation}" alt="">
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="clearfix">
+                                            <p class="organ-name fl">
+                                                合作伙伴
+                                            </p>
+                                            <ul class="clearfix fl">
+                                                <volist name="partner_list" id="vo">
+                                                <li>
+                                                    <img src="{$vo.smeta}" alt="">
+                                                </li>
+                                                </volist>
+                                                <!--
+                                                <li>
+                                                    <img src="__PUBLIC__/web/images/organization_04.png" alt="">
+                                                </li>
+                                                <li>
+                                                    <img src="__PUBLIC__/web/images/organization_05.png" alt="">
+                                                </li>
+                                                <li>
+                                                    <img src="__PUBLIC__/web/images/organization_06.png" alt="">
+                                                </li>
+                                                <li>
+                                                    <img src="__PUBLIC__/web/images/organization_07.png" alt="">
+                                                </li>
+                                                <li>
+                                                    <img src="__PUBLIC__/web/images/organization_08.png" alt="">
+                                                </li>
+                                                -->
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="activity" class="cont-detail">
+                            <div class="activity">
+                                <ul class="clearfix">
+                                    <volist name="activity_list" id="vo">
+                                    <li>
+                                        <div class="activity-box">
+                                            <img src="{$vo.smeta}" alt="">
+                                        </div>
+                                        <h2>{$vo.title}</h2>
+                                        <p style=" display:none;">{$vo.content}</p>
+                                    </li>
+                                    </volist>
+<!--                                    <li>
+                                        <div class="activity-box">
+                                            <img src="__PUBLIC__/web/images/activity_02.png" alt="">
+                                        </div>
+                                        <h2>潮流明星互动</h2>
+                                        <p style=" display:none;">炫酷的场景灯光，充满激情的现场，酒水畅饮，欢乐不停歇，让我们一起high起来！</p>
+                                    </li>
+                                    <li>
+                                        <div class="activity-box">
+                                            <img src="__PUBLIC__/web/images/activity_03.png" alt="">
+                                        </div>
+                                        <h2>限定奖品乐派</h2>
+                                        <p style=" display:none;">炫酷的场景灯光，充满激情的现场，酒水畅饮，欢乐不停歇，让我们一起high起来！</p>
+                                    </li>
+                                    <li>
+                                        <div class="activity-box">
+                                            <img src="__PUBLIC__/web/images/activity_05.png" alt="">
+                                        </div>
+                                        <h2>明星达人表演</h2>
+                                        <p style=" display:none;">炫酷的场景灯光，充满激情的现场，酒水畅饮，欢乐不停歇，让我们一起high起来！</p>
+                                    </li>-->
+                                </ul>
+<!--                                <ul class="activity-num clearfix">
+                                    <li class="cur">1</li>
+                                    <li>2</li>
+                                </ul>-->
+                            </div>
+                        </div>
+                        <div id="plan" class="cont-detail">
+                            <div class="plan">
+                                <ul class="plan-box clearfix">
+
+                                    <li class="cur">
+                                        <img src="__PUBLIC__/web/images/guangzhou_plan.png" alt="">
+                                    </li>
+                                    <li>
+                                        <img src="__PUBLIC__/web/images/hangzhou_plan.png" alt="">
+                                    </li>
+                                </ul>
+                                <ul class="plan-num clearfix">
+                                    <li class="cur">1</li>
+                                    <li>2</li>
+
+                                </ul>
+                                <div class="download"><a href="__PUBLIC__/upload/平面图-0320.rar" download="平面图-0320.rar">点击下载</a></div>
+                            </div>
+                        </div>
+                        <div id="support" class="cont-detail">
+                            <div class="support">
+                                <div class="support-cont">
+                                    <p>{$exhibition_info.zhanzhu}</p>
+<!--                                    <p>FanX希望找到同样最有态度的合作伙伴，一起打造下一时代的最IN的活动。</p>
+                                    <p>我们提供了包括标准展位、光地、赞助、特别合作等多种方式，希望和你们一起来提供更精致与独特的现场体验。详细请下载下面的招商方案。</p>-->
+                                </div>
+                                <div class="support_address">
+                                    <ul class="clearfix">
+                                        <li><img src="{$exhibition_info.zhanzhu_logo1}" alt=""></li>
+                                        <li><img src="{$exhibition_info.zhanzhu_logo2}" alt=""></li>
+                                    </ul>
+                                </div>
+                                <div class="support-way">
+                                    <ul class="clearfix">
+                                        <li>
+                                            <div class="way-box">
+                                                <a href="__PUBLIC__/upload/FANX招商手册0320.rar" download="FANX招商手册0320.rar"><img src="__PUBLIC__/web/images/download.png" alt=""></a>
+                                            </div>
+                                            <p><a href="__PUBLIC__/upload/FANX招商手册0320.rar" download="FANX招商手册0320.rar">招商文件下载</a></p>
+                                        </li>
+                                        <li>
+                                            <div class="way-box">
+                                                <img src="__PUBLIC__/web/images/attn.png" alt="">
+                                            </div>
+                                            <p><a href="javascript:;">Attn:Spencer Wang</a></p>
+                                        </li>
+                                        <li>
+                                            <div class="way-box">
+                                                <img src="__PUBLIC__/web/images/tel.png" alt="">
+                                            </div>
+                                            <p><a href="javascript:;">Tel:13601133100</a></p>
+                                        </li>
+                                        <li>
+                                            <div class="way-box">
+                                                <img src="__PUBLIC__/web/images/email.png" alt="">
+                                            </div>
+                                            <p><a href="javascript:;">Email:spencer.wang@pop-lifecom</a></p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="ticket" class="cont-detail">
+                            <div class="ticket-infor">
+                                <div class="cont-title">
+                                    <h1>票务信息：</h1>
+                                </div>
+                                <div class="infor-cont">
+                                    <div class="infor-title">
+                                        <p>2018 Fanx潮玩风尚展参观证可在展馆现场购买或各大购票网站订购。</p>
+                                        <p>感兴趣的观众朋友，购买信息如下：</p>
+                                    </div>
+                                    <div class="gz-infor">
+                                        <p>1. 2018 Fanx潮玩风尚展广州站订票信息：</p>
+                                        <p> 4月24日 - 4月28日 9:00-16:00</p>
+                                        <p> VIP票：200元</p>
+                                        <p> 工作日票：100元</p>
+                                        <p> 周末票：150元</p>
+                                    </div>
+                                    <div class="hz-infor">
+                                        <p>2. 2018 Fanx潮玩风尚展杭州站订票信息：</p>
+                                        <p> 4月24日 - 4月28日 9:00-16:00</p>
+                                        <p> VIP票：200元</p>
+                                        <p> 工作日票：100元</p>
+                                        <p> 周末票：150元</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ticket-link">
+                                <div class="cont-title">
+                                    <h1>购票链接：</h1>
+                                </div>
+                                <div class="link-cont">
+                                    <ul class="clearfix">
+                                        <li><img src="__PUBLIC__/web/images/ticket_01.png" alt=""></li>
+                                        <li><img src="__PUBLIC__/web/images/ticket_02.png" alt=""></li>
+                                        <li><img src="__PUBLIC__/web/images/ticket_03.png" alt=""></li>
+                                        <li><img src="__PUBLIC__/web/images/ticket_04.png" alt=""></li>
+                                    </ul>
+                                </div>
+                                <div class="link-title">
+                                    <ul class="clearfix">
+                                        <li><a href="javascript:;">淘宝购票</a></li>
+                                        <li><a href="javascript:;">大麦网购票</a></li>
+                                        <li><a href="javascript:;">淘票票购票</a></li>
+                                        <li><a href="javascript:;">微信公众号购票</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </main>
+    <include file="Public:footer"/>
 </body>
 </html>

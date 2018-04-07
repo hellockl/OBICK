@@ -14,59 +14,38 @@
 
             <blockquote class="layui-elem-quote">
                 <button  class="layui-btn layui-btn-small add">
-                    <i class="layui-icon">&#xe608;</i> 添加嘉宾
+                    <i class="layui-icon">&#xe608;</i> 添加展会
                 </button>
             </blockquote>
 
-            <fieldset class="layui-elem-field">
-                <legend>字段集</legend>
-                <div class="layui-field-box">
-                    <form class="layui-form" method="post" action="{:U('Guest/index')}">
-                        <div class="layui-form-item">
 
-                            <div class="layui-inline">
-                                <label class="layui-form-label">嘉宾名称</label>
-                                <div class="layui-input-inline">
-                                    <input type="text" name="name" autocomplete="off" class="layui-input">
-                                </div>
-                            </div>
-                            <div class="layui-inline"><button class="layui-btn layui-btn-warm" lay-submit="" lay-filter="search">搜索</button></div>
-                        </div>
-
-                    </form>
-                </div>
-            </fieldset>
 
 
             <fieldset class="layui-elem-field">
-                <legend>嘉宾列表</legend>
+                <legend>展会列表</legend>
                 <div class="layui-field-box">
                     <table class="layui-table">
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>所属展会</th>
-                                <th>头像小图</th>
-                                <th>头像大图</th>
-                                <th>姓名</th>
+                                <th>展会站点</th>
+                                <th>展会时间</th>
+                                <th>展会地点</th>
                                 <th>创建时间</th>
                                 <th>操作</th>
                             </tr>
                         </thead>
                         <tbody>
-                        <foreach name="guest_list" key="k" item="vo">
+                        <foreach name="exhibition_list" key="k" item="vo">
                             <tr>
                                 <td>{$vo.id}</td>
                                 <td>{$vo.site}</td>
-                                <td><img src="{$vo.smeta}" width="50" height="50" /></td>
-                                <td><img src="{$vo.image}" width="50" height="50" /></td>
-                                <td>{$vo.name}</td>
-
+                                <td>{$vo.date_time}</td>
+                                <td>{$vo.address}</td>
                                 <td>{$vo.create_time|date="Y-m-d H:i:s",###}</td>
-
                                 <td>
                                     <a data="{$vo.id}" class="layui-btn layui-btn-mini layui-btn-normal edit"><i class="layui-icon">&#xe642;</i>编辑</a>
-                                    <a  data="{$vo.id}" class="layui-btn layui-btn-danger layui-btn-mini del"><i class="layui-icon">&#xe640;</i>删除</a>
+                                    <!--<a data="{$vo.id}" class="layui-btn layui-btn-danger layui-btn-mini del"><i class="layui-icon">&#xe640;</i>删除</a>-->
                                 </td>
                             </tr>
                         </foreach>
@@ -88,14 +67,14 @@
                         $ = layui.jquery
 
                 $('.add').click(function () {
-                    var url = "{:U('Guest/addGuest')}";
+                    var url = "{:U('Exhibition/addExhibition')}";
                     $.get(url, function (data) {
                         if (data.status == 'error') {
                             layer.msg(data.msg, {icon: 5});
                             return;
                         }
                         layer.open({
-                            title: '添加嘉宾',
+                            title: '添加展会',
                             type: 1,
                             skin: 'layui-layer-rim', //加上边框
                             area: ['700px', '80%'], //宽高
@@ -105,15 +84,15 @@
                 });
                 //编辑用户
                 $('.edit').click(function () {
-                    var guest_id = $(this).attr('data');
-                    var url = "{:U('Guest/editGuest')}";
-                    $.get(url, {guest_id: guest_id}, function (data) {
+                    var exhibition_id = $(this).attr('data');
+                    var url = "{:U('Exhibition/editExhibition')}";
+                    $.get(url, {exhibition_id: exhibition_id}, function (data) {
                         if (data.status == 'error') {
                             layer.msg(data.msg, {icon: 5});
                             return;
                         }
                         layer.open({
-                            title: '编辑嘉宾',
+                            title: '编辑展会',
                             type: 1,
                             skin: 'layui-layer-rim', //加上边框
                             area: ['700px', '80%'], //宽高
@@ -144,14 +123,14 @@
 
                 //删除
                 $('.del').click(function () {
-                    var guest_id = $(this).attr('data');
-                    var url = "{:U('Guest/deleteGuest')}";
+                    var exhibition_id = $(this).attr('data');
+                    var url = "{:U('Exhibition/deleteExhibition')}";
                     layer.confirm('确定删除吗?', {
                         icon: 3,
                         skin: 'layer-ext-moon',
                         btn: ['确认', '取消'] //按钮
                     }, function () {
-                        $.post(url, {guest_id: guest_id}, function (data) {
+                        $.post(url, {exhibition_id: exhibition_id}, function (data) {
                             if (data.status == 'error') {
                                 layer.msg(data.msg, {icon: 5});//失败的表情
                                 return;

@@ -1,86 +1,118 @@
 <style>
-  .layui-form-item{
-    width: 100%;
-  }
-  .layui-form-item .layui-input-inline{
-    width: 80%;
-  }
+    .layui-form-item{
+        width: 100%;
+    }
+    .layui-form-item .layui-input-inline{
+        width: 80%;
+    }
 </style>
 <form class="layui-form">
-  <div style="height: 20px"></div>
-  <div class="layui-form-item">
-    <label class="layui-form-label">商品名称</label>
-    <div class="layui-input-inline">
-      <input type="text" name="title" lay-verify="required" placeholder="请输入商品名称" autocomplete="off"  id="title" class="layui-input">
+    <div style="height: 20px"></div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">商品名称</label>
+        <div class="layui-input-inline">
+            <input type="text" name="title" lay-verify="required" placeholder="请输入商品名称" autocomplete="off"  id="title" class="layui-input">
+        </div>
     </div>
-  </div>
-
-  <div class="layui-form-item">
-    <label class="layui-form-label">缩略图</label>
-    <div class="layui-input-inline">
-      <input type="file" id='upload_img' name="file" class="layui-upload-file">
-      <input type="text" name="smeta" readonly id="smeta" value="" class="layui-input">
+    <div class="layui-form-item">
+        <label class="layui-form-label">商品分类</label>
+        <div class="layui-input-block">
+            <select name="category" style="display:block">
+                <volist name="category_list" id="vo">
+                <option value="{$vo.id}">{$vo.name}</option>
+                </volist>
+            </select>
+        </div>
     </div>
-  </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">所属展会</label>
+        <div >
+            <select name="type" style="display:block">
+                <option value="1">广州</option>
+                <option value="2">杭州</option>
+            </select>
+        </div>
 
-  <div class="layui-form-item">
-    <label class="layui-form-label">描述</label>
-    <div class="layui-input-inline">
-
-      <textarea class="layui-textarea " id="content" name="content"></textarea>
     </div>
-  </div>
-
-  <div class="layui-form-item">
-    <div class="layui-input-block">
-      <button class="layui-btn" lay-submit lay-filter="news">立即提交</button>
-      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+    <div class="layui-form-item">
+        <label class="layui-form-label">首页展示</label>
+        <div class="layui-input-block">
+            <select name="type" style="display:block">
+                <option value="0">否</option>
+                <option value="1">是</option>
+            </select>
+        </div>
     </div>
-  </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">缩略图</label>
+        <div class="layui-input-inline">
+            <div style="float:left;margin-right: 10px"><input type="file" id='upload_img' name="file" class="layui-upload-file"></div>
+            <div id="show" style="float:left;"></div>
+            <input type="hidden" name="smeta" id="smeta"  value="" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">描述</label>
+        <div class="layui-input-inline">
+
+            <textarea class="layui-textarea " id="content" name="content"></textarea>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="news">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
 </form>
 <script>
-layui.use('form', function(){
-	var form = layui.form(),
-   		 $ = layui.jquery
-	  //监听提交
-	  form.on('submit(news)', function(data){
-		  
-	    var newsinfo = data.field;
-        //newsinfo.content = layui.layedit.getContent(1);
-		var url = "{:U('Goods/addGoods')}";
-		$.post(url,newsinfo,function(data){
-			if(data.status == 'error'){
-				  layer.msg(data.msg,{icon: 5});//失败的表情
-				  return;
-			  }else if(data.status == 'success'){
-				  layer.msg(data.msg, {
-					  icon: 6,//成功的表情
-					  time: 2000 //2秒关闭（如果不配置，默认是3秒）
-					}, function(){
-					   location.reload();
-					}); 
-			  }
-		})
-		
-	    return false;//阻止表单跳转
-	  });
-	});
+    layui.use('form', function () {
+        var form = layui.form(),
+                $ = layui.jquery
+        //监听提交
+        form.on('submit(news)', function (data) {
 
-layui.use('upload', function(){
-    $ = layui.jquery
-    layui.upload({
-        url: "{:U('Goods/uploadImgForContent')}"
-        ,title: '上传图片'
-        ,elem: '#upload_img' //指定原始元素，默认直接查找class="layui-upload-file"
-        ,ext: 'jpg|png|gif|jpeg'
-        ,method: 'post' //上传接口的http类型
-        ,success: function(res){
-            if(res.code == 300){
-                layer.msg(res.msg);
-            }else{
-                $("#smeta").val(res.data.src);
-            }
-        }
+            var newsinfo = data.field;
+            //newsinfo.content = layui.layedit.getContent(1);
+            var url = "{:U('Goods/addGoods')}";
+            $.post(url, newsinfo, function (data) {
+                if (data.status == 'error') {
+                    layer.msg(data.msg, {icon: 5});//失败的表情
+                    return;
+                } else if (data.status == 'success') {
+                    layer.msg(data.msg, {
+                        icon: 6, //成功的表情
+                        time: 2000 //2秒关闭（如果不配置，默认是3秒）
+                    }, function () {
+                        location.reload();
+                    });
+                }
+            })
+
+            return false;//阻止表单跳转
+        });
     });
-});
+
+    layui.use('upload', function () {
+        $ = layui.jquery
+        layui.upload({
+            url: "{:U('Goods/uploadImgForContent')}"
+            , title: '上传图片'
+            , elem: '#upload_img' //指定原始元素，默认直接查找class="layui-upload-file"
+            , ext: 'jpg|png|gif|jpeg'
+            , method: 'post' //上传接口的http类型
+            , success: function (res) {
+                if (res.code == 300) {
+                    layer.msg(res.msg);
+                } else {
+                    var str = "<image src='"+res.data.src+"' width='100' height='50'></image> ";
+                    $("#smeta").val(res.data.src);
+                    $("#show").html(str);
+                }
+            }
+        });
+    });
 </script>

@@ -27,7 +27,10 @@ class PartnerController extends CommonController
         $search['end_time']   = I('end_time');
 
         $partner_list = $this->partner_model->selectAllPartner(10,$search);
-        
+        $site_arry = array("广州站","杭州站");
+        foreach($partner_list['list'] as $key=>$val){
+            $partner_list['list'][$key]['site'] = $site_arry[$val['type']-1];
+        }
         $this->assign('partner_list',$partner_list['list']);
         $this->assign('page',$partner_list['page']);
         $this->assign('search',$search);
@@ -72,20 +75,16 @@ class PartnerController extends CommonController
     /*
      * @description: 新增资讯
      */
-    public function addPartner()
-    {
+    public function addPartner(){
         if(IS_POST) {
-
             $partner_info = array(
                 'title'         => I('post.title', '', 'trim'),
                 'content'       => I('post.content'),
                 'smeta'         => I('post.smeta'),
-
+                'type'          => I('post.type'),
+                'is_index'      => I('post.is_index'),
                 'create_time'   => time(),
-
             );
-
-
             if ($this->partner_model->addPartner($partner_info)) {
                 $this->ajaxSuccess('添加成功');
             } else {
@@ -99,19 +98,17 @@ class PartnerController extends CommonController
     /**
      * @description:编辑资讯
      */
-    public function editPartner()
-    {
+    public function editPartner(){
         if(IS_POST){
             $partner_info = array(
                 'id'            => I('post.id'),
                 'title'         => I('post.title', '', 'trim'),
                 'content'       => I('post.content'),
                 'smeta'         => I('post.smeta'),
-
+                'type'          => I('post.type'),
+                'is_index'      => I('post.is_index'),
                 'update_time'   => time(),
-
             );
-
             if($this->partner_model->editPartner($partner_info) !== false){
                 $this->ajaxSuccess('更新成功');
             }else{
@@ -128,12 +125,9 @@ class PartnerController extends CommonController
      * @description:删除资讯
      * @author wuyanwen(2016年12月1日)
      */
-    public function deletePartner()
-    {
+    public function deletePartner(){
         $partner_id = I('post.partner_id','','intval');
-
         $result = $this->partner_model->deletePartner($partner_id);
-
         if($result){
             $this->ajaxSuccess("删除成功");
         }else{

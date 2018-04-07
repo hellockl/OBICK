@@ -18,18 +18,39 @@
   <div class="layui-form-item">
     <label class="layui-form-label">头像（小图）</label>
     <div class="layui-input-inline">
-      <input type="file" id='upload_img' name="file" class="layui-upload-file">
-      <input type="text" name="smeta" readonly id="smeta" value="" class="layui-input">
+      
+        <div style="float:left;margin-right: 10px"><input type="file" id='upload_img' name="file" class="layui-upload-file"></div>
+        <div id="show1" style="float:left;"></div>
+        <input type="hidden" name="smeta" id="smeta"  value="" class="layui-input">
     </div>
   </div>
   <div class="layui-form-item">
     <label class="layui-form-label">头像（大图）</label>
     <div class="layui-input-inline">
-      <input type="file" id='upload_img2' name="file" class="layui-upload-file">
-      <input type="text" name="image" readonly id="image" value="" class="layui-input">
+      
+        <div style="float:left;margin-right: 10px"><input type="file" id='upload_img2' name="file" class="layui-upload-file"></div>
+        <div id="show2" style="float:left;"></div>
+        <input type="hidden" name="image" id="image"  value="" class="layui-input">
     </div>
   </div>
-
+  <div class="layui-form-item">
+    <label class="layui-form-label">所属展会</label>
+    <div class="layui-input-block">
+      <select name="type" style="display:block">
+        <option value="1">广州</option>
+        <option value="2">杭州</option>
+      </select>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">首页展示</label>
+    <div class="layui-input-block">
+      <select name="is_index" style="display:block">
+        <option value="0">否</option>
+        <option value="1">是</option>
+      </select>
+    </div>
+  </div>
   <div class="layui-form-item">
     <label class="layui-form-label">描述</label>
     <div class="layui-input-inline">
@@ -87,7 +108,10 @@ layui.use('upload', function(){
             if(res.code == 300){
                 layer.msg(res.msg);
             }else{
+                
+                var str = "<image src='"+res.data.src+"' width='100' height='50'></image> ";
                 $("#smeta").val(res.data.src);
+                $("#show1").html(str);
             }
         }
     });
@@ -101,7 +125,9 @@ layui.use('upload', function(){
             if(res.code == 300){
                 layer.msg(res.msg);
             }else{
+                var str = "<image src='"+res.data.src+"' width='100' height='50'></image> ";
                 $("#image").val(res.data.src);
+                $("#show2").html(str);
             }
         }
     });

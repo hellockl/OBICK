@@ -22,11 +22,12 @@ class GuestController extends CommonController
      */
     public function index()
     {
-        $search['title']      = I('title');
-        $search['start_time'] = I('start_time');
-        $search['end_time']   = I('end_time');
-
+        $search['name']      = I('name');
+        $site_arry = array("广州站","杭州站");
         $guest_list = $this->guest_model->selectAllGuest(10,$search);
+        foreach($guest_list['list'] as $key=>$val){
+            $guest_list['list'][$key]['site'] = $site_arry[$val['type']-1];
+        }
         
         $this->assign('guest_list',$guest_list['list']);
         $this->assign('page',$guest_list['page']);
@@ -81,6 +82,8 @@ class GuestController extends CommonController
                 'content'       => I('post.content'),
                 'smeta'         => I('post.smeta'),
                 'image'         => I('post.image'),
+                'is_index'      => I('post.is_index'),
+                'type'          => I('post.type'),
                 'create_time'   => time(),
                 'hits'          => 0,
                 'status'        => 1,
@@ -103,8 +106,7 @@ class GuestController extends CommonController
     /**
      * @description:编辑资讯
      */
-    public function editGuest()
-    {
+    public function editGuest(){
         if(IS_POST){
             $guest_info = array(
                 'id'            => I('post.id'),
@@ -112,6 +114,8 @@ class GuestController extends CommonController
                 'content'       => I('post.content'),
                 'smeta'         => I('post.smeta'),
                 'image'         => I('post.image'),
+                'is_index'      => I('post.is_index'),
+                'type'          => I('post.type'),
                 'update_time'   => time(),
                 'status'        => 1,
             );

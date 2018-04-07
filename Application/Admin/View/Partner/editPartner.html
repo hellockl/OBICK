@@ -11,7 +11,7 @@
   <div class="layui-form-item">
     <label class="layui-form-label">名称</label>
     <div class="layui-input-inline">
-      <input type="text" name="title" lay-verify="required" value="{$partner_info.title}" autocomplete="off"  id="title" class="layui-input">
+      <input type="text" name="title" value="{$partner_info.title}" autocomplete="off"  id="title" class="layui-input">
     </div>
   </div>
   <input type="hidden" value="{$partner_info.id}" name="id">
@@ -19,16 +19,35 @@
   <div class="layui-form-item">
     <label class="layui-form-label">LOGO</label>
     <div class="layui-input-inline">
-      <input type="file" id='upload_img' name="file" class="layui-upload-file">
-      <img src="{$partner_info.smeta}" width="50" height="50" />
-      <input type="hidden" name="smeta" id="smeta" readonly value="{$partner_info.smeta}" class="layui-input">
+      
+        <div style="float:left;margin-right: 10px"><input type="file" id='upload_img' name="file" class="layui-upload-file"></div>
+        <div id="show4" style="float:left;background-color: #FFDD99"><img src="{$partner_info.smeta}" width="100" height="50" /></div>
+        <input type="hidden" name="smeta" id="smeta"  value="{$partner_info.smeta}" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">所属展会</label>
+    <div class="layui-input-block">
+        <select name="type" style="display:block">
+            <option value="1" <eq name="partner_info.type" value="1">selected="selected"</eq>>广州</option>
+            <option value="2" <eq name="partner_info.type" value="2">selected="selected"</eq>>杭州</option>
+        </select>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">首页展示</label>
+    <div class="layui-input-block">
+        <select name="is_index" style="display:block">
+            <option value="0" <eq name="partner_info.is_index" value="0">selected="selected"</eq>>否</option>
+            <option value="1" <eq name="partner_info.is_index" value="1">selected="selected"</eq>>是</option>
+        </select>
     </div>
   </div>
 
   <div class="layui-form-item">
     <label class="layui-form-label">简介</label>
     <div class="layui-input-inline">
-      <textarea class="layui-textarea " name="content" >{$news_info.content}</textarea>
+      <textarea class="layui-textarea " name="content" >{$partner_info.content}</textarea>
 
     </div>
   </div>
@@ -80,7 +99,10 @@ layui.use('upload', function(){
             if(res.code == 300){
                 layer.msg(res.msg);
             }else{
+                
+                var str = "<image src='"+res.data.src+"' width='100' height='50'></image> ";
                 $("#smeta").val(res.data.src);
+                $("#show").html(str);
             }
         }
     });
