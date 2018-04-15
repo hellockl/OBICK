@@ -114,6 +114,7 @@ footer .foot .foot-cont .foot-menu li:last-child {
 footer .foot .foot-cont .foot-menu li a {
   font-size: .24rem;
   color: #fff;
+  text-shadow:2px 2px #333;
 }
 footer .foot .foot-cont .foot-icon {
   margin-top: .38rem;

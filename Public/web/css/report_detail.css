@@ -1,0 +1,44 @@
+body {
+  height: 100%;
+  background: url("../images/bg.png");
+  background-size: cover;
+}
+main .detail-box {
+  background: url("../images/guest_bg.png") no-repeat;
+  background-size: 100% 100%;
+}
+main .detail-box .title {
+  width: 2.72rem;
+  margin: 0 auto;
+  margin-top: 2rem;
+}
+main .detail-box .title img {
+  width: 100%;
+}
+main .detail-box .detail-cont {
+  width: 13.66rem;
+  margin: 0 auto;
+  margin-top: 2.2rem;
+  background-color: #fff;
+  padding: .4rem;
+}
+main .detail-box .detail-cont .detail-head img {
+  width: 100%;
+  margin: 0 auto;
+}
+main .detail-box .detail-cont .detail-text {
+  background-color: #F0F0F0;
+  padding: .9rem;
+}
+main .detail-box .detail-cont .detail-text p {
+  font-size: .24rem;
+  line-height: .42rem;
+  color: #000;
+}
+main .detail-box .detail-cont .detail-text .time {
+  margin-top: 1rem;
+}
+main .detail-box .detail-cont .detail-text .time p {
+  color: #808080;
+  text-align: right;
+}
