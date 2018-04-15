@@ -61,7 +61,10 @@ class BannerController extends CommonController
             $data_info = array(
                 'id'=>$data['id'],
                 'banner_name'=>$data['banner_name'],
-                'banner_img'=>$data['banner_img']
+                'is_index' => $data['is_index'],
+                'banner_img'=>$data['banner_img'],
+                'type'=>$data['type'],
+                'position'=>$data['position']
             );
             if($this->banner_model->editBanner($data_info) !== false){
                 $this->ajaxSuccess('更新成功');
@@ -88,32 +91,37 @@ class BannerController extends CommonController
         }
     }
 
-    public function upload()
-    {
-        if(IS_POST){
-            $img = $_FILES['file'];
-
-            $upload = new \Think\Upload();// 实例化上传类
-            $upload->maxSize   = 3145728 ;// 设置附件上传大小
-            $upload->exts      = array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型
-            $upload->rootPath  = './Public/'; // 设置附件上传根目录
-            $upload->savePath  = 'upload/'; // 设置附件上传（子）目录
-            // 上传文件
-            $info   =   $upload->uploadOne($img);
-
-
-            if(!$info) {// 上传错误提示错误信息
-                echo json_encode(array('status' => 'error','msg' => $upload->getError()));
-                exit;
-            }else{// 上传成功
-
-                $imgpath = $info['savepath'].$info['savename'];
-                echo json_encode(array('status' => 'success','url'=>'/Public/'.$imgpath));
-                exit;
+    public function upload(){
+        $config = array(
+            'rootPath' => './Public/',
+            'savePath' => 'upload/banner/',
+            'maxSize' => 11048576,
+            'saveName' => array('uniqid', ''),
+            'exts' => array('jpg', 'gif', 'png', 'jpeg'),
+            'autoSub' => false,
+        );
+        $upload = new \Think\Upload($config);//
+        $info = $upload->upload();
+        //开始上传
+        if ($info) {
+            //上传成功
+            $first = array_shift($info);
+            if (!empty($first['url'])) {
+                $url = $first['url'];
+            } else {
+                $url = C('HTTP_UPLOAD').'banner/'.$first['savename'];
             }
-
-        }else{
-            $this->display();
+            $arr['code'] = 0;
+            $arr['msg'] = '';
+            $arr['data']['src'] = $url;
+            $arr['data']['title'] = $first['savename'];
+            echo json_encode($arr);
+        } else {
+            $arr['code'] = 300;
+            $arr['msg'] = $upload->getError();
+            $arr['data']['src'] = '';
+            $arr['data']['title'] = '';
+            echo json_encode($arr);
         }
 
     }

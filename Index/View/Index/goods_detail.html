@@ -26,19 +26,21 @@
 				</div>
 			<div class="detail-cont clearfix">
 				<div class="head-title">
-					<h1>J BALVIN</h1>
+					<h1>{$goods_info.title}</h1>
 					<p>HOST COMMITTEE 2018</p>
 				</div>
 				<div class="detail-left fl">
 					<ul>
-						<li><img src="__PUBLIC__/web/images/goods_detail_01.png" alt=""></li>
-						<li><img src="__PUBLIC__/web/images/goods_detail_02.png" alt=""></li>
+						<li><img src="{$goods_info.smeta}" alt=""></li>
+                                                <neq name="goods_info.image" value="">
+						<li><img src="{$goods_info.image}" alt=""></li>
+                                                </neq>
 					</ul>
 				</div>
 				<div class="detail-right fl">
 					<div class="intro-detail">
 						<div class="intro-article">
-							<p>MC Supersized is designed by Ron English, one of the most prolific and recognizable artists, and he is regarded as the "Godfather of Street Art and described his signature mash-up of high and low cultural touchstones, from superhero mythology to totems of art history. </p>
+							<p>{$goods_info.content} </p>
 						</div>
 					</div>
 				</div>

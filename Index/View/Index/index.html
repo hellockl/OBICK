@@ -117,11 +117,13 @@
 				<ul class="clearfix">
 					<volist name="goods_list" id="vo">
 					<li>
+                                                <a href="__APP__/Index/goods_detail.html?type={$type}&id={$vo.id}">
 						<img src="{$vo.smeta}" alt="">
 						<div>
 							<img src="__PUBLIC__/web/images/goods_active.png" alt="">
 						</div>
-						<p>{$vo.title}</p>
+						<p style="display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 1;overflow: hidden;">{$vo.title}</p>
+                                                </a>
 					</li>
 					</volist>
 					<!--<li>-->
@@ -162,22 +164,19 @@
 					<!--</li>-->
 				</ul>
 				<div class="more">
-					<a href="javascript:;">more ></a>
+					<a href="__APP__/Index/goods.html?type={$type}">more ></a>
 				</div>
 			</div>
 		</div>
  		<div class="banner">
 			<div class="swiper-container">
 			    <div class="swiper-wrapper">
+                                <volist name="banner_list" id="vo">
 			        <div class="swiper-slide">
-			        	<img src="__PUBLIC__/web/images/banner.png" alt="">
+			        	<img src="{$vo.banner_img}" style="width: 798px;height: 146px" alt="">
 			        </div>
-			        <div class="swiper-slide">
-			        	<img src="__PUBLIC__/web/images/banner.png" alt="">
-			        </div>
-			        <div class="swiper-slide">
-			        	<img src="__PUBLIC__/web/images/banner.png" alt="">
-			        </div>
+                                </volist>
+			       
 			    </div>
 
 			    <div class="swiper-pagination"></div>
@@ -191,10 +190,12 @@
 				<ul class="clearfix">
 					<volist name="news_list" id="vo">
 						<li>
+                                                    <a href="__APP__/Index/report_detail.html?type={$type}&id={$vo.id}">
 							<img src="{$vo.smeta}" alt="">
 							<div class="cont-title">
 								<p>{$vo.title}</p>
 							</div>
+                                                    </a>
 							<!-- <div class="trend-time">
 								<p>{$vo.create_time|date="Y年m月d日",###}</p>
 							</div> -->
@@ -220,7 +221,7 @@
 					<!--</li>-->
 				</ul>
 				<div class="more">
-					<a href="javascript:;">more ></a>
+					<a href="__APP__/Index/experience.html?type={$type}&category=1">more ></a>
 				</div>
 			</div>
 		</div>

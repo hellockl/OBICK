@@ -13,6 +13,7 @@
                 console.log(winW);
                 document.documentElement.style.fontSize = winW / desW * 100 + "px";
             })(1920);//设计稿宽度
+            
         </script>
     </head>
     <body>
@@ -288,5 +289,16 @@
             </div>
         </main>
     <include file="Public:footer"/>
+    <script>
+        $(function () {
+            $(".left-menu li a").click(function () {
+                var index = $(this).parent("li").index();
+                $(this).addClass("active").parent("li").siblings("li").children("a").removeClass("active");
+                $(".right-cont .cont-detail").eq(index).addClass("cur").siblings(".cont-detail").removeClass("cur");
+                $(".sub-nav li").children("a").removeClass("active");
+                currentNav.eq(index).children("a").addClass("active").end().siblings("li").children("a").removeClass("active");
+            })
+        })
+    </script>
 </body>
 </html>

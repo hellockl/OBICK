@@ -32,6 +32,12 @@
       <textarea class="layui-textarea " id="introduce" name="introduce"></textarea>
     </div>
   </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">活动日程</label>
+    <div class="layui-input-inline">
+      <textarea class="layui-textarea " id="schedule" name="schedule"></textarea>
+    </div>
+  </div>
   
 
   
@@ -84,14 +90,22 @@
   </div>
 </form>
 <script>
-layui.use('form', function(){
-	var form = layui.form(),
-   		 $ = layui.jquery
+layui.use(['form','layedit'], function(){
+        var layedit = layui.layedit;
+        //设置内容里面的上传接口
+        layedit.set({
+            uploadImage: {
+                url: "{:U('News/uploadImgForContent')}" //接口url
+                ,type: 'post' //默认post
+            }
+        });
+        var index = layedit.build('schedule'); //建立编辑器
+	var form = layui.form(),$ = layui.jquery;
 	  //监听提交
 	  form.on('submit(news)', function(data){
 		  
 	    var newsinfo = data.field;
-        newsinfo.content = layui.layedit.getContent(1);
+            newsinfo.schedule = layui.layedit.getContent(index);
 
 
 		var url = "{:U('Exhibition/addExhibition')}";

@@ -6,6 +6,7 @@
     width: 80%;
   }
 </style>
+
 <form class="layui-form">
   <div style="height: 20px"></div>
   <div class="layui-form-item">
@@ -14,32 +15,54 @@
       <input type="text" name="title" lay-verify="required" placeholder="请输入标题" autocomplete="off"  id="title" class="layui-input">
     </div>
   </div>
-
   <div class="layui-form-item">
-    <label class="layui-form-label">缩略图</label>
-    <div class="layui-input-inline">
-      <input type="file" id='upload_img' name="file" class="layui-upload-file">
-      <input type="text" name="smeta" readonly id="smeta" value="" class="layui-input">
+        <label class="layui-form-label">类别</label>
+        <div class="layui-input-block">
+            <select name="category" style="display:block">
+                <option value="1">现场亮点</option>
+                <option value="2">音乐</option>
+                <option value="3">玩具</option>
+                <option value="4">街头时尚</option>
+                <option value="5">幻想</option>
+                <option value="6">游戏</option>
+            </select>
+        </div>
     </div>
-  </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">所属展会</label>
+        <div >
+            <select name="type" style="display:block">
+                <option value="1">广州</option>
+                <option value="2">杭州</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">首页展示</label>
+        <div class="layui-input-block">
+            <select name="is_index" style="display:block">
+                <option value="0">否</option>
+                <option value="1">是</option>
+            </select>
+        </div>
+    </div>
+  
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">缩略图</label>
+        <div class="layui-input-inline">
+            <input type="file" id='upload_img' name="file" class="layui-upload-file">
+
+            <div id="show" style="float:left;"></div>
+            <input type="hidden" name="smeta" id="smeta"  value="" class="layui-input">
+        </div>
+    </div>
 
   <div class="layui-form-item">
     <label class="layui-form-label">内容</label>
     <div class="layui-input-inline">
       <textarea id="content" name="content" style="display: none;"></textarea>
-      <script>
-          layui.use('layedit', function(){
-              var layedit = layui.layedit;
-              //设置内容里面的上传接口
-              layedit.set({
-                  uploadImage: {
-                      url: "{:U('News/uploadImgForContent')}" //接口url
-                      ,type: 'post' //默认post
-                  }
-              });
-              layedit.build('content'); //建立编辑器
-          });
-      </script>
+      
     </div>
   </div>
 
@@ -51,14 +74,23 @@
   </div>
 </form>
 <script>
-layui.use('form', function(){
-	var form = layui.form(),
-   		 $ = layui.jquery
+layui.use(['form','layedit'], function(){
+        var layedit = layui.layedit;
+        //设置内容里面的上传接口
+        layedit.set({
+            uploadImage: {
+                url: "{:U('News/uploadImgForContent')}" //接口url
+                ,type: 'post' //默认post
+            }
+        });
+        var index = layedit.build('content'); //建立编辑器
+	var form = layui.form(),$ = layui.jquery;
 	  //监听提交
 	  form.on('submit(news)', function(data){
 		  
 	    var newsinfo = data.field;
-        newsinfo.content = layui.layedit.getContent(1);
+            console.log(layui.layedit.getContent(index));
+                newsinfo.content = layui.layedit.getContent(index);
 		var url = "{:U('News/addNews')}";
 		$.post(url,newsinfo,function(data){
 			if(data.status == 'error'){
@@ -90,7 +122,9 @@ layui.use('upload', function(){
             if(res.code == 300){
                 layer.msg(res.msg);
             }else{
+                var str = "<image src='"+res.data.src+"' width='100' height='50'></image> ";
                 $("#smeta").val(res.data.src);
+                $("#show").html(str);
             }
         }
     });

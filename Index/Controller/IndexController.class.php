@@ -14,9 +14,12 @@ class IndexController extends Controller {
         
         $guest_list = M("Guest")->where($where)->order("create_time asc")->limit(6)->select();
 
-        $news_list = M("News")->where()->order("create_time asc")->limit(2)->select();
+        $news_list = M("News")->where($where." AND category=1")->order("create_time asc")->limit(2)->select();
 
         $partner_list = M("Partner")->where()->order("create_time asc")->limit(6)->select();
+        
+        $banner_list = M("Banner")->where($where." AND position=0")->order()->limit(3)->select();
+        $this->assign("banner_list",$banner_list);
         $this->assign("type",$type);
         $this->assign("goods_list",$goods_list);
         $this->assign("guest_list",$guest_list);
@@ -58,23 +61,40 @@ class IndexController extends Controller {
     
     public function experience(){
         $type = isset($_GET['type'])?$_GET['type']:"";
+        $category = isset($_GET['category'])?$_GET['category']:1;
         if($type){
             $where = "type=".$type;//展会
         }else{
             $where = "is_index=1";//首页显示
         }
+        $banner_list = M("Banner")->where("position=1")->limit(1)->select();
+        $this->assign("banner_list",$banner_list);
+        $where .= " AND category=".$category;
+        $count      = M("News")->where($where)->count();
+        $page       = new \Think\Page($count,4);
+        $show       = $page->show();
+        $news_list = M("News")->where($where)->select();
+        foreach ($news_list as $key=>$val){
+            $news_list[$key]['content'] = htmlspecialchars_decode($val['content']);
+        }
+        $this->assign("category",$category);
+        $this->assign("news_list",$news_list);
         $this->assign("type",$type);
+        $this->assign("page",$show);
         $this->display();
     }
     
     public function goods(){
         $type = isset($_GET['type'])?$_GET['type']:"";
+        $is_limit = isset($_GET['n'])?$_GET['n']:0;
+        
         $category = isset($_GET['type'])?$_GET['type']:"";
         if($type){
             $where = "type=".$type;//展会
         }else{
             $where = "is_index=1";//首页显示
         }
+        $where .= " AND is_limit=".$is_limit;
         if($category){
             $where .=" AND category=".$category;
         }
@@ -86,20 +106,28 @@ class IndexController extends Controller {
         $show       = $page->show();
         $goods_list = M("Goods")->where($where)->limit($page->firstRow.','.$page->listRows)->select();
         //$goods_list = M("Goods")->where($where)->order("create_time desc")->limit(6)->select();
+        $this->assign("is_limit",$is_limit);
         $this->assign("page",$show);
         $this->assign("goods_list",$goods_list);
         $this->display();
     }
     public function goods_detail(){
+        $id = $_GET['id'];
+        if(!$id){
+            $this->error("页面错误");
+        }
+        $goods_info = M("Goods")->where("id=".$id)->find();
+        $this->assign("goods_info",$goods_info);
         $this->display();
     }
 
 
     
     public function guest(){
-        $type = isset($_GET['type'])?$_GET['type']:"";
+        $type = isset($_GET['type'])?$_GET['type']:0;
         if($type){
             $where = "type=".$type;//展会
+            
         }else{
             $where = "is_index=1";//首页显示
         }
@@ -108,16 +136,32 @@ class IndexController extends Controller {
         $page       = new \Think\Page($count,6);
         $show       = $page->show();
         $guest_list = M("Guest")->where($where)->order("create_time asc")->limit(6)->select();
+        $id = $type + 1;
+        $schedule = M("Exhibition")->where("id=".$id)->getField("schedule");
+        //echo M("Exhibition")->getLastSql();
         //$activity_list = M("Activity")->where()->order("create_time asc")->limit(5)->select();
         //$this->assign("activity_list",$activity_list);
         $this->assign("page",$show);
+        $this->assign("schedule",htmlspecialchars_decode($schedule));
         $this->assign("guest_list",$guest_list);
         $this->display();
     }
     public function guest_detail(){
         $this->display();
     }
-    
+    public function report_detail(){
+        $id = $_GET['id'];
+        if(!$id){
+            $this->error("页面错误");
+        }
+        $news_info = M("News")->where("id=".$id)->find();
+        $news_info['content'] = htmlspecialchars_decode($news_info['content']);
+        $this->assign("news_info",$news_info);
+        
+        $this->display();
+    }
+
+
     public function information(){
         $type = isset($_GET['type'])?$_GET['type']:"";
         if($type){

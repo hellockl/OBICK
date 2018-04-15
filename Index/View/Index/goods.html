@@ -25,8 +25,9 @@
                 <div class="exhibition-cont clearfix">
                     <div class="left-menu fl">
                         <ul>
-                            <li><a  class="active" href="javascript:;">商品浏览</a></li>
-                            <li><a  href="javascript:;" style="display:none;">活动限定</a></li>
+                            
+                            <li><a  <eq name="$is_limit" value="1">class="active"</eq> href="__APP__/Index/goods.html?n=1&type={$type}" >活动限定</a></li>
+                            <li><a  <eq name="$is_limit" value="0">class="active"</eq> href="__APP__/Index/goods.html?n=0&type={$type}">商品浏览</a></li>
                             
                         </ul>
                     </div>
@@ -34,18 +35,21 @@
                         <div class="title">
                             <img src="__PUBLIC__/web/images/goods_sec_title.png" alt="">
                         </div>
-                        <div id="limit" style="display:none;" class="cont-detail ">
+                        <div id="limit"  class="cont-detail <eq name='is_limit' value='1'>cur</eq>">
                             <div class="limit">
                                 <ul class="clearfix">
+                                    <volist name='goods_list' id='vo'>
                                     <li>
+                                        <a href="__APP__/Index/goods_detail.html?type={$type}&id={$vo.id}">
                                         <div class="limit-box">
-                                            <img src="__PUBLIC__/web/images/limit_01.png" alt="">
+                                            <img src="{$vo.smeta}" alt="">
                                         </div>
-                                        <h2>MC手办</h2>
-                                        <p>炫酷的场景灯光，充满激情的现场，酒水畅饮，乐不停歇，让我们一起high起来！</p>
-
+                                        <h2>{$vo.title}</h2>
+                                        <p style="display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;overflow: hidden;">{$vo.content}</p>
+                                        </a>
                                     </li>
-                                    <li>
+                                    </volist>
+                                    <!--<li>
                                         <div class="limit-box">
                                             <img src="__PUBLIC__/web/images/limit_02.png" alt="">
                                         </div>
@@ -79,19 +83,14 @@
                                         </div>
                                         <h2>红黑米奇玩偶</h2>
                                         <p>炫酷的场景灯光，充满激情的现场，酒水畅饮，乐不停歇，让我们一起high起来！</p>
-                                    </li>
+                                    </li>-->
                                 </ul>
                             </div>
                             <div class="limit-num">
-                                <ul class="clearfix">
-                                    <li class="cur">1</li>
-                                    <li>2</li>
-                                    <li>3</li>
-                                    <li>4</li>
-                                </ul>
+                                {$page}
                             </div>
                         </div>
-                        <div id="browse" class="cont-detail cur">
+                        <div id="browse" class="cont-detail <eq name='is_limit' value='0'>cur</eq>">
                             <div class="browse">
                                 <div class="search">
                                     <select class="brand" name="" id="category" onchange="self.location.href=options[selectedIndex].value" >
@@ -115,8 +114,10 @@
                                 <ul class="clearfix">
                                     <volist name="goods_list" id="vo">
                                         <li>
+                                            <a href="__APP__/Index/goods_detail.html?type={$type}&id={$vo.id}">
                                             <img src="{$vo.smeta}" alt="">
                                             <p>{$vo.title}</p>
+                                            </a>
                                         </li>
                                     </volist>
                                 </ul>

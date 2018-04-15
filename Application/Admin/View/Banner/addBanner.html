@@ -10,19 +10,41 @@
     <label class="layui-form-label">上传图片</label>
     <div class="layui-input-inline">
       <input type="file" name="file" class="layui-upload-file">
-      <input type="hidden" name="banner_img" id="image_path" value=""/>
-      <img id="img_upload" src="#" style="width: 200px;height: 100px;">
+<!--      <input type="hidden" name="banner_img" id="image_path" value=""/>
+      <img id="img_upload" src="#" style="width: 200px;height: 100px;">-->
+      <div id="show" style="float:left;"></div>
+            <input type="hidden" name="banner_img" id="image_path"  value="" class="layui-input">
     </div>
   </div>
-  <div class="layui-form-item">
-    <label class="layui-form-label">状态</label>
-    <div class="layui-input-inline">
-      <input type="radio" name="status" value="1">可用
-      <input type="radio" name="status" value="2">禁用
+    <div class="layui-form-item">
+        <label class="layui-form-label">所属展会</label>
+        <div >
+            <select name="type" style="display:block">
+                <option value="1">广州</option>
+                <option value="2">杭州</option>
+            </select>
+        </div>
+
     </div>
-
-
-  </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">首页展示</label>
+        <div class="layui-input-block">
+            <select name="is_index" style="display:block">
+                <option value="0">否</option>
+                <option value="1">是</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">位置</label>
+        <div class="layui-input-block">
+            <select name="position" style="display:block">
+                <option value="0">首页面</option>
+                <option value="1">体验页面</option>
+            </select>
+        </div>
+    </div>
+    
 
 
   <div class="layui-form-item">
@@ -45,8 +67,9 @@
         if(res.status == 'error'){
           layer.msg(res.msg);
         }else{
-          $("#image_path").val(res.url);
-          img_upload.src = res.url;
+            var str = "<image src='"+res.data.src+"' width='100' height='50'></image> ";
+            $("#image_path").val(res.data.src);
+            $("#show").html(str);
         }
       }
     });

@@ -14,15 +14,49 @@
       <input type="text" name="title" lay-verify="required" value="{$news_info.title}" autocomplete="off"  id="title" class="layui-input">
     </div>
   </div>
-  <input type="hidden" value="{$news_info.id}" name="id">
-  <div class="layui-form-item">
-    <label class="layui-form-label">缩略图</label>
-    <div class="layui-input-inline">
-      <input type="file" id='upload_img' name="file" class="layui-upload-file">
-      <img src="{$news_info.smeta}" width="50" height="50" />
-      <input type="hidden" name="smeta" id="smeta" readonly value="{$news_info.smeta}" class="layui-input">
+    <div class="layui-form-item">
+        <label class="layui-form-label">类别</label>
+        <div class="layui-input-block">
+            <select name="category" style="display:block">
+                <option value="1" <eq name="news_info.category" value="1">selected="selected"</eq>>现场亮点</option>
+                <option value="2" <eq name="news_info.category" value="2">selected="selected"</eq>>音乐</option>
+                <option value="3" <eq name="news_info.category" value="3">selected="selected"</eq>>玩具</option>
+                <option value="4" <eq name="news_info.category" value="4">selected="selected"</eq>>街头时尚</option>
+                <option value="5" <eq name="news_info.category" value="5">selected="selected"</eq>>幻想</option>
+                <option value="6" <eq name="news_info.category" value="6">selected="selected"</eq>>游戏</option>
+            </select>
+        </div>
     </div>
-  </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">所属展会</label>
+        <div class="layui-input-block">
+            <select name="type" style="display:block">
+                <option value="1" <eq name="news_info.type" value="1">selected="selected"</eq>>广州</option>
+                <option value="2" <eq name="news_info.type" value="2">selected="selected"</eq>>杭州</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">首页展示</label>
+        <div class="layui-input-block">
+            <select name="is_index" style="display:block">
+                <option value="0" <eq name="news_info.is_index" value="0">selected="selected"</eq>>否</option>
+                <option value="1" <eq name="news_info.is_index" value="1">selected="selected"</eq>>是</option>
+            </select>
+        </div>
+    </div>
+    
+    <input type="hidden" value="{$news_info.id}" name="id">
+    <div class="layui-form-item">
+        <label class="layui-form-label">缩略图</label>
+        <div class="layui-input-inline">
+        
+        
+            <div style="float:left;margin-right: 10px"><input type="file" id='upload_img' name="file" class="layui-upload-file"></div>
+            <div id="show" style="float:left;"><img src="{$news_info.smeta}" width="100" height="50" /></div>
+            <input type="hidden" name="smeta" id="smeta"  value="{$news_info.smeta}" class="layui-input">
+        </div>
+    </div>
 
   <div class="layui-form-item">
     <label class="layui-form-label">内容</label>
@@ -52,14 +86,22 @@
   </div>
 </form>
 <script>
-layui.use('form', function(){
-	var form = layui.form(),
-   		 $ = layui.jquery
+layui.use(['form','layedit'], function(){
+        var layedit = layui.layedit;
+        //设置内容里面的上传接口
+        layedit.set({
+            uploadImage: {
+                url: "{:U('News/uploadImgForContent')}" //接口url
+                ,type: 'post' //默认post
+            }
+        });
+        var index = layedit.build('content'); //建立编辑器
+	var form = layui.form(), $ = layui.jquery;
 	  //监听提交
 	  form.on('submit(news)', function(data){
 		  
 	    var newsinfo = data.field;
-        newsinfo.content = layui.layedit.getContent(1);
+        newsinfo.content = layui.layedit.getContent(index);
 		var url = "{:U('News/editNews')}";
 		$.post(url,newsinfo,function(data){
 			if(data.status == 'error'){
@@ -91,7 +133,9 @@ layui.use('upload', function(){
             if(res.code == 300){
                 layer.msg(res.msg);
             }else{
+                var str = "<image src='"+res.data.src+"' width='100' height='50'></image> ";
                 $("#smeta").val(res.data.src);
+                $("#show").html(str);
             }
         }
     });

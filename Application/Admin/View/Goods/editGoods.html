@@ -42,6 +42,15 @@
             </select>
         </div>
     </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">是否是限定</label>
+        <div class="layui-input-block">
+            <select name="is_limit" style="display:block">
+                <option value="0" <eq name="goods_info.is_limit" value="0">selected="selected"</eq>>否</option>
+                <option value="1" <eq name="goods_info.is_limit" value="1">selected="selected"</eq>>是</option>
+            </select>
+        </div>
+    </div>
     <input type="hidden" value="{$goods_info.id}" name="id">
     <div class="layui-form-item">
         <label class="layui-form-label">缩略图</label>
@@ -50,6 +59,15 @@
             <div style="float:left;margin-right: 10px"><input type="file" id='upload_img' name="file" class="layui-upload-file"></div>
             <div id="show" style="float:left;"><img src="{$goods_info.smeta}" width="100" height="50" /></div>
             <input type="hidden" name="smeta" id="smeta"  value="{$goods_info.smeta}" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">商品图片</label>
+        <div class="layui-input-inline">
+            
+            <div style="float:left;margin-right: 10px"><input type="file" id='upload_img2' name="file" class="layui-upload-file"></div>
+            <div id="show2" style="float:left;"><img src="{$goods_info.image}" width="100" height="50" /></div>
+            <input type="hidden" name="image" id="image"  value="{$goods_info.image}" class="layui-input">
         </div>
     </div>
 
@@ -111,6 +129,22 @@
                     var str = "<image src='"+res.data.src+"' width='100' height='50'></image> ";
                     $("#smeta").val(res.data.src);
                     $("#show").html(str);
+                }
+            }
+        });
+        layui.upload({
+            url: "{:U('Goods/uploadImgForContent')}"
+            , title: '重新上传图片'
+            , elem: '#upload_img2' //指定原始元素，默认直接查找class="layui-upload-file"
+            , ext: 'jpg|png|gif|jpeg'
+            , method: 'post' //上传接口的http类型
+            , success: function (res) {
+                if (res.code == 300) {
+                    layer.msg(res.msg);
+                } else {
+                    var str = "<image src='"+res.data.src+"' width='100' height='50'></image> ";
+                    $("#image").val(res.data.src);
+                    $("#show2").html(str);
                 }
             }
         });
