@@ -25,7 +25,7 @@
 			<div class="exhibition-cont clearfix">
 				<div class="left-menu fl">
 					<ul>
-						<li><a href="javascript:;">关于</a></li>
+						<li><a class="active" href="javascript:;">关于</a></li>
 						<li><a href="javascript:;">FAQ</a></li>
 						<li><a href="javascript:;">差旅餐饮</a></li>
 						<li><a href="javascript:;">赞助和合作伙伴</a></li>
@@ -42,9 +42,9 @@
 							</div>
 							<div class="activity-cont">
 								<div class="activity-top">
-									<p>FanXperience（FanX）将打造集合潮流玩具、音乐、游戏、街头、动漫、科幻、服饰等最新潮前沿文化的综合性体验活动，聚合各领域的顶级和最有态度的品牌，对文化进行跨界和组合，在现场提供看，玩买的全方位全新体验。同时活动将邀请众多各领域的国际一线重量级嘉宾到场。海量的潮流文化内容、最新和限量的潮流商品、不一样的视听和参与感、丰富的舞台活动、和文化符号人物的亲密接触互动。FanX活动现场提供的体验包括：</p>
+                                                                    <p>{$info.about_activity}</p>
 								</div>
-								<div class="activity-bottom">
+<!--								<div class="activity-bottom">
 									<ul>
 										<li>限定潮玩收藏、精品周边手办</li>
 										<li>丰富游戏体验和游戏文化</li>
@@ -52,7 +52,7 @@
 										<li>世界顶级艺术家、制作人、明星现场亲密接触</li>
 										<li>最新的生活态度、最全的文化符号</li>
 									</ul>
-								</div>
+								</div>-->
 							</div> 
 						</div>
 						<!--<div class="about-poplife">
@@ -74,24 +74,9 @@
 							</div>
 							<div class="question-cont">
 								<div class="cont-01">
-									<h2>- 问题：我可以参与哪些活动？</h2>
-									<p>解答：</p>
-									<ul>
-										<li>1. 限定潮玩收藏、精品周边手办</li>
-										<li>2.丰富游戏体验和游戏文化</li>
-										<li>3.动漫、影视、电音、街头、科幻、潮服</li>
-										<li>4.世界顶级艺术家、制作人、明星现场亲密接触</li>
-										<li>5.最新的生活态度、最全的文化符号</li>
-									</ul>
+									{$info.faq}
 								</div>
-								<div class="cont-02">
-									<h2>- 问题：自驾车观众在现场如何停车？</h2>
-									<p>解答：驾驶私家车的观众，我们建议将车辆停放在展馆的公共停车场</p>
-								</div>
-								<div class="cont-03">
-									<h2>- 问题：小孩可以进场参观吗？</h2>
-									<p>解答：由于观众人数众多，处于安全考虑，谢绝儿童参观（儿童的概念是身高1.2米以下）</p>
-								</div>
+								
 							</div>
 						</div>
 					</div>
@@ -101,24 +86,12 @@
 								<h1>交通地址：</h1>
 							</div>
 							<div class="address-cont">
-								<ul class="clearfix">
-									<li>
-										<h2>- 广州站</h2>
-										<div class="address-box">
-											<img src="__PUBLIC__/web/images/address_map.png" alt="">
-										</div>
-										<p>广州站：广州市新国际博览中心</p>
-										<p>地址：广州市市萨达路2345号   &nbsp;&nbsp;|&nbsp;&nbsp; 周边交通：123路，地铁1号线</p>
-									</li>
-									<li>
-										<h2>- 杭州站</h2>
-										<div class="address-box">
-											<img src="__PUBLIC__/web/images/address_map.png" alt="">
-										</div>
-										<p>杭州站：杭州市新国际博览中心</p>
-										<p>地址：杭州市市萨达路2345号   &nbsp;&nbsp;|&nbsp;&nbsp; 周边交通：123路，地铁1号线</p>
-									</li>
-								</ul>
+                                                            <ul class="clearfix">
+                                                                <li>
+                                                                        <p>{$info.address}</p>
+                                                                </li>
+                                                            </ul>
+                                                            
 							</div>
 						</div>
 						<!-- <div class="facilities">
@@ -196,6 +169,18 @@
 	<include file="Public:footer"/>
 	<script src="__PUBLIC__/web/js/jquery.min.js"></script>
 	<script src="__PUBLIC__/web/js/index.js"></script>
+        <script>
+        $(function () {
+           
+            $(".left-menu li a").click(function () {
+                var index = $(this).parent("li").index();
+                $(this).addClass("active").parent("li").siblings("li").children("a").removeClass("active");
+                $(".right-cont .cont-detail").eq(index).addClass("cur").siblings(".cont-detail").removeClass("cur");
+                $(".sub-nav li").children("a").removeClass("active");
+                //currentNav.eq(index).children("a").addClass("active").end().siblings("li").children("a").removeClass("active");
+            })
+        })
+    </script>
 	<script>
 			// var hash = location.hash;
 			// var index = $(hash).index();

@@ -26,6 +26,7 @@ class GoodsController extends CommonController
         $site_arry = array("广州站","杭州站");
         foreach($goods_list['list'] as $key=>$val){
             $goods_list['list'][$key]['site'] = $site_arry[$val['type']-1];
+            $goods_list['list'][$key]['content'] = htmlspecialchars_decode($val['content']);
         }
         
         $this->assign('goods_list',$goods_list['list']);

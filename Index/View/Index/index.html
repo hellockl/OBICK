@@ -60,12 +60,14 @@
 				<ul class="clearfix">
 					<volist name="guest_list" id="vo">
 					<li>
+                                            <a href="__APP__/Index/guest_detail.html?type={$type}&id={$vo.id}">
 						<img src="{$vo.smeta}" alt="">
 						<img src="{$vo.image}" alt="">
 						<div class="guest-name">
 							<img src="__PUBLIC__/web/images/guest_name_bj.png" alt="">
 							<p>{$vo.name}</p>
 						</div>
+                                            </a>
 					</li>
 					</volist>
 					<!--<li>-->

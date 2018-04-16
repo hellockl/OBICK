@@ -25,29 +25,31 @@
                 <div class="exhibition-cont clearfix">
                     <div class="left-menu fl">
                         <ul>
-                            <li><a  href="__APP__/Index/guest.html?type={$type}#schedule">活动日程</a></li>
-                            <li><a class="active" href="__APP__/Index/guest.html?type={$type}">嘉宾信息</a></li>
+                            <li><a <eq name="n" value="1">class="active"</eq> href="__APP__/Index/guest.html?type={$type}&n=1#schedule">活动日程</a></li>
+                            <li><a <eq name="n" value="2">class="active"</eq> href="__APP__/Index/guest.html?type={$type}&n=2">嘉宾信息</a></li>
                         </ul>
                     </div>
                     <div data-pageid="4" class="right-cont fl clearfix">
                         <div class="title">
                             <img src="__PUBLIC__/web/images/guest_sec_title.png" alt="">
                         </div>
-                        <div id="schedule" class="cont-detail">
+                        <div id="schedule" class='cont-detail <eq name="n" value="1">cur</eq>' >
                             <div class="schedule">
                                 {$schedule}
                             </div>
 
                         </div>
-                        <div id="guest-infor" class="cont-detail cur">
+                        <div id="guest-infor" class='cont-detail <eq name="n" value="2">cur</eq>'>
                             <div class="guest-infor">
                                 <ul class="clearfix">
                                     <volist name="guest_list" id="vo">
                                         <li>
+                                            <a href="__APP__/Index/guest_detail.html?type={$type}&id={$vo.id}">
                                             <img src="{$vo.image}" alt="">
                                             <div class="guest-name">
                                                 <p>{$vo.name}</p>
                                             </div>
+                                            </a>
                                         </li>
                                     </volist>
                                 </ul>
@@ -61,6 +63,18 @@
             </div>
         </main>
     <include file="Public:footer"/>
+    <script>
+        $(function () {
+           
+            $(".left-menu li a").click(function () {
+                var index = $(this).parent("li").index();
+                $(this).addClass("active").parent("li").siblings("li").children("a").removeClass("active");
+                $(".right-cont .cont-detail").eq(index).addClass("cur").siblings(".cont-detail").removeClass("cur");
+                $(".sub-nav li").children("a").removeClass("active");
+                //currentNav.eq(index).children("a").addClass("active").end().siblings("li").children("a").removeClass("active");
+            })
+        })
+    </script>
 
 </body>
 </html>

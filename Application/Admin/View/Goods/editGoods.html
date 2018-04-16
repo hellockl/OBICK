@@ -74,7 +74,7 @@
     <div class="layui-form-item">
         <label class="layui-form-label">内容</label>
         <div class="layui-input-inline">
-            <textarea class="layui-textarea " name="content" >{$goods_info.content}</textarea>
+            <textarea class="layui-textarea " name="content" id="content" >{$goods_info.content}</textarea>
 
         </div>
     </div>
@@ -87,14 +87,21 @@
     </div>
 </form>
 <script>
-    layui.use('form', function () {
-        var form = layui.form(),
-                $ = layui.jquery
-        //监听提交
+    layui.use(['form','layedit'], function () {
+        var layedit = layui.layedit;
+        //设置内容里面的上传接口
+        layedit.set({
+            uploadImage: {
+                url: "{:U('Goods/uploadImgForContent')}" //接口url
+                ,type: 'post' //默认post
+            }
+        });
+        var index = layedit.build('content'); //建立编辑器
+        var form = layui.form(),$ = layui.jquery;
         form.on('submit(goods)', function (data) {
 
             var goodsinfo = data.field;
-            //goodsinfo.content = layui.layedit.getContent(1);
+            goodsinfo.content = layedit.getContent(index);
             var url = "{:U('Goods/editGoods')}";
             $.post(url, goodsinfo, function (data) {
                 if (data.status == 'error') {

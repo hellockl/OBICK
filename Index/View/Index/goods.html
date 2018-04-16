@@ -26,8 +26,8 @@
                     <div class="left-menu fl">
                         <ul>
                             
-                            <li><a  <eq name="$is_limit" value="1">class="active"</eq> href="__APP__/Index/goods.html?n=1&type={$type}" >活动限定</a></li>
-                            <li><a  <eq name="$is_limit" value="0">class="active"</eq> href="__APP__/Index/goods.html?n=0&type={$type}">商品浏览</a></li>
+                            <li><a  <eq name="is_limit" value="1">class="active"</eq> href="__APP__/Index/goods.html?n=1&type={$type}" >活动限定</a></li>
+                            <li><a  <eq name="is_limit" value="0">class="active"</eq> href="__APP__/Index/goods.html?n=0&type={$type}">商品浏览</a></li>
                             
                         </ul>
                     </div>
@@ -45,7 +45,7 @@
                                             <img src="{$vo.smeta}" alt="">
                                         </div>
                                         <h2>{$vo.title}</h2>
-                                        <p style="display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;overflow: hidden;">{$vo.content}</p>
+                                        <!--<p style="display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;overflow: hidden;">{$vo.content}</p>-->
                                         </a>
                                     </li>
                                     </volist>

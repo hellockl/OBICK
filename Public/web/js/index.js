@@ -11,7 +11,7 @@ $(function () {
 	var currentNav = $(".nav-box").eq(pageid).find("li");
 	var length = $(".right-cont").children(hash).length;
 	if (length > 0) {
-		$(".left-menu li").eq(index - 1).children("a").addClass("active").parent("li").siblings("li").children("a").removeClass("active");
+		//$(".left-menu li").eq(index - 1).children("a").addClass("active").parent("li").siblings("li").children("a").removeClass("active");
 		$(".sub-nav li").children("a").removeClass("active");
 		currentNav.eq(index).children("a").addClass("active").end().siblings("li").children("a").removeClass("active");
 		$(hash).addClass("cur").siblings(".cont-detail").removeClass("cur");
@@ -32,7 +32,7 @@ $(function () {
 		var index = $(this).index();
 		$(".sub-nav li").children("a").removeClass("active");
 		$(this).children("a").addClass("active").end().siblings("li").children("a").removeClass("active");
-		$(".left-menu li").eq(index).children("a").addClass("active").parent("li").siblings("li").children("a").removeClass("active");
+		//$(".left-menu li").eq(index).children("a").addClass("active").parent("li").siblings("li").children("a").removeClass("active");
 		$(".right-cont .cont-detail").eq(index).addClass("cur").siblings(".cont-detail").removeClass("cur");
 	})
 	$(".sub-nav li").mouseover(function () {
@@ -41,13 +41,13 @@ $(function () {
 		$(this).children("a").addClass("active").end().siblings("li").children("a").removeClass("active");
 	})
 	//除首页外的点击侧边栏效果
-	$(".left-menu li a").click(function () {
-		var index = $(this).parent("li").index();
-		$(this).addClass("active").parent("li").siblings("li").children("a").removeClass("active");
-		$(".right-cont .cont-detail").eq(index).addClass("cur").siblings(".cont-detail").removeClass("cur");
-		$(".sub-nav li").children("a").removeClass("active");
-		currentNav.eq(index).children("a").addClass("active").end().siblings("li").children("a").removeClass("active");
-	})
+//	$(".left-menu li a").click(function () {
+//		var index = $(this).parent("li").index();
+//		$(this).addClass("active").parent("li").siblings("li").children("a").removeClass("active");
+//		$(".right-cont .cont-detail").eq(index).addClass("cur").siblings(".cont-detail").removeClass("cur");
+//		$(".sub-nav li").children("a").removeClass("active");
+//		currentNav.eq(index).children("a").addClass("active").end().siblings("li").children("a").removeClass("active");
+//	})
 
 		
 	/*首页页面js*/

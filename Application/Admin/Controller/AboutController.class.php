@@ -1,19 +1,19 @@
 <?php
 namespace Admin\Controller;
 
-class NewsController extends CommonController
+class AboutController extends CommonController
 {
-    protected   $news_model;
+    protected   $about_model;
     protected   $user_info;
     
     public function __construct()
     {
         parent::__construct();
         /* @var $admin_user_model \Admin\Model\AdminUserModel */
-        $news_model = D('News');
+        $about_model = D('About');
 
         $this->user_info = session('user_info');
-        $this->news_model = $news_model;
+        $this->about_model = $about_model;
     }
     
     /**
@@ -26,12 +26,15 @@ class NewsController extends CommonController
         $search['start_time'] = I('start_time');
         $search['end_time']   = I('end_time');
 
-        $news_list = $this->news_model->selectAllNews(10,$search);
-        foreach ($news_list['list'] as $key=>$val){
-            $news_list['list'][$key]['content'] = htmlspecialchars_decode($val['content']);
+        $about_list = $this->about_model->selectAllAbout(10,$search);
+        foreach ($about_list['list'] as $key=>$val){
+            $about_list['list'][$key]['faq'] = htmlspecialchars_decode($val['faq']);
+            $about_list['list'][$key]['about_activity'] = htmlspecialchars_decode($val['about_activity']);
+            $about_list['list'][$key]['address'] = htmlspecialchars_decode($val['address']);
         }
-        $this->assign('news_list',$news_list['list']);
-        $this->assign('page',$news_list['page']);
+        
+        $this->assign('about_list',$about_list['list']);
+        $this->assign('page',$about_list['page']);
         $this->assign('search',$search);
 
         $this->display();
@@ -41,7 +44,7 @@ class NewsController extends CommonController
         //处理file上传 这里是调用thinkphp封装好\Think\Upload这个上传类 可以学习写thinkphp官方这个类是怎么写的
         $config = array(
             'rootPath' => './Public/',
-            'savePath' => 'upload/newscontent/',
+            'savePath' => 'upload/aboutcontent/',
             'maxSize' => 11048576,
             'saveName' => array('uniqid', ''),
             'exts' => array('jpg', 'gif', 'png', 'jpeg'),
@@ -56,7 +59,7 @@ class NewsController extends CommonController
             if (!empty($first['url'])) {
                 $url = $first['url'];
             } else {
-                $url = C('HTTP_UPLOAD').'newscontent/'.$first['savename'];
+                $url = C('HTTP_UPLOAD').'aboutcontent/'.$first['savename'];
             }
             $arr['code'] = 0;
             $arr['msg'] = '';
@@ -74,11 +77,11 @@ class NewsController extends CommonController
     /*
      * @description: 新增资讯
      */
-    public function addNews()
+    public function addAbout()
     {
         if(IS_POST) {
 
-            $news_info = array(
+            $about_info = array(
                 'title'         => I('post.title', '', 'trim'),
                 'content'       => I('post.content'),
                 'smeta'         => I('post.smeta'),
@@ -95,7 +98,7 @@ class NewsController extends CommonController
 //                $this->ajaxSuccess('该用户已经被占用');
 //            }
 
-            if ($this->news_model->addNews($news_info)) {
+            if ($this->about_model->addAbout($about_info)) {
                 $this->ajaxSuccess('添加成功');
             } else {
                 $this->ajaxError('添加失败');
@@ -108,31 +111,26 @@ class NewsController extends CommonController
     /**
      * @description:编辑资讯
      */
-    public function editNews()
+    public function editAbout()
     {
         if(IS_POST){
-            $news_info = array(
+            $about_info = array(
                 'id'            => I('post.id'),
-                'title'         => I('post.title', '', 'trim'),
-                'content'       => I('post.content'),
-                'smeta'         => I('post.smeta'),
-                'author'        => $this->user_info['user_name'],
-                'is_index'      => I('post.is_index'),
-                'category'      => I('post.category'),
-                'type'      => I('post.type'),
-                'update_time'   => time(),
-                'status'        => 1,
+                
+                'about_activity'       => I('post.about_activity'),
+                'address'         => I('post.address'),
+                'faq' => I('post.faq'),
             );
 
-            if($this->news_model->editNews($news_info) !== false){
+            if($this->about_model->editAbout($about_info) !== false){
                 $this->ajaxSuccess('更新成功');
             }else{
                 $this->ajaxError('更新失败');
             }
         }else{
-            $news_id = I('get.news_id','','intval');
-            $news_info = $this->news_model->findNewsById($news_id);
-            $this->assign('news_info',$news_info);
+            $about_id = I('get.about_id','','intval');
+            $about_info = $this->about_model->findAboutById($about_id);
+            $this->assign('about_info',$about_info);
             $this->display();
         }
     }
@@ -140,11 +138,11 @@ class NewsController extends CommonController
      * @description:删除资讯
      * @author wuyanwen(2016年12月1日)
      */
-    public function deleteNews()
+    public function deleteAbout()
     {
-        $news_id = I('post.news_id','','intval');
+        $about_id = I('post.about_id','','intval');
 
-        $result = $this->news_model->deleteNews($news_id);
+        $result = $this->about_model->deleteAbout($about_id);
 
         if($result){
             $this->ajaxSuccess("删除成功");

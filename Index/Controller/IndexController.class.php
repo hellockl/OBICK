@@ -88,7 +88,7 @@ class IndexController extends Controller {
         $type = isset($_GET['type'])?$_GET['type']:"";
         $is_limit = isset($_GET['n'])?$_GET['n']:0;
         
-        $category = isset($_GET['type'])?$_GET['type']:"";
+        $category = isset($_GET['category'])?$_GET['category']:"";
         if($type){
             $where = "type=".$type;//展会
         }else{
@@ -105,6 +105,9 @@ class IndexController extends Controller {
         $page       = new \Think\Page($count,6);
         $show       = $page->show();
         $goods_list = M("Goods")->where($where)->limit($page->firstRow.','.$page->listRows)->select();
+        foreach ($goods_list as $key=>$val){
+            $goods_list[$key]['content'] = htmlspecialchars_decode($val['content']);
+        }
         //$goods_list = M("Goods")->where($where)->order("create_time desc")->limit(6)->select();
         $this->assign("is_limit",$is_limit);
         $this->assign("page",$show);
@@ -113,10 +116,13 @@ class IndexController extends Controller {
     }
     public function goods_detail(){
         $id = $_GET['id'];
+        $type = isset($_GET['type'])?$_GET['type']:"";
         if(!$id){
             $this->error("页面错误");
         }
         $goods_info = M("Goods")->where("id=".$id)->find();
+        $this->assign("type",$type);
+        $goods_info['content'] = htmlspecialchars_decode($goods_info['content']);
         $this->assign("goods_info",$goods_info);
         $this->display();
     }
@@ -125,6 +131,7 @@ class IndexController extends Controller {
     
     public function guest(){
         $type = isset($_GET['type'])?$_GET['type']:0;
+        $n = isset($_GET['n'])?$_GET['n']:1;
         if($type){
             $where = "type=".$type;//展会
             
@@ -142,11 +149,21 @@ class IndexController extends Controller {
         //$activity_list = M("Activity")->where()->order("create_time asc")->limit(5)->select();
         //$this->assign("activity_list",$activity_list);
         $this->assign("page",$show);
+        $this->assign("n",$n);
         $this->assign("schedule",htmlspecialchars_decode($schedule));
         $this->assign("guest_list",$guest_list);
         $this->display();
     }
     public function guest_detail(){
+        $id = $_GET['id'];
+        $type = isset($_GET['type'])?$_GET['type']:"";
+        if(!$id){
+            $this->error("页面错误");
+        }
+        $info = M("Guest")->where("id=".$id)->find();
+        $this->assign("type",$type);
+        $info['content'] = htmlspecialchars_decode($info['content']);
+        $this->assign("info",$info);
         $this->display();
     }
     public function report_detail(){
@@ -163,12 +180,14 @@ class IndexController extends Controller {
 
 
     public function information(){
-        $type = isset($_GET['type'])?$_GET['type']:"";
-        if($type){
-            $where = "type=".$type;//展会
-        }else{
-            $where = "is_index=1";//首页显示
-        }
+        $type = isset($_GET['type'])?$_GET['type']:0;
+        $id = $type+1;
+        $where = "id = ".$type+1;
+        $info = M("About")->where($where)->find();
+        $info['about_activity'] = htmlspecialchars_decode($info['about_activity']);
+        $info['faq'] = htmlspecialchars_decode($info['faq']);
+        $info['address'] = htmlspecialchars_decode($info['address']);
+        $this->assign("info",$info);
         $this->assign("type",$type);
         $this->display();
     }
