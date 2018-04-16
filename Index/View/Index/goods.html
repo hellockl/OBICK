@@ -94,7 +94,7 @@
                             <div class="browse">
                                 <div class="search">
                                     <select class="brand" name="" id="category" onchange="self.location.href=options[selectedIndex].value" >
-                                        <!-- <option value="" selected="selected">商品品牌</option> -->
+                                        <option value="" selected="selected">选择商品品牌</option>
                                         <volist name="category" id="vo">
                                         <option value="__APP__/Index/goods?type={$type}&category={$vo.id}">{$vo.name}</option>
                                         </volist>
