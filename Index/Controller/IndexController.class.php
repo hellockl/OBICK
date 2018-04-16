@@ -105,9 +105,9 @@ class IndexController extends Controller {
         $page       = new \Think\Page($count,6);
         $show       = $page->show();
         $goods_list = M("Goods")->where($where)->limit($page->firstRow.','.$page->listRows)->select();
-        foreach ($goods_list as $key=>$val){
-            $goods_list[$key]['content'] = htmlspecialchars_decode($val['content']);
-        }
+//        foreach ($goods_list as $key=>$val){
+//            $goods_list[$key]['content'] = htmlspecialchars_decode($val['content']);
+//        }
         //$goods_list = M("Goods")->where($where)->order("create_time desc")->limit(6)->select();
         $this->assign("is_limit",$is_limit);
         $this->assign("page",$show);
