@@ -182,8 +182,9 @@ class IndexController extends Controller {
     public function information(){
         $type = isset($_GET['type'])?$_GET['type']:0;
         $id = $type+1;
-        $where = "id = ".$type+1;
+        $where = "id = ".$id;
         $info = M("About")->where($where)->find();
+        //echo M("About")->getlastsql();
         $info['about_activity'] = htmlspecialchars_decode($info['about_activity']);
         $info['faq'] = htmlspecialchars_decode($info['faq']);
         $info['address'] = htmlspecialchars_decode($info['address']);
