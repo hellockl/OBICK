@@ -32,6 +32,7 @@ class AboutController extends CommonController
             $about_list['list'][$key]['about_activity'] = htmlspecialchars_decode($val['about_activity']);
             $about_list['list'][$key]['address'] = htmlspecialchars_decode($val['address']);
         }
+		
         
         $this->assign('about_list',$about_list['list']);
         $this->assign('page',$about_list['page']);
