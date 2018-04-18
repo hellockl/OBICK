@@ -31,7 +31,7 @@
                             <li><a href="javascript:;">现场活动</a></li>
                             <!--<li><a href="javascript:;">平面图</a></li>-->
                             <li><a href="javascript:;">参展赞助</a></li>
-                            <!--<li><a href="javascript:;" style=" display:none;">购票</a></li>-->
+                            <li><a href="javascript:;">购票</a></li>
                         </ul>
                     </div>
                     <div data-pageid="1" class="right-cont fl clearfix">
@@ -242,24 +242,7 @@
                                     <h1>票务信息：</h1>
                                 </div>
                                 <div class="infor-cont">
-                                    <div class="infor-title">
-                                        <p>2018 Fanx潮玩风尚展参观证可在展馆现场购买或各大购票网站订购。</p>
-                                        <p>感兴趣的观众朋友，购买信息如下：</p>
-                                    </div>
-                                    <div class="gz-infor">
-                                        <p>1. 2018 Fanx潮玩风尚展广州站订票信息：</p>
-                                        <p> 4月24日 - 4月28日 9:00-16:00</p>
-                                        <p> VIP票：200元</p>
-                                        <p> 工作日票：100元</p>
-                                        <p> 周末票：150元</p>
-                                    </div>
-                                    <div class="hz-infor">
-                                        <p>2. 2018 Fanx潮玩风尚展杭州站订票信息：</p>
-                                        <p> 4月24日 - 4月28日 9:00-16:00</p>
-                                        <p> VIP票：200元</p>
-                                        <p> 工作日票：100元</p>
-                                        <p> 周末票：150元</p>
-                                    </div>
+                                    {$notice}
                                 </div>
                             </div>
                             <div class="ticket-link">
@@ -268,18 +251,26 @@
                                 </div>
                                 <div class="link-cont">
                                     <ul class="clearfix">
-                                        <li><img src="__PUBLIC__/web/images/ticket_01.png" alt=""></li>
+                                        <volist name="media_a" id="vo">
+                                        <li><img src="{$vo.smeta}" alt=""></li>
+                                        </volist>
+                                        <!--
                                         <li><img src="__PUBLIC__/web/images/ticket_02.png" alt=""></li>
                                         <li><img src="__PUBLIC__/web/images/ticket_03.png" alt=""></li>
                                         <li><img src="__PUBLIC__/web/images/ticket_04.png" alt=""></li>
+                                        -->
                                     </ul>
                                 </div>
                                 <div class="link-title">
                                     <ul class="clearfix">
-                                        <li><a href="javascript:;">淘宝购票</a></li>
+                                        <volist name="media_a" id="vo">
+                                        <li><a href="{$vo.url}">{$vo.title}</a></li>
+                                        </volist>
+                                        <!--
                                         <li><a href="javascript:;">大麦网购票</a></li>
                                         <li><a href="javascript:;">淘票票购票</a></li>
                                         <li><a href="javascript:;">微信公众号购票</a></li>
+                                        -->
                                     </ul>
                                 </div>
                             </div>

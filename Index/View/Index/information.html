@@ -117,22 +117,15 @@
 							</div>
 							<div class="platform-cont">
 								<ul class="clearfix">
+                                                                    <volist name="media_a" id="vo">
 									<li>
-										<div class="platform-box"><img src="__PUBLIC__/web/images/platform_01.png" alt=""></div>
-										<p><span>搜狐时尚</span></p>
+                                                                            <a href="{$vo.url}" target="_blank">
+										<div class="platform-box"><img src="{$vo.smeta}" alt="" style="width:139px;height: 113px"></div>
+										<p><span>{$vo.title}</span></p>
+                                                                            </a>
 									</li>
-									<li>
-										<div class="platform-box"><img src="__PUBLIC__/web/images/platform_02.png" alt=""></div>
-										<p><span>新浪时尚</span></p>
-									</li>
-									<li>
-										<div class="platform-box"><img src="__PUBLIC__/web/images/platform_03.png" alt=""></div>
-										<p><span>微博</span></p>
-									</li>
-									<li>
-										<div class="platform-box"><img src="__PUBLIC__/web/images/platform_04.png" alt=""></div>
-										<p><span>凤凰网时尚</span></p>
-									</li>
+                                                                    </volist>
+									
 								</ul>
 							</div>
 						</div>
@@ -142,11 +135,15 @@
 							</div>
 							<div class="trend-cont">
 								<ul class="clearfix">
-									<li>
-										<div class="trend-box"><img src="__PUBLIC__/web/images/platform_01.png" alt=""></div>
-										<p><span>搜狐时尚</span></p>
-									</li>
-									<li>
+									<volist name="media_b" id="vo">
+                                                                            <li>
+                                                                                <a href="{$vo.url}" target="_blank">
+                                                                                    <div class="trend-box"><img src="{$vo.smeta}" alt="" style="width:139px;height: 113px"></div>
+                                                                                    <p><span>{$vo.title}</span></p>
+                                                                                </a>
+                                                                            </li>
+                                                                        </volist>
+<!--									<li>
 										<div class="trend-box"><img src="__PUBLIC__/web/images/platform_02.png" alt=""></div>
 										<p><span>新浪时尚</span></p>
 									</li>
@@ -157,7 +154,7 @@
 									<li>
 										<div class="trend-box"><img src="__PUBLIC__/web/images/platform_04.png" alt=""></div>
 										<p><span>凤凰网时尚</span></p>
-									</li>
+									</li>-->
 								</ul>
 							</div>
 						</div>

@@ -1,95 +1,118 @@
 <style>
-  .layui-form-item{
-    width: 100%;
-  }
-  .layui-form-item .layui-input-inline{
-    width: 80%;
-  }
+    .layui-form-item{
+        width: 100%;
+    }
+    .layui-form-item .layui-input-inline{
+        width: 80%;
+    }
 </style>
 <form class="layui-form">
-  <div style="height: 20px"></div>
-  <div class="layui-form-item">
-    <label class="layui-form-label">标题</label>
-    <div class="layui-input-inline">
-      <input type="text" name="title" lay-verify="required" value="{$matrix_info.title}" autocomplete="off"  id="title" class="layui-input">
+    <div style="height: 20px"></div>
+    <input type="hidden" value="{$matrix_info.id}" name="id">
+    <div class="layui-form-item">
+        <label class="layui-form-label">名称</label>
+        <div class="layui-input-inline">
+            <input type="text" name="title" lay-verify="required" value="{$matrix_info.title}" autocomplete="off"  id="title" class="layui-input">
+        </div>
     </div>
-  </div>
-  <input type="hidden" value="{$matrix_info.id}" name="id">
-  <div class="layui-form-item">
-    <label class="layui-form-label">单选框</label>
-    <div class="layui-input-block">
-      <div style="float: left;width: 40%"><input type="radio" name="type" value="1" <eq name="matrix_info.type" value="1">checked</eq> style="display: block" >品牌</div>
-      <div  style="float: left;width: 40%"><input type="radio" name="type" value="2" <eq name="matrix_info.type" value="2">checked</eq> style="display: block" >传播</div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">URL</label>
+        <div class="layui-input-inline">
+            <input type="text" name="url" lay-verify="required" value="{$matrix_info.url}" autocomplete="off"  id="title" class="layui-input">
+        </div>
+    </div>
+    
+    <div class="layui-form-item">
+        <label class="layui-form-label">媒体类型</label>
+        <div class="layui-input-block">
+            <select name="category" style="display:block">
+                <option value="1" <eq name="matrix_info.category" value="1">selected="selected"</eq>>平台合作媒体</option>
+                <option value="2" <eq name="matrix_info.category" value="2">selected="selected"</eq>>潮流合作媒体</option>
+                <option value="3" <eq name="matrix_info.category" value="3">selected="selected"</eq>>购票媒体</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">所属展会</label>
+        <div class="layui-input-block">
+            <select name="type" style="display:block">
+                <option value="1" <eq name="matrix_info.type" value="1">selected="selected"</eq>>广州</option>
+                <option value="2" <eq name="matrix_info.type" value="2">selected="selected"</eq>>杭州</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">首页展示</label>
+        <div class="layui-input-block">
+            <select name="is_index" style="display:block">
+                <option value="0" <eq name="matrix_info.is_index" value="0">selected="selected"</eq>>否</option>
+                <option value="1" <eq name="matrix_info.is_index" value="1">selected="selected"</eq>>是</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">LOGO</label>
+        <div class="layui-input-inline">
+            <div style="float:left;margin-right: 10px"><input type="file" id='upload_img' name="file" class="layui-upload-file"></div>
+            <div id="show1" style="float:left;"><img src="{$matrix_info.smeta}" width="100" height="50" /></div>
+            <input type="hidden" name="smeta" id="smeta"  value="{$matrix_info.smeta}" class="layui-input">
+        </div>
+    </div>
 
-    </div>
-  </div>
-  <div class="layui-form-item">
-    <label class="layui-form-label">缩略图</label>
-    <div class="layui-input-inline">
-      <input type="file" id='upload_img' name="file" class="layui-upload-file">
-      <img src="{$matrix_info.smeta}" width="50" height="50" />
-      <input type="hidden" name="smeta" id="smeta" readonly value="{$matrix_info.smeta}" class="layui-input">
-    </div>
-  </div>
 
-  <div class="layui-form-item">
-    <label class="layui-form-label">内容</label>
-    <div class="layui-input-inline">
-      <textarea class="layui-textarea " name="content" >{$news_info.content}</textarea>
 
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="matrix">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
     </div>
-  </div>
-
-  <div class="layui-form-item">
-    <div class="layui-input-block">
-      <button class="layui-btn" lay-submit lay-filter="matrix">立即提交</button>
-      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-    </div>
-  </div>
 </form>
 <script>
-layui.use('form', function(){
-	var form = layui.form(),
-   		 $ = layui.jquery
-	  //监听提交
-	  form.on('submit(matrix)', function(data){
-		  
-	    var matrixinfo = data.field;
-        //matrixinfo.content = layui.layedit.getContent(1);
-		var url = "{:U('Matrix/editMatrix')}";
-		$.post(url,matrixinfo,function(data){
-			if(data.status == 'error'){
-				  layer.msg(data.msg,{icon: 5});//失败的表情
-				  return;
-			  }else if(data.status == 'success'){
-				  layer.msg(data.msg, {
-					  icon: 6,//成功的表情
-					  time: 2000 //2秒关闭（如果不配置，默认是3秒）
-					}, function(){
-					   location.reload();
-					}); 
-			  }
-		})
-		
-	    return false;//阻止表单跳转
-	  });
-	});
+    layui.use('form', function () {
+        var form = layui.form(),
+                $ = layui.jquery
+        //监听提交
+        form.on('submit(matrix)', function (data) {
 
-layui.use('upload', function(){
-    $ = layui.jquery
-    layui.upload({
-        url: "{:U('Matrix/uploadImgForContent')}"
-        ,title: '重新上传图片'
-        ,elem: '#upload_img' //指定原始元素，默认直接查找class="layui-upload-file"
-        ,ext: 'jpg|png|gif|jpeg'
-        ,method: 'post' //上传接口的http类型
-        ,success: function(res){
-            if(res.code == 300){
-                layer.msg(res.msg);
-            }else{
-                $("#smeta").val(res.data.src);
-            }
-        }
+            var matrixinfo = data.field;
+            //matrixinfo.content = layui.layedit.getContent(1);
+            var url = "{:U('Matrix/editMatrix')}";
+            $.post(url, matrixinfo, function (data) {
+                if (data.status == 'error') {
+                    layer.msg(data.msg, {icon: 5});//失败的表情
+                    return;
+                } else if (data.status == 'success') {
+                    layer.msg(data.msg, {
+                        icon: 6, //成功的表情
+                        time: 2000 //2秒关闭（如果不配置，默认是3秒）
+                    }, function () {
+                        location.reload();
+                    });
+                }
+            })
+
+            return false;//阻止表单跳转
+        });
     });
-});
+
+    layui.use('upload', function () {
+        $ = layui.jquery
+        layui.upload({
+            url: "{:U('Matrix/uploadImgForContent')}"
+            , title: '重新上传图片'
+            , elem: '#upload_img' //指定原始元素，默认直接查找class="layui-upload-file"
+            , ext: 'jpg|png|gif|jpeg'
+            , method: 'post' //上传接口的http类型
+            , success: function (res) {
+                if (res.code == 300) {
+                    layer.msg(res.msg);
+                } else {
+                    var str = "<image src='" + res.data.src + "' width='100' height='50'></image> ";
+                    $("#smeta").val(res.data.src);
+                    $("#show").html(str);
+                }
+            }
+        });
+    });
 </script>

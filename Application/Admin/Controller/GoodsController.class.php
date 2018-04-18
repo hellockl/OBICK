@@ -209,7 +209,7 @@ class GoodsController extends CommonController
      */
     public function deleteCategory(){
         $category_id = I('post.category_id','','intval');
-        $result = M("GoodsCategory")->where("id=".$category_id)->delete;
+        $result = M("GoodsCategory")->where("id=".$category_id)->delete();
         if($result){
             $this->ajaxSuccess("删除成功");
         }else{

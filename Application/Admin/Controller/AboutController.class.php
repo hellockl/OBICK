@@ -121,6 +121,7 @@ class AboutController extends CommonController
                 'about_activity'       => I('post.about_activity'),
                 'address'         => I('post.address'),
                 'faq' => I('post.faq'),
+                'notice' => I('post.notice'),
             );
 
             if($this->about_model->editAbout($about_info) !== false){

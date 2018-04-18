@@ -80,6 +80,8 @@ class ExhibitionController extends CommonController
                 'zhanzhu'        => I('post.zhanzhu'),
                 'zhanzhu_logo1'  => I('post.zhanzhu_logo1'),
                 'zhanzhu_logo2'  => I('post.zhanzhu_logo2'),
+                'matrix_pinpai'  => I('post.zhanzhu_logo3'),
+                'matrix_chuanbo'  => I('post.zhanzhu_logo4'),
                 'create_time'    => time(),             
             );
             if ($this->exhibition_model->addExhibition($exhibition_info)) {
@@ -108,7 +110,9 @@ class ExhibitionController extends CommonController
                 'schedule'    => I('post.schedule'),
                 'zhanzhu'        => I('post.zhanzhu'),
                 'zhanzhu_logo1'  => I('post.zhanzhu_logo1'),
-                'zhanzhu_logo2'  => I('post.zhanzhu_logo2'),               
+                'zhanzhu_logo2'  => I('post.zhanzhu_logo2'), 
+                'matrix_pinpai'  => I('post.zhanzhu_logo3'),
+                'matrix_chuanbo'  => I('post.zhanzhu_logo4'),
             );
             if($this->exhibition_model->editExhibition($exhibition_info) !== false){
                 $this->ajaxSuccess('更新成功');

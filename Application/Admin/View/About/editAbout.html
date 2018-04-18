@@ -36,6 +36,13 @@
 
         </div>
     </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">购票需知</label>
+        <div class="layui-input-inline">
+            <textarea id="notice" name="notice" style="display: none;">{$about_info.notice}</textarea>
+
+        </div>
+    </div>
 
     <div class="layui-form-item">
         <div class="layui-input-block">
@@ -57,6 +64,7 @@
         var index = layedit.build('about_activity'); //建立编辑器
         var index2 = layedit.build('faq'); //建立编辑器
         var index3 = layedit.build('address'); //建立编辑器
+        var index4 = layedit.build('notice'); //建立编辑器
         var form = layui.form(), $ = layui.jquery;
         //监听提交
         form.on('submit(about)', function (data) {
@@ -65,6 +73,7 @@
             aboutinfo.about_activity = layui.layedit.getContent(index);
             aboutinfo.faq = layui.layedit.getContent(index2);
             aboutinfo.address = layui.layedit.getContent(index3);
+            aboutinfo.notice = layui.layedit.getContent(index4);
             var url = "{:U('About/editAbout')}";
             $.post(url, aboutinfo, function (data) {
                 if (data.status == 'error') {

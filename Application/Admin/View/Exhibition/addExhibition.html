@@ -81,6 +81,22 @@
         <input type="hidden" name="zhanzhu_logo2" id="zhanzhu_logo2"  value="" class="layui-input">
     </div>
   </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">品牌矩阵</label>
+    <div class="layui-input-inline">
+        <div style="float:left;margin-right: 10px"><input type="file" id='upload_img5' name="file" class="layui-upload-file"></div>
+        <div id="show5" style="float:left"></div>
+        <input type="hidden" name="zhanzhu_logo3" id="zhanzhu_logo3"  value="" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">传播矩阵</label>
+    <div class="layui-input-inline">
+        <div style="float:left;margin-right: 10px"><input type="file" id='upload_img6' name="file" class="layui-upload-file"></div>
+        <div id="show6" style="float:left"></div>
+        <input type="hidden" name="zhanzhu_logo4" id="zhanzhu_logo4"  value="" class="layui-input">
+    </div>
+  </div>
 
   <div class="layui-form-item">
     <div class="layui-input-block">
@@ -191,6 +207,38 @@ layui.use('upload', function(){
                 var str = "<image src='"+res.data.src+"' width='100' height='50'></image> ";
                 $("#zhanzhu_logo2").val(res.data.src);
                 $("#show4").html(str);
+            }
+        }
+    });
+    layui.upload({
+        url: "{:U('Exhibition/uploadImgForContent')}"
+        ,title: '上传图片'
+        ,elem: '#upload_img5' //指定原始元素，默认直接查找class="layui-upload-file"
+        ,ext: 'jpg|png|gif|jpeg'
+        ,method: 'post' //上传接口的http类型
+        ,success: function(res){
+            if(res.code == 300){
+                layer.msg(res.msg);
+            }else{
+                var str = "<image src='"+res.data.src+"' width='100' height='50'></image> ";
+                $("#zhanzhu_logo3").val(res.data.src);
+                $("#show5").html(str);
+            }
+        }
+    });
+    layui.upload({
+        url: "{:U('Exhibition/uploadImgForContent')}"
+        ,title: '上传图片'
+        ,elem: '#upload_img6' //指定原始元素，默认直接查找class="layui-upload-file"
+        ,ext: 'jpg|png|gif|jpeg'
+        ,method: 'post' //上传接口的http类型
+        ,success: function(res){
+            if(res.code == 300){
+                layer.msg(res.msg);
+            }else{
+                var str = "<image src='"+res.data.src+"' width='100' height='50'></image> ";
+                $("#zhanzhu_logo4").val(res.data.src);
+                $("#show6").html(str);
             }
         }
     });

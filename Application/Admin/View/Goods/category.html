@@ -75,7 +75,7 @@
                 skin: 'layer-ext-moon',
                 btn: ['确认', '取消'] //按钮
             }, function () {
-                $.post(url, {id: id}, function (data) {
+                $.post(url, {category_id: id}, function (data) {
                     if (data.status == 'error') {
                         layer.msg(data.msg, {icon: 5});
                         return;

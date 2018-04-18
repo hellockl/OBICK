@@ -14,40 +14,23 @@
 
 			<blockquote class="layui-elem-quote">
 				<button  class="layui-btn layui-btn-small add">
-					<i class="layui-icon">&#xe608;</i> 添加矩阵
+					<i class="layui-icon">&#xe608;</i> 添加媒体
 				</button>
 			</blockquote>
 
-			<fieldset class="layui-elem-field">
-				<legend>字段集</legend>
-				<div class="layui-field-box">
-					<form class="layui-form" method="post" action="{:U('Matrix/index')}">
-						<div class="layui-form-item">
-                                                    <div class="layui-inline">
-                                                      <label class="layui-form-label">标题</label>
-                                                      <div class="layui-input-inline">
-                                                        <input type="text" name="title"  class="layui-input">
-                                                      </div>
-                                                    </div>
-
-                                                    <div class="layui-inline"><button class="layui-btn layui-btn-warm" lay-submit="" lay-filter="search">搜索</button></div>
-                                                </div>
-						
-					</form>
-				</div>
-			</fieldset>
+			
 
 
 			<fieldset class="layui-elem-field">
-				<legend>矩阵列表</legend>
+				<legend>媒体列表</legend>
 				<div class="layui-field-box">
 				<table class="layui-table">
 					  <thead>
 					    <tr>
 					      <th>ID</th>
-					      <th>缩略图</th>
-					      <th>标题</th>
-					      <th>内容</th>
+					      <th>LOGO</th>
+					      <th>名称</th>
+					      <th>URL</th>
 					      <th>创建时间</th>
 					     <th>操作</th>
 					    </tr>
@@ -56,10 +39,9 @@
 					  <foreach name="matrix_list" key="k" item="vo">
 					    <tr>
 					      <td>{$vo.id}</td>
-					      <td>
-							  <img src="{$vo.smeta}" width="50" height="50" /></td>
+					      <td><img src="{$vo.smeta}" width="50" height="50" /></td>
 					      <td>{$vo.title}</td>
-					      <td>{$vo.content}</td>
+					      <td>{$vo.url}</td>
 					      <td>{$vo.create_time|date="Y-m-d H:i:s",###}</td>
 
 					      <td>
@@ -93,7 +75,7 @@
 							return;
 						}
 						layer.open({
-							  title:'添加矩阵',
+							  title:'添加媒体',
 							  type: 1,
 							  skin: 'layui-layer-rim', //加上边框
 							  area: ['60%','80%'], //宽高
@@ -111,7 +93,7 @@
 							return;
 						}
 						layer.open({
-							  title:'编辑矩阵',
+							  title:'编辑媒体',
 							  type: 1,
 							  skin: 'layui-layer-rim', //加上边框
 							  area: ['60%','80%'], //宽高
@@ -120,25 +102,7 @@
 					})
 				 });
 				
-				//分配角色
-				$('.role').click(function(){
-					var user_id = $(this).attr('data');
-					var url = "{:U('AuthGroup/giveRole')}";
-					$.get(url,{user_id:user_id},function(data){
-						if(data.status == 'error'){
-							layer.msg(data.msg,{icon: 5});
-							return;
-						}
-						
-						layer.open({
-							  title:'分配角色',
-							  type: 1,
-							  skin: 'layui-layer-rim', //加上边框
-							  area: ['500px','500px'], //宽高
-							  content: data,
-						});
-					})
-				 });
+				
 				
 				//删除
 				$('.del').click(function(){
@@ -167,47 +131,7 @@
 				
 			});
 		</script>
-		<script>
-
-//            layui.use('form','laydate', function(){
-			layui.use(['form', 'layedit', 'laydate'], function(){
-                var laydate = layui.laydate;
-                var form = layui.form();
-
-                var start = {
-                    min: '2017-01-01 00:00:00'
-                    ,max: '2099-06-16 23:59:59'
-                    ,istoday: false
-                    ,choose: function(datas){
-                        end.min = datas; //开始日选好后，重置结束日的最小日期
-                        end.start = datas //将结束日的初始值设定为开始日
-                    }
-                };
-
-                var end = {
-                    min: '2017-01-01 00:00:00'
-                    ,max: '2099-06-16 23:59:59'
-                    ,istoday: false
-                    ,choose: function(datas){
-                        start.max = datas; //结束日选好后，重置开始日的最大日期
-                    }
-                };
-
-//                document.getElementById('LAY_demorange_s').onclick = function(){
-//                    start.elem = this;
-//                    laydate(start);
-//                }
-//                document.getElementById('LAY_demorange_e').onclick = function(){
-//                    end.elem = this
-//                    laydate(end);
-//                }
-                form.on('submit(search)', function(data){
-                    layer.alert(JSON.stringify(data.field), {
-                        title: '最终的提交信息'
-                    })
-                });
-            });
-		</script>
+		
 	</body>
 
 </html>

@@ -80,6 +80,9 @@ class MatrixController extends CommonController
                 'title'         => I('post.title', '', 'trim'),
                 'content'       => I('post.content'),
                 'smeta'         => I('post.smeta'),
+                'category'      => I('post.category'),
+                'is_index'      => I('post.is_index'),
+                'url'           => I('post.url'),
                 'type'        => I('post.type'),
                 'create_time'   => time(),
 
@@ -108,6 +111,9 @@ class MatrixController extends CommonController
                 'content'       => I('post.content'),
                 'smeta'         => I('post.smeta'),
                 'type'          => I('post.type'),
+                'category'      => I('post.category'),
+                'is_index'      => I('post.is_index'),
+                'url'           => I('post.url'),
                 'update_time'   => time(),
 
             );

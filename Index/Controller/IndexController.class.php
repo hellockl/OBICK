@@ -6,10 +6,18 @@ class IndexController extends Controller {
         $type = isset($_GET['type'])?$_GET['type']:"";
         if($type){
             $where = "type=".$type;//展会
+            if($type==1){
+                $where_a = "id=2";
+            }else if($type==2){
+                $where_a = "id=3";
+            }else{
+                $where_a = "id=1";
+            }
         }else{
             $where = "is_index=1";//首页显示
+            $where_a = "id=1";
         }
-        
+        $exhibition_info = M("Exhibition")->where($where_a)->find();
         $goods_list = M("Goods")->where($where)->order("create_time desc")->limit(6)->select();
         
         $guest_list = M("Guest")->where($where)->order("create_time asc")->limit(6)->select();
@@ -19,6 +27,7 @@ class IndexController extends Controller {
         $partner_list = M("Partner")->where()->order("create_time asc")->limit(6)->select();
         
         $banner_list = M("Banner")->where($where." AND position=0")->order()->limit(3)->select();
+        $this->assign("exhibition_info",$exhibition_info);
         $this->assign("banner_list",$banner_list);
         $this->assign("type",$type);
         $this->assign("goods_list",$goods_list);
@@ -51,6 +60,10 @@ class IndexController extends Controller {
         $activity_list = M("Activity")->where($where)->order("create_time asc")->limit(6)->select();
         $partner_list =  M("Partner")->where($where)->order("create_time asc")->limit(6)->select();
         $exhibition_info = M("Exhibition")->where($where_a)->find();
+        $notice = M("About")->where($where_a)->getField("notice");
+        $media_a = M("Matrix")->where($where." AND category=3 ")->limit(4)->order("create_time desc")->select();
+        $this->assign("notice",$notice);
+        $this->assign("media_a",$media_a);
         $this->assign("list",$list);
         $this->assign("exhibition_info",$exhibition_info);
         $this->assign("activity_list",$activity_list);
@@ -148,6 +161,7 @@ class IndexController extends Controller {
         //echo M("Exhibition")->getLastSql();
         //$activity_list = M("Activity")->where()->order("create_time asc")->limit(5)->select();
         //$this->assign("activity_list",$activity_list);
+        
         $this->assign("page",$show);
         $this->assign("n",$n);
         $this->assign("schedule",htmlspecialchars_decode($schedule));
@@ -183,11 +197,24 @@ class IndexController extends Controller {
         $type = isset($_GET['type'])?$_GET['type']:0;
         $id = $type+1;
         $where = "id = ".$id;
+        if($type){
+            $where_a = "type=".$type;//展会
+            
+        }else{
+            $where_a = "is_index=1";//首页显示
+        }
+        
         $info = M("About")->where($where)->find();
         //echo M("About")->getlastsql();
         $info['about_activity'] = htmlspecialchars_decode($info['about_activity']);
         $info['faq'] = htmlspecialchars_decode($info['faq']);
         $info['address'] = htmlspecialchars_decode($info['address']);
+        
+        $media_a = M("Matrix")->where($where_a ." AND category=1 ")->limit(4)->order("create_time desc")->select();
+        
+        $media_b = M("Matrix")->where($where_a ." AND category=2 ")->limit(4)->order("create_time desc")->select();
+        $this->assign("media_a",$media_a);
+        $this->assign("media_b",$media_b);
         $this->assign("info",$info);
         $this->assign("type",$type);
         $this->display();
