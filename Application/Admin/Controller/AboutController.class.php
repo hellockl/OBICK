@@ -28,9 +28,9 @@ class AboutController extends CommonController
 
         $about_list = $this->about_model->selectAllAbout(10,$search);
         foreach ($about_list['list'] as $key=>$val){
-            $about_list['list'][$key]['faq'] = htmlspecialchars_decode($val['faq']);
-            $about_list['list'][$key]['about_activity'] = htmlspecialchars_decode($val['about_activity']);
-            $about_list['list'][$key]['address'] = htmlspecialchars_decode($val['address']);
+            $about_list['list'][$key]['faq'] = $val['faq'];
+            $about_list['list'][$key]['about_activity'] = $val['about_activity'];
+            $about_list['list'][$key]['address'] = $val['address'];
         }
 		
         
